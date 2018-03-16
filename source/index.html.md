@@ -1,239 +1,504 @@
 ---
-title: API Reference
+title: Documentations
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
-  - javascript
+  - swift: iOS
+  - java: android
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+  - <a href='https://api.firekast.io/'>Access your dashboard</a>
+  - <a href='https://firekast.io/'>Back to firekast.io</a>
+  - <ul>API Reference<li><a href="https://firekast.io/sdk/ios/docs">iOS</a></li><li><a href="https://firekast.io/sdk/android/docs">Android</a></li></ul>
+  - <p>Made with 🍕 in Paris, <a href="http://www.agoranov.com/#startup">Agoranov</a></p>
 
-includes:
-  - errors
-
-search: true
+search: false
 ---
 
-# Introduction
+# Welcome
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to Firekast! The best developer tools to bring live video streaming into your app without being a video expert. 
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+Firekast is a Video as a Service platform, we provide iOS and Android SDKs to wrap camera usage, streaming, video encoding and player into something sweet and easy to use. Yes, you are 5 minutes away to make the next Periscope 😎
 
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+We are obsesses over developer experience and want this documentation to be as clear as possible. If you have any question or suggestion, please feel free to [contact us](mailto:contact@firekast.io).
 
-# Authentication
+# Firekast Basics
 
-> To authorize, use this code:
+Before we start, let's introduce some Firekast basics concept. You may already be familiar with since we designed our service with well known SaaS platforms in mind.
 
-```ruby
-require 'kittn'
+*Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less. -- Marie Curie*
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+## Application
+
+On your dashboard, you can create as many applications as you like. An application is identified with its unique **applicationId** and gathers all the streams you have made using this id.
+
+To create an application, you must specify a *name* (usually your company name or app name), whether your application is under *development* or *production* (we provide better performance for PROD apps) and specify a *plan* (free or paying, see [pricing](http://firekast.io/pricing)). Each of these information can be edited later.
+
+An application can be deleted if you decide so.
+
+<aside class="warning">
+If an application is deleted, all the videos it contains will be deleted in the mean time.
+</aside>
+
+## clientKey
+
+This is your private account key. It is created once you create an account on Firekast dashboard. This key is needed for mobile SDK initialization.
+
+It is available in Firekast dashboard and looks like `c8178e40-0ccf-35e7-a17c-5b26c0cf5f87`.
+
+<aside class="warning">
+Keep it private, do not share widely!
+</aside>
+
+## applicationId
+
+The id that uniquely identifies an application.
+
+It is available in the Firekast dashboard and looks like `e8078520-0ccf-35e7-8493-034e3c17d8c0`.
+
+## streamId
+
+The id that uniquely identifies a stream in your application. See [stream.id](#id).
+
+It is available in the Firekast dashboard, within your application and looks like `d17j39tg4noar25g3`.
+
+## Active users
+
+Every devices (mobile or web) that reach our server is counted as a new active user once a month. This is used for measure plan threshold.
+
+# Installation
+
+<blockquote class="lang-specific swift">
+<p>1. edit your podfile</p>
+</blockquote>
+
+```swift
+use_frameworks!
 ```
 
-```python
-import kittn
+```swift
+# Set the same version name X.Y.Z. for both Firekast and VideoCore pod. Here 1.1.0.
+pod 'Firekast', :podspec => 'http://firekast.io/sdk/ios/v1.1.0/Firekast.podspec'
+pod 'VideoCore', :git => 'https://github.com/Firekast-io/VideoCore.git', :tag => 'fk-1.1.0'
 
-api = kittn.authorize('meowmeowmeow')
+# Please note, first `pod install` may be long, please be patient :)
 ```
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+<blockquote class="lang-specific swift">
+<p>2. run in terminal</p>
+</blockquote>
+
+```swift
+pod install
 ```
 
-```javascript
-const kittn = require('kittn');
+<blockquote class="lang-specific swift">
+<p>3. initialize the SDK</p>
+</blockquote>
 
-let api = kittn.authorize('meowmeowmeow');
+```swift
+import Firekast
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+```swift
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+  Firekast.initialize(clientKey: "YOUR_CLIENT_KEY", applicationId: "YOUR_APPLICATION_ID")
+}
+```
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+<blockquote class="lang-specific swift">
+<p>4. specify camera and microphone usage description in your info.pList</p>
+</blockquote>
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+```swift
+<key>NSCameraUsageDescription</key>
+<string>Camera usage description</string>
+<key>NSMicrophoneUsageDescription</key>
+<string>Microphone usage description</string>
+```
 
-`Authorization: meowmeowmeow`
+<blockquote class="lang-specific java">
+<p>1. edit your project root build.gradle</p>
+</blockquote>
+
+```java
+allprojects {
+    repositories {
+        [...]
+        maven { url 'https://dl.bintray.com/firekast/android' }
+    }
+}
+```
+
+<blockquote class="lang-specific java">
+<p>2. edit your app build.gradle</p>
+</blockquote>
+
+```java
+dependencies {
+    implementation 'io.firekast:firekast:1.0.0'
+    implementation 'com.google.android.exoplayer:exoplayer:r1.5.0'
+}
+```
+
+<blockquote class="lang-specific java">
+<p>3. initialize the SDK</p>
+</blockquote>
+
+```java
+Firekast.initialize(this, "YOUR_CLIENT_KEY", "YOUR_APPLICATION_ID", Log.VERBOSE);
+```
+
+We use common dependency managers to distribute our SDKs, so installation is fast forward.
+
+[Cocoapods](https://guides.cocoapods.org/using/getting-started.html) for iOS and [Gradle](https://developer.android.com/studio/build/dependencies.html) for Android.
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>YOUR_CLIENT_KEY</code> with your personal clientKey, available in the Firekast dashboard.</a>.
 </aside>
 
-# Kittens
+<aside class="notice">
+You must replace <code>YOUR_APPLICATION_ID</code> with your app's id, available in the Firekast dashboard.
+</aside>
 
-## Get All Kittens
+# Getting Started
 
-```ruby
-require 'kittn'
+## Live stream
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
+```swift
+let streamer = FKStreamer() // 1. initializes streamer
+let camera = streamer.showCamera(.front, in: myView) // 2. open camera inside myView
+
+streamer.requestStream { (stream, error) in // 3. create a stream
+    streamer.startStreaming(on: stream, delegate: self) // 4. start streaming firekast
+}
 ```
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+```java
+// 1. get fragment from layout
+mCameraFragment = (FKCameraFragment) getSupportFragmentManager().findFragmentById(R.id.camera_fragment);
+mCameraFragment.getCameraAsync(new FKCameraFragment.OnCameraReadyCallback() {
+  @Override
+  public void onCameraReady(@Nullable FKCamera camera, @Nullable FKError error) {
+    // 2. get camera as soon as it's available
+    mCamera = camera; 
   }
-]
+});
 ```
 
-This endpoint retrieves all kittens.
+```java
+mStreamer = mCameraFragment.getStreamer();
+// 3. create a stream
+mStreamer.requestStream(new FKStreamer.RequestStreamCallback() { 
+  @Override
+  public void done(@Nullable FKStream stream, @Nullable FKError error) {
+    // 4. start streaming on firekast
+    mStreamer.startStreaming(stream, new MyFKStreamingCallback());
+  }
+});
+```
 
-### HTTP Request
+This is all you need to do to live stream your front camera 👉
 
-`GET http://example.com/api/kittens`
+First, you must request for a stream and then, call start streaming method whenever your User decides to.
 
-### Query Parameters
+## Live stream on social networks simultaneously
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+```swift
+let fbLive = FKOutput.facebook(accessToken: "YOUR_FACEBOOK_TOKEN")
+let ytLive = FKOutput.youtube(accessToken: "YOUR_YOUTUBE_TOKEN", title: "Awesome title")
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+streamer.requestStream(outputs: [fbLive, ytLive]) { (stream, error) in // 3. create a stream specifying outputs
+    streamer.startStreaming(on: stream, delegate: self) // 4. start streaming on facebook, youtube and firekast
+}
+```
+
+```java
+FKOutput facebook = FKOutput.facebook("YOUR_TOKEN_FACEBOOK", null);
+FKOutput youtube = FKOutput.youtube("YOUR_TOKEN_YOUTUBE", "Awesome title", null);
+
+List outputs = new ArrayList<>();
+outputs.add(facebook);
+outputs.add(youtube);
+
+// 3. create a stream specifying outputs
+mStreamer.requestStream(outputs, new MyFKRequestStreamCallback());
+```
+
+Firekast allows to push your stream to several live streaming platform, such as Facebook or Youtube, simultaneously.
+
+<aside class="notice">
+A stream is always pushed to Firekast so it's available for your mobile or web app.
 </aside>
 
-## Get a Specific Kitten
+## Access camera features
 
-```ruby
-require 'kittn'
+```swift
+camera.position = .back // open back camera
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
+camera.isMicrophoneEnabled = false // mute microphone
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+if camera.isFlashAvailable {
+    camera.isFlashEnabled = true // turn flash on if available for the current camera
 }
 ```
 
-This endpoint retrieves a specific kitten.
+```java
+mCamera.switchToPosition(Position.BACK); // open back camera
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+mCamera.setMicrophoneEnabled(false); // mute microphone
 
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
+if (mCamera.isFlashAvailable()) {
+    mCamera.setFlashEnabled(true); // turn flash on if available for the current camera
 }
 ```
 
-This endpoint deletes a specific kitten.
+Adding camera often leads to boilerplate codes, especially on Android where you must pay attention on your Activity or Fragment lifecycle. 
 
-### HTTP Request
+Our SDK manages everything for you and provides simple interface to interact with most common used features.
 
-`DELETE http://example.com/kittens/<ID>`
+## Watch live or replay as VOD
 
-### URL Parameters
+```swift
+let player = FKPlayer() // 1. initialize player
+player.show(in: myView) // 2. display player in myView
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
+player.play(streamId: "THE_STREAM_ID", delegate: self) // 3. play the video 
+```
 
+```java
+// 1. add the player in your layout
+<io.firekast.FKPlayerView
+    android:id="@+id/videoView"
+    android:layout_width="200dp"
+    android:layout_height="110dp" />
+
+// 2. listen for player callback (optional) and play the video
+mVideoView.setPlayerListener(new MyFKPlayerCallback());
+mPlayerView.play("THE_STREAM_ID");
+```
+
+The player will figure out whether the stream is live or vod and will adapt the player UI accordingly.
+
+<aside class="notice">
+Once a live is completed, the stream becomes quasi instantly available for VOD playback.
+</aside>
+
+# SDK | Stream
+
+A stream describes one video content. A stream is unique and is associated to an application.
+
+## id
+
+This is the unique id of the object, see [streamId](#streamId). It is assigned when the Stream object is created, ie. when a stream is requested.
+
+## state
+
+During its life time, a stream goes though different states:
+
+* waiting: the stream has been created and is waiting for a video to be streamed
+* timeout: the stream has been waiting for too long and has been destroyed
+* live
+* processing: transitioning from live to vod
+* vod
+
+Stream's lifecycle can be either:
+
+* waiting -> live -> processing -> vod
+* waiting -> timeout
+
+# SDK | Streamer
+
+The streamer handles the stream creation and let you stream on your application.
+
+## Request for a stream
+
+```swift
+streamer.requestStream()
+```
+
+```java
+mStreamer.requestStream(new MyFKRequestStreamCallback());
+```
+
+Before being able to start streaming, you must request for a stream. This will create a stream on Firekast server.
+
+This new created stream is immediatly visible in your dashboard.
+
+## Specify outputs
+
+```swift
+streamer.requestStream(outputs: [])
+```
+
+```java
+mStreamer.requestStream(listOfOutputs, new MyFKRequestStreamCallback());
+```
+
+Firekast lets you push your live stream to several live streaming platform, such as Facebook or Youtube, simultaneously.
+
+If you want to repush on social networks, you must provide corresponding information so the server create a special stream.
+
+## Start and stop streaming
+
+> Start streaming
+
+```swift
+streamer.startStreaming(on: stream, delegate: self)
+```
+
+```java
+mStreamer.startStreaming(stream, new MyFKStreamingCallback());
+```
+
+> Stop streaming
+
+```swift
+streamer.stopStreaming()
+```
+
+```java
+mStreamer.stopStreaming()
+```
+
+Once you have created a stream, you can start streaming whenever your User is ready.
+
+<aside class="notice">
+Even if the SDK will detect this situation 💪, it is a good practice to call stop streaming method when your user moves away the app or the streaming screen.
+</aside>
+
+## Listen for events while streaming
+
+```swift
+func streamer(_ streamer: FKStreamer, willStartOn stream: FKStream?, unless error: FKError?) {
+  // ...
+}
+
+func streamer(_ streamer: FKStreamer, didStopOn stream: FKStream?, error: FKError?) {
+  // ...
+}
+
+func streamer(_ streamer: FKStreamer, networkQualityDidUpdate rating: Float) {
+  // ...
+}
+```
+
+```java
+private class MyStreamingCallback implements FKStreamer.StreamingCallback {
+  @Override
+  public void onSteamWillStartUnless(@Nullable FKStream stream, @Nullable FKError error) {
+    // ...
+  }
+
+  @Override
+  public void onStreamDidStop(FKStream stream, FKError error) {
+    // ...
+  }
+
+  @Override
+  public void onStreamingUpdateAvailable(boolean lag) {
+    // ...
+  }
+}
+```
+
+When start streaming you might want to adapt your UI depending on events. You will be notified whether the streaming starts properly, stops normally or prematurely, and streaming conditions.
+
+<aside class="notice">
+A stream can be stopped by the SDK if network conditions has been low for too long), on the dashboard, or by the server. So you should adapt your UI/UX accordingly.
+</aside>
+
+# SDK | Player
+
+The player lets you play any stream of your current application. Whether the stream is live or VOD, the player will figure it out and adapt its UI.
+
+## Initialization
+
+<blockquote class="lang-specific swift">
+<p>The player is a wrap arount <code><a href="https://developer.apple.com/documentation/mediaplayer/mpmovieplayercontroller">MPMoviePlayerController</a></code>, and is even simpler to use.</p>
+</blockquote>
+
+```swift
+override func viewDidLoad() {
+  super.viewDidLoad()
+  player = FKPlayer()
+  player.show(in: playerContainerView)
+}
+```
+
+<blockquote class="lang-specific java">
+<p>The player is based on <code><a href="https://github.com/google/ExoPlayer">ExoPlayer</a></code> and is wrapped into a simple view.</p>
+</blockquote>
+
+```java
+<io.firekast.FKPlayerView
+  android:id="@+id/videoView"
+  android:layout_width="match parent" 
+  android:layout_height="110dp" />
+```
+
+For each platform, we wrap the most common player so we expose only methods that count.
+
+<aside class="notice">
+Video ratio is 16:9. If your view does not fit this ratio, the player automatically centers inside the video adding (eventually) black bars.
+</aside>
+
+<aside class="notice tab-swift">
+On iOS, the player can play only one video at a time.
+</aside>
+
+## Play and stop
+
+```swift
+player.play(streamId: "THE_STREAM_ID", delegate: self)
+```
+
+```swift
+player.stop()
+```
+
+```java
+mPlayerView.play("THE_STREAM_ID");
+```
+
+```java
+mPlayerView.stop();
+```
+
+The player aims to be very simple. 
+
+Call play by providing the [streamId](#streamId). The player will first fetch the stream, determines whether its live or vod, and start to play. 
+
+The playback controller UI automatically adapt whether the player is playing a live or vod stream.
+
+<aside class="notice">
+Replace <code>THE_STREAM_ID</code> with the stream-you-want-to-watch's id.
+</aside>
+
+## Listen for player events
+
+```swift
+func player(_ player: FKPlayer, stateDidChanged state: FKPlayer.State) {
+  // ...
+}
+
+func player(_ player: FKPlayer, videoDurationIsAvailable duration: TimeInterval) {
+  // ...
+}
+
+func player(_ player: FKPlayer, willPlay stream: FKStream?, unless error: FKError?) {
+  // ...
+}
+```
+
+```java
+mPlayerView = (FKPlayerView) findViewById(R.id.videoView);
+mPlayerView.setPlayerListener(new FKPlayerView.Callback() {
+  @Override
+  public void onPlayerWillPlay(@Nullable FKStream stream, @Nullable FKError error) {
+    // ...
+  }
+});
+```
+
+You may want to listen for player callback so you can adapt adapt your UI accordingly. Indeed, since the stream is fetched internally to determine whether its live, vod, etc... the request can fail. There is no retry strategy so you may notify your user about the failure.
