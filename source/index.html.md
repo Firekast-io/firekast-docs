@@ -21,13 +21,13 @@ Welcome to Firekast! The best developer tools to bring live video streaming into
 
 Firekast is a Video as a Service platform, we provide iOS and Android SDKs to wrap camera usage, streaming, video encoding and player into something sweet and easy to use. Yes, you are 5 minutes away to make the next Periscope 😎
 
-We are obsesses over developer experience and want this documentation to be as clear as possible. If you have any question or suggestion, please feel free to [contact us](mailto:contact@firekast.io).
+We obsesses over developer experience and want this documentation to be as clear as possible. If you have any question or suggestion, please feel free to [contact us](mailto:contact@firekast.io).
 
 One more thing, visit our [roadmap](https://trello.com/b/5JjUolUp/firekast-roadmap) for unimplemented features.
 
 # Firekast Basics
 
-Before we start, let's introduce some Firekast basics concept. You may already be familiar with since we designed our service with well known SaaS platforms in mind.
+Before we start, let's introduce some Firekast basics concepts. You may already be familiar with since we designed our service with well known SaaS platforms in mind.
 
 *Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less. -- Marie Curie*
 
@@ -67,7 +67,7 @@ It is available in the Firekast dashboard, within your application and looks lik
 
 ## Active users
 
-Every devices (mobile or web) that reach our server is counted as a new active user once a month. This is used for measure plan threshold.
+Each device (mobile or web) that reaches our server is counted as a new active user once a month. This is used for measure plan threshold.
 
 # Installation
 
@@ -614,9 +614,9 @@ playerJS.stop();
 
 The player aims to be very simple. 
 
-Call play by providing the [streamId](#streamId). The player will first fetch the stream, determines whether its live or vod, and start to play. 
+Call play by providing the [streamId](#streamId). The player will first fetch the stream, determines whether it's live or vod, and starts to play. 
 
-The playback controller UI automatically adapt whether the player is playing a live or vod stream.
+The playback controller UI automatically adapts whether the player is playing a live or vod stream.
 
 <aside class="notice">
 Replace <code>THE_STREAM_ID</code> with the stream-you-want-to-watch's id.
