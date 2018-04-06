@@ -21,9 +21,7 @@ Welcome to Firekast! The best developer tools to bring live video streaming into
 
 Firekast is a Video as a Service platform, we provide iOS and Android SDKs to wrap camera usage, streaming, video encoding and player into something sweet and easy to use. Yes, you are 5 minutes away to make the next Periscope 😎
 
-We obsesses over developer experience and want this documentation to be as clear as possible. If you have any question or suggestion, please feel free to [contact us](mailto:contact@firekast.io).
-
-One more thing, visit our [roadmap](https://trello.com/b/5JjUolUp/firekast-roadmap) for unimplemented features.
+We obsesses over developer experience and want this documentation to be as clear as possible. If you have any question, suggestion, feature request, we would love to hear from you. [contact us](https://firekast.zendesk.com/hc/en-gb/requests/new).
 
 # Firekast Basics
 
@@ -31,16 +29,18 @@ Before we start, let's introduce some Firekast basics concepts. You may already 
 
 *Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less. -- Marie Curie*
 
-## Application
+## API key
 
-On your dashboard, you can create as many applications as you like. An application is identified with its unique **applicationId** and gathers all the streams you have made using this id.
+The API key allows you to make a restricted set of calls through our REST API. 
+The API only allows calls to get streams for playback, typically for use with our JS Player.
 
-To create an application, you must specify a *name* (usually your company name or app name), whether your application is under *development* or *production* (we provide better performance for PROD apps) and specify a *plan* (free or paying, see [pricing](http://firekast.io/pricing)). Each of these information can be edited later.
+<aside>
+With custom authorizations, our APIs can be used on your backend to list your streams and manage your applications.
+<a href="https://firekast.zendesk.com/hc/en-gb/requests/new">contact us</a> to discuss your needs.
+</aside>
 
-An application can be deleted if you decide so.
-
-<aside class="warning">
-If an application is deleted, all the videos it contains will be deleted in the mean time.
+<aside>
+The API key is not intended to be used with the Android or iOS SDKs, for these you should use the [clientKey](#clientkey) as detailed below.
 </aside>
 
 ## clientKey
@@ -50,7 +50,19 @@ This is your private account key. It is created once you create an account on Fi
 It is available in Firekast dashboard and looks like `c8178e40-0ccf-35e7-a17c-5b26c0cf5f87`.
 
 <aside class="warning">
-Keep it private, do not share widely!
+Keep your client key it private, do NOT share it!
+</aside>
+
+## Application
+
+On your dashboard, you can create as many applications as you like. An application is identified with its unique **applicationId** and gathers all the streams you have made using this id.
+
+To create an application, you must specify a *name* (usually your company name or app name), and specify a *plan* (free or paying, see [pricing](https://firekast.zendesk.com/hc/en-gb/requests/new)). Each of these information can be edited later.
+
+An application can be deleted if you decide so.
+
+<aside class="warning">
+If an application is deleted, all the videos it contains will be deleted as well.
 </aside>
 
 ## applicationId
@@ -65,9 +77,11 @@ The id that uniquely identifies a stream in your application. See [stream.id](#i
 
 It is available in the Firekast dashboard, within your application and looks like `d17j39tg4noar25g3`.
 
+
+
 ## Active users
 
-Each device (mobile or web) that reaches our server is counted as a new active user once a month. This is used for measure plan threshold.
+Each new device (mobile or web) that reaches our server is counted as a new active user once a month.
 
 # Installation
 
@@ -153,76 +167,69 @@ Firekast.initialize(this, "YOUR_CLIENT_KEY", "YOUR_APPLICATION_ID", Log.VERBOSE)
 ```
 
 <blockquote class="lang-specific javascript">
-<p>1. installation</p>
-<p>Option a. npm</p>
+<p>Import and initialize</p>
+<p>Firekast SDK is distributed as an UMD module, giving you several options.</p>
+<p>1. using script tag</p>
 </blockquote>
 
 ```javascript
-npm install --save firekast-player
-```
-
-<blockquote class="lang-specific javascript">
-<p>Option b. CDN</p>
-</blockquote>
-
-```javascript
-<head>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/firekast@latest/dist/fkplayer.min.js"></script>
-</head>
-```
-
-<blockquote class="lang-specific javascript">
-<p>2. initialize the SDK</p>
-<p>Option a. WEB</p>
-</blockquote>
-
-```javascript
+<script src="https://firekast.io/sdk/js/1.0.0/firekast.min.js"></script>
 <script>
-  var config = {
-    applicationId: "YOUR_APPLICATION_ID"
-  };
-  Firekast.initializeApp(config);
-  (inspired from firebase init: https://firebase.google.com/docs/web/setup#add_firebase_to_your_app)
+Firekast.init({
+            api_key: 'YOUR_API_KEY'
+});
 </script>
 ```
 
 <blockquote class="lang-specific javascript">
-<p>2. initialize the SDK</p>
-<p>Option b. Node.js</p>
+<p>2. Webpack, Browserify ...</p>
+<p>You may use Firekast as a dependency in your <a href="https://webpack.github.io/" target="blank">Webpack</a> or <a href="http://browserify.org/" target="blank">Browserify</a> config, and import Firekast's SDK in your script as follow :</p>
 </blockquote>
 
 ```javascript
-// To use the module in your application, require it from any JavaScript file:
-var firebase = require("firebase");
-// If you are using ES2015, you can import the module instead:
-import * as firebase from "firebase";
-
-// Initialize Firebase
-// TODO: Replace with your project's customized code snippet
-var config = {
-  apiKey: "<API_KEY>",
-  authDomain: "<PROJECT_ID>.firebaseapp.com",
-  databaseURL: "https://<DATABASE_NAME>.firebaseio.com",
-  storageBucket: "<BUCKET>.appspot.com",
-};
-firebase.initializeApp(config);
+const Firekast = require('firekast');
+Firekast.init({
+            api_key: 'YOUR_API_KEY'
+});
 ```
 
-We use common dependency managers to distribute our SDKs, so installation is fast forward.
+<blockquote class="lang-specific javascript">
+<p>3. AMD module syntax</p>
+<p>You may also import Firekast SDK's using <a href="http://requirejs.org/docs/whyamd.html" target="blank">Asynchronous Module Definition<a>.</p>
+</blockquote>
 
-[Cocoapods](https://guides.cocoapods.org/using/getting-started.html) for iOS, [Gradle](https://developer.android.com/studio/build/dependencies.html) for android, [npm](https://docs.npmjs.com/getting-started/installing-node) for js.
+```javascript
+define(["firekast"], function(Firekast) {
+  Firekast.init({
+              api_key: 'YOUR_API_KEY'
+  });
+});
+```
 
-<aside class="notice">
-You must replace <code>YOUR_CLIENT_KEY</code> with your personal clientKey, available in the Firekast dashboard.</a>.
+
+We use common dependency managers to distribute our SDKs and make installation as straightforward as possible.
+
+[Cocoapods](https://guides.cocoapods.org/using/getting-started.html) for iOS, and [Gradle](https://developer.android.com/studio/build/dependencies.html) for android.
+
+Our javascript / typscript SDK is not yet avaible on the public npm registry. We would love to hear from you if you would like to get our Node JS package.
+
+<aside class="notice lang-specific javascript">
+You must replace <code>YOUR_API_KEY</code> with your personal [API key](#api-key), available in the Firekast dashboard.</a>.
 </aside>
 
-<aside class="notice">
-You must replace <code>YOUR_APPLICATION_ID</code> with your app's id, available in the Firekast dashboard.
+<aside class="notice lang-specific java swift">
+You must replace <code>YOUR_CLIENT_KEY</code> with your personal [clientKey](#clientkey), available in the Firekast dashboard.</a>.
 </aside>
 
+<aside class="notice lang-specific java swift">
+You must replace <code>YOUR_APPLICATION_ID</code> with your [app's id](#applicationid), available in the Firekast dashboard.
+</aside>
+
+<!--
 <aside class="notice">
 To activate the javascript SDK, you must add your website domains (eg. https://www.pscp.tv) so only your app is able to make requests. This can be done in your dashboard app settings.
 </aside>
+-->
 
 # Getting Started
 
@@ -261,9 +268,9 @@ mStreamer.requestStream(new FKStreamer.RequestStreamCallback() {
 });
 ```
 
-```javascript
-// Not implemented yet
-```
+<blockquote class="lang-specific javascript">
+<p>The javascript SDK currently only supports <a href="#watch-live-or-replay-as-vod">live and vod</a> content playback, not publishing.</p>
+</blockquote>
 
 This is all you need to do to live stream your front camera 👉
 
@@ -290,10 +297,6 @@ outputs.add(youtube);
 
 // 3. create a stream specifying outputs
 mStreamer.requestStream(outputs, new MyFKRequestStreamCallback());
-```
-
-```javascript
-// Not implemented yet
 ```
 
 Firekast allows to push your stream to several live streaming platform, such as Facebook or Youtube, simultaneously.
@@ -324,13 +327,9 @@ if (mCamera.isFlashAvailable()) {
 }
 ```
 
-```javascript
-// Not implemented yet
-```
-
 Adding camera often leads to boilerplate codes, especially on Android where you must pay attention on your Activity or Fragment lifecycle. 
 
-Our SDK manages everything for you and provides simple interface to interact with most common used features.
+Our SDK manages everything for you and provides simple interface to interact with  commonly used features.
 
 ## Watch live or replay as VOD
 
@@ -353,28 +352,40 @@ mVideoView.setPlayerListener(new MyFKPlayerCallback());
 mPlayerView.play("THE_STREAM_ID");
 ```
 
+<blockquote class="lang-specific javascript">
+<p>The player wraps around <code><a href="https://github.com/clappr/clappr">clappr</a></code>.</p>
+</blockquote>
 ```javascript
-<body>
   <div id="player"></div>
   <script>
-    var player = new Firekast.Player({streamId: "THE_STREAM_ID", colorAccent: #ffb800, parentId: "#player"});
+    Firekast.API.init({
+                api_key: 'YOUR_API_KEY'
+            });
+    const player = new Firekast.Player({
+                parent_id:   '#player',
+                stream_id:   'THE_STREAM_ID'
+            });
   </script>
-</body>
 ```
 
 The player will figure out whether the stream is live or vod and will adapt the player UI accordingly.
 
 <aside class="notice">
-Once a live is completed, the stream becomes quasi instantly available for VOD playback.
+Once a live is completed, the stream becomes instantly available for VOD playback.
 </aside>
 
 # SDK | Stream
 
 A stream describes one video content. A stream is unique and is associated to an application.
 
+<blockquote class="lang-specific">
+ <p>Our APIs can be used on your backend to list your streams and manage your applications.</p>
+ <p><a href="https://firekast.zendesk.com/hc/en-gb/requests/new" target="blank">Contact us to discuss your needs.</a></p>
+</blockquote>
+
 ## id
 
-This is the unique id of the object, see [streamId](#streamId). It is assigned when the Stream object is created, ie. when a stream is requested.
+This is the unique id of the object, see [streamId](#streamId). It is assigned when the [Stream object is created](#request-for-a-stream).
 
 ## state
 
@@ -391,21 +402,6 @@ Stream's lifecycle can be either:
 * waiting -> live -> processing -> vod
 * waiting -> timeout
 
-## metadata 
-
-```swift
-// Not implemented yet
-```
-
-```java
-// Not implemented yet
-```
-
-```javascript
-// Not implemented yet
-```
-
-You can use this parameter to attach key-value data to Stream objects. Metadata is useful for storing additional, structured information on an object. As an example, you could store your user's full name or stream title.
 
 # SDK | Streamer
 
@@ -421,9 +417,9 @@ streamer.requestStream()
 mStreamer.requestStream(new MyFKRequestStreamCallback());
 ```
 
-```javascript
-// Not implemented yet
-```
+<blockquote class="lang-specific javascript">
+<p>The javascript SDK currently only supports <a href="#watch-live-or-replay-as-vod">live and vod</a> content playback, not publishing.</p>
+</blockquote>
 
 Before being able to start streaming, you must request for a stream. This will create a stream on Firekast server.
 
@@ -439,17 +435,15 @@ streamer.requestStream(outputs: [])
 mStreamer.requestStream(listOfOutputs, new MyFKRequestStreamCallback());
 ```
 
-```javascript
-// Not implemented yet
-```
-
 Firekast lets you push your live stream to several live streaming platform, such as Facebook or Youtube, simultaneously.
 
 If you want to repush on social networks, you must provide corresponding information so the server create a special stream.
 
 ## Start and stop streaming
 
-> Start streaming
+<blockquote class="lang-specific swift java">
+<p>Start streaming</p>
+</blockquote>
 
 ```swift
 streamer.startStreaming(on: stream, delegate: self)
@@ -459,11 +453,9 @@ streamer.startStreaming(on: stream, delegate: self)
 mStreamer.startStreaming(stream, new MyFKStreamingCallback());
 ```
 
-```javascript
-// Not implemented yet
-```
-
-> Stop streaming
+<blockquote class="lang-specific swift java">
+<p>Stop streaming</p>
+</blockquote>
 
 ```swift
 streamer.stopStreaming()
@@ -473,15 +465,8 @@ streamer.stopStreaming()
 mStreamer.stopStreaming()
 ```
 
-```javascript
-// Not implemented yet
-```
-
 Once you have created a stream, you can start streaming whenever your User is ready.
 
-<aside class="notice">
-Even if the SDK will detect this situation 💪, it is a good practice to call stop streaming method when your user moves away the app or the streaming screen.
-</aside>
 
 ## Listen for events while streaming
 
@@ -518,9 +503,9 @@ private class MyStreamingCallback implements FKStreamer.StreamingCallback {
 }
 ```
 
-```javascript
-// Not implemented yet
-```
+<blockquote class="lang-specific javascript">
+<p>The javascript SDK currently only supports <a href="#watch-live-or-replay-as-vod">live and vod</a> content playback, not publishing.</p>
+</blockquote>
 
 When start streaming you might want to adapt your UI depending on events. You will be notified whether the streaming starts properly, stops normally or prematurely, and streaming conditions.
 
@@ -558,28 +543,26 @@ override func viewDidLoad() {
 ```
 
 <blockquote class="lang-specific javascript">
-<p>The player is a wrap around <code><a href="https://github.com/clappr/clappr">clappr</a></code>.</p>
+<p>The player wraps around <code><a href="https://github.com/clappr/clappr">clappr</a></code>.</p>
 </blockquote>
 
 ```javascript
-<style>
-  #player {
-    width: 160px;
-    height: 90px;
-  }
-</style>
-<body>
   <div id="player"></div>
   <script>
-    var playerJS = new Firekast.Player({parentId: "#player", streamId: "THE_PLAYER_ID", accentColor: #ffb800});
+    Firekast.API.init({
+                api_key: 'YOUR_API_KEY'
+            });
+    const player = new Firekast.Player({
+                parent_id:   '#player',
+                stream_id:   'THE_STREAM_ID'
+            });
   </script>
-</body>
 ```
 
 For each platform, we wrap the most common player so we expose only methods that count.
 
 <aside class="notice">
-Video ratio is 16:9. If your view does not fit this ratio, the player automatically centers inside the video adding (eventually) black bars.
+Video ratio is 16:9. If your view does not fit this ratio, the player automatically fit inside the video with automatic padding to maintain its ratio.
 </aside>
 
 <aside class="notice tab-swift">
@@ -605,11 +588,28 @@ mPlayerView.stop();
 ```
 
 ```javascript
-playerJS.play();
+player.on('ready', () => {
+  player.play();
+});
 ```
 
 ```javascript
-playerJS.stop();
+player.stop();
+```
+
+<blockquote class="lang-specific javascript">
+<p>The following methods are also available.</p>
+</blockquote>
+
+```javascript
+player.pause()
+player.seek(seconds:Number)
+player.mute()
+player.setVolume(percent:Number)
+player.getCurrentTime():Number
+player.getDuration():Number
+player.isPlaying():Boolean
+player.destroy()
 ```
 
 The player aims to be very simple. 
@@ -617,6 +617,10 @@ The player aims to be very simple.
 Call play by providing the [streamId](#streamId). The player will first fetch the stream, determines whether it's live or vod, and starts to play. 
 
 The playback controller UI automatically adapts whether the player is playing a live or vod stream.
+
+<aside class="notice">
+Replace <code>THE_STREAM_ID</code> with the stream-you-want-to-watch's id.
+</aside>
 
 <aside class="notice">
 Replace <code>THE_STREAM_ID</code> with the stream-you-want-to-watch's id.
@@ -649,7 +653,24 @@ mPlayerView.setPlayerListener(new FKPlayerView.Callback() {
 ```
 
 ```javascript
-???
+const events = [
+  'ready',
+  'play',
+  'stop',
+  'ended',
+  'error',
+  'timeupdate',
+  'volumechange',
+  'seek',
+  'resize'
+];
+
+events.forEach( event => {
+  player.on('ready', () => console.log(`Player emitted ${event}`));
+});
+
+player.on('ready', () => player.play());
+
 ```
 
 You may want to listen for player callback so you can adapt adapt your UI accordingly. Indeed, since the stream is fetched internally to determine whether its live, vod, etc... the request can fail. There is no retry strategy so you may notify your user about the failure.
