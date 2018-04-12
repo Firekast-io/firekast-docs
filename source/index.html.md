@@ -21,7 +21,7 @@ Welcome to Firekast! The best developer tools to bring live video streaming into
 
 Firekast is a Video as a Service platform, we provide iOS and Android SDKs to wrap camera usage, streaming, video encoding and player into something sweet and easy to use. Yes, you are 5 minutes away to make the next Periscope 😎
 
-We obsesses over developer experience and want this documentation to be as clear as possible. If you have any question, suggestion, feature request, we would love to hear from you. [contact us](https://firekast.zendesk.com/hc/en-gb/requests/new).
+We obsesses over developer experience and want this documentation to be as clear as possible. If you have any question, suggestion, feature request, feel free to [contact us](https://firekast.zendesk.com/hc/en-gb/requests/new), we would love to hear from you.
 
 # Firekast Basics
 
@@ -167,42 +167,42 @@ Firekast.initialize(this, "YOUR_CLIENT_KEY", "YOUR_APPLICATION_ID", Log.VERBOSE)
 ```
 
 <blockquote class="lang-specific javascript">
-<p>Import and initialize</p>
-<p>Firekast SDK is distributed as an UMD module, giving you several options.</p>
-<p>1. using script tag</p>
+<p>1. import</p>
+</blockquote>
+
+<blockquote class="lang-specific javascript">
+<p>Option a. <code>script</code> tag</p>
 </blockquote>
 
 ```javascript
 <script src="https://firekast.io/sdk/js/1.0.0/firekast.min.js"></script>
-<script>
-Firekast.init({
-            api_key: 'YOUR_API_KEY'
-});
-</script>
 ```
 
 <blockquote class="lang-specific javascript">
-<p>2. Webpack, Browserify ...</p>
-<p>You may use Firekast as a dependency in your <a href="https://webpack.github.io/" target="blank">Webpack</a> or <a href="http://browserify.org/" target="blank">Browserify</a> config, and import Firekast's SDK in your script as follow :</p>
+<p>Option b. <a href="https://webpack.github.io/" target="blank">Webpack</a>, <a href="http://browserify.org/" target="blank">Browserify</a>...</p>
 </blockquote>
 
 ```javascript
 const Firekast = require('firekast');
-Firekast.init({
-            api_key: 'YOUR_API_KEY'
+```
+
+<blockquote class="lang-specific javascript">
+<p>Option c. <a href="http://requirejs.org/docs/whyamd.html" target="blank">AMD</a> module syntax</p>
+</blockquote>
+
+```javascript
+define(["firekast"], function(Firekast) { 
+  //... 
 });
 ```
 
 <blockquote class="lang-specific javascript">
-<p>3. AMD module syntax</p>
-<p>You may also import Firekast SDK's using <a href="http://requirejs.org/docs/whyamd.html" target="blank">Asynchronous Module Definition</a>.</p>
+<p>2. Initialize the SDK</p>
 </blockquote>
 
 ```javascript
-define(["firekast"], function(Firekast) {
-  Firekast.init({
-              api_key: 'YOUR_API_KEY'
-  });
+Firekast.init({
+  api_key: 'YOUR_API_KEY'
 });
 ```
 
@@ -210,7 +210,7 @@ We use common dependency managers to distribute our SDKs and make installation a
 
 [Cocoapods](https://guides.cocoapods.org/using/getting-started.html) for iOS, and [Gradle](https://developer.android.com/studio/build/dependencies.html) for android.
 
-Our javascript / typscript SDK is not yet avaible on the public npm registry. We would love to hear from you if you would like to get our Node JS package.
+Our javascript SDK is not yet available on the public npm registry. Please, <a href="https://firekast.zendesk.com/hc/en-gb/requests/new">let us know</a> if you would love so.
 
 <aside class="notice lang-specific javascript">
 You must replace <code>YOUR_API_KEY</code> with your personal <a href="#api-key">API key</a>, available in the Firekast dashboard.</a>.
@@ -404,6 +404,10 @@ Stream's lifecycle can be either:
 
 # SDK | Streamer
 
+<blockquote class="lang-specific javascript">
+<p>The javascript SDK currently only supports <a href="#watch-live-or-replay-as-vod">live and vod</a> content playback, not publishing.</p>
+</blockquote>
+
 The streamer handles the stream creation and let you stream on your application.
 
 ## Request for a stream
@@ -415,10 +419,6 @@ streamer.requestStream()
 ```java
 mStreamer.requestStream(new MyFKRequestStreamCallback());
 ```
-
-<blockquote class="lang-specific javascript">
-<p>The javascript SDK currently only supports <a href="#watch-live-or-replay-as-vod">live and vod</a> content playback, not publishing.</p>
-</blockquote>
 
 Before being able to start streaming, you must request for a stream. This will create a stream on Firekast server.
 
@@ -502,10 +502,6 @@ private class MyStreamingCallback implements FKStreamer.StreamingCallback {
 }
 ```
 
-<blockquote class="lang-specific javascript">
-<p>The javascript SDK currently only supports <a href="#watch-live-or-replay-as-vod">live and vod</a> content playback, not publishing.</p>
-</blockquote>
-
 When start streaming you might want to adapt your UI depending on events. You will be notified whether the streaming starts properly, stops normally or prematurely, and streaming conditions.
 
 <aside class="notice">
@@ -568,6 +564,10 @@ Video ratio is 16:9. If your view does not fit this ratio, the player automatica
 On iOS, the player can play only one video at a time.
 </aside>
 
+<aside class="notice lang-specific javascript">
+Replace <code>THE_STREAM_ID</code> with the stream-you-want-to-watch's id.
+</aside>
+
 ## Play and stop
 
 ```swift
@@ -617,7 +617,7 @@ Call play by providing the [streamId](#streamId). The player will first fetch th
 
 The playback controller UI automatically adapts whether the player is playing a live or vod stream.
 
-<aside class="notice">
+<aside class="notice lang-specific swift java">
 Replace <code>THE_STREAM_ID</code> with the stream-you-want-to-watch's id.
 </aside>
 
