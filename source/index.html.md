@@ -195,7 +195,7 @@ Firekast.init({
 
 <blockquote class="lang-specific javascript">
 <p>3. AMD module syntax</p>
-<p>You may also import Firekast SDK's using <a href="http://requirejs.org/docs/whyamd.html" target="blank">Asynchronous Module Definition<a>.</p>
+<p>You may also import Firekast SDK's using <a href="http://requirejs.org/docs/whyamd.html" target="blank">Asynchronous Module Definition</a>.</p>
 </blockquote>
 
 ```javascript
@@ -206,7 +206,6 @@ define(["firekast"], function(Firekast) {
 });
 ```
 
-
 We use common dependency managers to distribute our SDKs and make installation as straightforward as possible.
 
 [Cocoapods](https://guides.cocoapods.org/using/getting-started.html) for iOS, and [Gradle](https://developer.android.com/studio/build/dependencies.html) for android.
@@ -214,15 +213,15 @@ We use common dependency managers to distribute our SDKs and make installation a
 Our javascript / typscript SDK is not yet avaible on the public npm registry. We would love to hear from you if you would like to get our Node JS package.
 
 <aside class="notice lang-specific javascript">
-You must replace <code>YOUR_API_KEY</code> with your personal [API key](#api-key), available in the Firekast dashboard.</a>.
+You must replace <code>YOUR_API_KEY</code> with your personal <a href="#api-key">API key</a>, available in the Firekast dashboard.</a>.
 </aside>
 
 <aside class="notice lang-specific java swift">
-You must replace <code>YOUR_CLIENT_KEY</code> with your personal [clientKey](#clientkey), available in the Firekast dashboard.</a>.
+You must replace <code>YOUR_CLIENT_KEY</code> with your personal <a href="#clientkey">clientKey</a>, available in the Firekast dashboard.</a>.
 </aside>
 
 <aside class="notice lang-specific java swift">
-You must replace <code>YOUR_APPLICATION_ID</code> with your [app's id](#applicationid), available in the Firekast dashboard.
+You must replace <code>YOUR_APPLICATION_ID</code> with your <a href="#applicationid">app's id</a>, available in the Firekast dashboard.
 </aside>
 
 <!--
@@ -376,12 +375,12 @@ Once a live is completed, the stream becomes instantly available for VOD playbac
 
 # SDK | Stream
 
-A stream describes one video content. A stream is unique and is associated to an application.
-
 <blockquote class="lang-specific">
  <p>Our APIs can be used on your backend to list your streams and manage your applications.</p>
  <p><a href="https://firekast.zendesk.com/hc/en-gb/requests/new" target="blank">Contact us to discuss your needs.</a></p>
 </blockquote>
+
+A stream describes one video content. A stream is unique and is associated to an application.
 
 ## id
 
@@ -565,7 +564,7 @@ For each platform, we wrap the most common player so we expose only methods that
 Video ratio is 16:9. If your view does not fit this ratio, the player automatically fit inside the video with automatic padding to maintain its ratio.
 </aside>
 
-<aside class="notice tab-swift">
+<aside class="notice lang-specific swift">
 On iOS, the player can play only one video at a time.
 </aside>
 
@@ -617,10 +616,6 @@ The player aims to be very simple.
 Call play by providing the [streamId](#streamId). The player will first fetch the stream, determines whether it's live or vod, and starts to play. 
 
 The playback controller UI automatically adapts whether the player is playing a live or vod stream.
-
-<aside class="notice">
-Replace <code>THE_STREAM_ID</code> with the stream-you-want-to-watch's id.
-</aside>
 
 <aside class="notice">
 Replace <code>THE_STREAM_ID</code> with the stream-you-want-to-watch's id.
