@@ -124,7 +124,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 ```
 
 <blockquote class="lang-specific swift">
-<p>4. specify camera and microphone usage description in your info.pList</p>
+<p>4. specify camera and microphone usage description in your <code>info.pList</code></p>
 </blockquote>
 
 ```swift
@@ -164,6 +164,16 @@ dependencies {
 
 ```java
 Firekast.initialize(this, "YOUR_CLIENT_KEY", "YOUR_APPLICATION_ID", Log.VERBOSE);
+```
+
+<blockquote class="lang-specific java">
+<p>4. add camera, record audio and internet permission in your <code>AndroidManifest.xml</code></p>
+</blockquote>
+
+```java
+<uses-permission android:name="android.permission.CAMERA"/>
+<uses-permission android:name="android.permission.RECORD_AUDIO"/>
+<uses-permission android:name="android.permission.INTERNET"/>
 ```
 
 <blockquote class="lang-specific javascript">
