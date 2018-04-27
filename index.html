@@ -1,0 +1,822 @@
+
+<!doctype html>
+<html>
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-91354928-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-91354928-1');
+    </script>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Documentations</title>
+    <link href="images/favicon.ico" rel="icon" type="image/ico" />
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all_nosearch.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;swift&quot;,&quot;java&quot;,&quot;javascript&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="swift">iOS</a>
+              <a href="#" data-language-name="java">android</a>
+              <a href="#" data-language-name="javascript">javascript</a>
+        </div>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#welcome" class="toc-h1 toc-link" data-title="welcome">Welcome</a>
+          </li>
+          <li>
+            <a href="#firekast-basics" class="toc-h1 toc-link" data-title="firekast-basics">Firekast Basics</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#api-key" class="toc-h2 toc-link" data-title="api-key">API key</a>
+                  </li>
+                  <li>
+                    <a href="#clientkey" class="toc-h2 toc-link" data-title="clientkey">clientKey</a>
+                  </li>
+                  <li>
+                    <a href="#application" class="toc-h2 toc-link" data-title="application">Application</a>
+                  </li>
+                  <li>
+                    <a href="#applicationid" class="toc-h2 toc-link" data-title="applicationid">applicationId</a>
+                  </li>
+                  <li>
+                    <a href="#streamid" class="toc-h2 toc-link" data-title="streamid">streamId</a>
+                  </li>
+                  <li>
+                    <a href="#active-users" class="toc-h2 toc-link" data-title="active-users">Active users</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#installation" class="toc-h1 toc-link" data-title="installation">Installation</a>
+          </li>
+          <li>
+            <a href="#getting-started" class="toc-h1 toc-link" data-title="getting-started">Getting Started</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#live-stream" class="toc-h2 toc-link" data-title="live-stream">Live stream</a>
+                  </li>
+                  <li>
+                    <a href="#live-stream-on-social-networks-simultaneously" class="toc-h2 toc-link" data-title="live-stream-on-social-networks-simultaneously">Live stream on social networks simultaneously</a>
+                  </li>
+                  <li>
+                    <a href="#access-camera-features" class="toc-h2 toc-link" data-title="access-camera-features">Access camera features</a>
+                  </li>
+                  <li>
+                    <a href="#watch-live-or-replay-as-vod" class="toc-h2 toc-link" data-title="watch-live-or-replay-as-vod">Watch live or replay as VOD</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#sdk-stream" class="toc-h1 toc-link" data-title="sdk-stream">SDK | Stream</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#id" class="toc-h2 toc-link" data-title="id">id</a>
+                  </li>
+                  <li>
+                    <a href="#state" class="toc-h2 toc-link" data-title="state">state</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#sdk-streamer" class="toc-h1 toc-link" data-title="sdk-streamer">SDK | Streamer</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#request-for-a-stream" class="toc-h2 toc-link" data-title="request-for-a-stream">Request for a stream</a>
+                  </li>
+                  <li>
+                    <a href="#specify-outputs" class="toc-h2 toc-link" data-title="specify-outputs">Specify outputs</a>
+                  </li>
+                  <li>
+                    <a href="#start-and-stop-streaming" class="toc-h2 toc-link" data-title="start-and-stop-streaming">Start and stop streaming</a>
+                  </li>
+                  <li>
+                    <a href="#listen-for-events-while-streaming" class="toc-h2 toc-link" data-title="listen-for-events-while-streaming">Listen for events while streaming</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#sdk-player" class="toc-h1 toc-link" data-title="sdk-player">SDK | Player</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#initialization" class="toc-h2 toc-link" data-title="initialization">Initialization</a>
+                  </li>
+                  <li>
+                    <a href="#play-and-stop" class="toc-h2 toc-link" data-title="play-and-stop">Play and stop</a>
+                  </li>
+                  <li>
+                    <a href="#listen-for-player-events" class="toc-h2 toc-link" data-title="listen-for-player-events">Listen for player events</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='https://api.firekast.io/'>Access your dashboard</a></li>
+            <li><a href='https://firekast.io/'>Back to firekast.io</a></li>
+            <li><ul>API Reference<li><a href="https://firekast.io/sdk/ios/docs">iOS</a></li><li><a href="https://firekast.io/sdk/android/docs">Android</a></li></ul></li>
+            <li><p>Made with 🍕 in Paris, <a href="http://www.agoranov.com/#startup">Agoranov</a></p></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='welcome'>Welcome</h1>
+<p>Welcome to Firekast! The best developer tools to bring live video streaming into your app without being a video expert. </p>
+
+<p>Firekast is a Video as a Service platform, we provide iOS and Android SDKs to wrap camera usage, streaming, video encoding and player into something sweet and easy to use. Yes, you are 5 minutes away to make the next Periscope 😎</p>
+
+<p>We obsesses over developer experience and want this documentation to be as clear as possible. If you have any question, suggestion, feature request, feel free to <a href="https://firekast.zendesk.com/hc/en-gb/requests/new">contact us</a>, we would love to hear from you.</p>
+<h1 id='firekast-basics'>Firekast Basics</h1>
+<p>Before we start, let&#39;s introduce some Firekast basics concepts. You may already be familiar with since we designed our service with well known SaaS platforms in mind.</p>
+
+<p><em>Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less. -- Marie Curie</em></p>
+<h2 id='api-key'>API key</h2>
+<p>The API key allows you to make a restricted set of calls through our REST API. 
+The API only allows calls to get streams for playback, typically for use with our JS Player.</p>
+
+<aside>
+With custom authorizations, our APIs can be used on your backend to list your streams and manage your applications.
+<a href="https://firekast.zendesk.com/hc/en-gb/requests/new">contact us</a> to discuss your needs.
+</aside>
+
+<aside>
+The API key is not intended to be used with the Android or iOS SDKs, for these you should use the [clientKey](#clientkey) as detailed below.
+</aside>
+<h2 id='clientkey'>clientKey</h2>
+<p>This is your private account key. It is created once you create an account on Firekast dashboard. This key is needed for mobile SDK initialization.</p>
+
+<p>It is available in Firekast dashboard and looks like <code>c8178e40-0ccf-35e7-a17c-5b26c0cf5f87</code>.</p>
+
+<aside class="warning">
+Keep your client key it private, do NOT share it!
+</aside>
+<h2 id='application'>Application</h2>
+<p>On your dashboard, you can create as many applications as you like. An application is identified with its unique <strong>applicationId</strong> and gathers all the streams you have made using this id.</p>
+
+<p>To create an application, you must specify a <em>name</em> (usually your company name or app name), and specify a <em>plan</em> (free or paying, see <a href="https://firekast.zendesk.com/hc/en-gb/requests/new">pricing</a>). Each of these information can be edited later.</p>
+
+<p>An application can be deleted if you decide so.</p>
+
+<aside class="warning">
+If an application is deleted, all the videos it contains will be deleted as well.
+</aside>
+<h2 id='applicationid'>applicationId</h2>
+<p>The id that uniquely identifies an application.</p>
+
+<p>It is available in the Firekast dashboard and looks like <code>e8078520-0ccf-35e7-8493-034e3c17d8c0</code>.</p>
+<h2 id='streamid'>streamId</h2>
+<p>The id that uniquely identifies a stream in your application. See <a href="#id">stream.id</a>.</p>
+
+<p>It is available in the Firekast dashboard, within your application and looks like <code>d17j39tg4noar25g3</code>.</p>
+<h2 id='active-users'>Active users</h2>
+<p>Each new device (mobile or web) that reaches our server is counted as a new active user once a month.</p>
+<h1 id='installation'>Installation</h1>
+<blockquote class="lang-specific swift">
+<p>1. edit your podfile</p>
+</blockquote>
+<pre class="highlight swift tab-swift"><code><span class="n">use_frameworks</span><span class="o">!</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="cp"># Set the same version name X.Y.Z. for both Firekast and VideoCore pod. Here 1.1.1.</span>
+<span class="n">pod</span> <span class="err">'</span><span class="kt">Firekast</span><span class="err">'</span><span class="p">,</span> <span class="p">:</span><span class="n">podspec</span> <span class="o">=&gt;</span> <span class="err">'</span><span class="nv">http</span><span class="p">:</span><span class="c1">//firekast.io/sdk/ios/v1.1.1/Firekast.podspec'</span>
+<span class="n">pod</span> <span class="err">'</span><span class="kt">VideoCore</span><span class="err">'</span><span class="p">,</span> <span class="p">:</span><span class="n">git</span> <span class="o">=&gt;</span> <span class="err">'</span><span class="nv">https</span><span class="p">:</span><span class="c1">//github.com/Firekast-io/VideoCore.git', :tag =&gt; 'fk-1.1.1'</span>
+
+<span class="cp"># Please note, first `pod install` may be long, please be patient :)</span>
+</code></pre>
+<blockquote class="lang-specific swift">
+<p>2. run in terminal</p>
+</blockquote>
+<pre class="highlight swift tab-swift"><code><span class="n">pod</span> <span class="n">install</span>
+</code></pre>
+<blockquote class="lang-specific swift">
+<p>3. initialize the SDK</p>
+</blockquote>
+<pre class="highlight swift tab-swift"><code><span class="kd">import</span> <span class="kt">Firekast</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplicationLaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+  <span class="kt">Firekast</span><span class="o">.</span><span class="nf">initialize</span><span class="p">(</span><span class="nv">clientKey</span><span class="p">:</span> <span class="s">"YOUR_CLIENT_KEY"</span><span class="p">,</span> <span class="nv">applicationId</span><span class="p">:</span> <span class="s">"YOUR_APPLICATION_ID"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote class="lang-specific swift">
+<p>4. specify camera and microphone usage description in your <code>info.pList</code></p>
+</blockquote>
+<pre class="highlight swift tab-swift"><code><span class="o">&lt;</span><span class="n">key</span><span class="o">&gt;</span><span class="kt">NSCameraUsageDescription</span><span class="o">&lt;/</span><span class="n">key</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="kt">Camera</span> <span class="n">usage</span> <span class="n">description</span><span class="o">&lt;/</span><span class="n">string</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">key</span><span class="o">&gt;</span><span class="kt">NSMicrophoneUsageDescription</span><span class="o">&lt;/</span><span class="n">key</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="kt">Microphone</span> <span class="n">usage</span> <span class="n">description</span><span class="o">&lt;/</span><span class="n">string</span><span class="o">&gt;</span>
+</code></pre>
+<blockquote class="lang-specific java">
+<p>1. edit your project root build.gradle</p>
+</blockquote>
+<pre class="highlight java tab-java"><code><span class="n">allprojects</span> <span class="o">{</span>
+    <span class="n">repositories</span> <span class="o">{</span>
+        <span class="o">[...]</span>
+        <span class="n">maven</span> <span class="o">{</span> <span class="n">url</span> <span class="err">'</span><span class="nl">https:</span><span class="c1">//dl.bintray.com/firekast/android' }</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote class="lang-specific java">
+<p>2. edit your app build.gradle</p>
+</blockquote>
+<pre class="highlight java tab-java"><code><span class="n">dependencies</span> <span class="o">{</span>
+    <span class="n">implementation</span> <span class="err">'</span><span class="n">io</span><span class="o">.</span><span class="na">firekast</span><span class="o">:</span><span class="nl">firekast:</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span><span class="err">'</span>
+    <span class="n">implementation</span> <span class="err">'</span><span class="n">com</span><span class="o">.</span><span class="na">google</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">exoplayer</span><span class="o">:</span><span class="nl">exoplayer:</span><span class="n">r1</span><span class="o">.</span><span class="mf">5.0</span><span class="err">'</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote class="lang-specific java">
+<p>3. initialize the SDK</p>
+</blockquote>
+<pre class="highlight java tab-java"><code><span class="n">Firekast</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"YOUR_CLIENT_KEY"</span><span class="o">,</span> <span class="s">"YOUR_APPLICATION_ID"</span><span class="o">,</span> <span class="n">Log</span><span class="o">.</span><span class="na">VERBOSE</span><span class="o">);</span>
+</code></pre>
+<blockquote class="lang-specific java">
+<p>4. add camera, record audio and internet permission in your <code>AndroidManifest.xml</code></p>
+</blockquote>
+<pre class="highlight java tab-java"><code><span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"android.permission.CAMERA"</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"android.permission.RECORD_AUDIO"</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"android.permission.INTERNET"</span><span class="o">/&gt;</span>
+</code></pre>
+<blockquote class="lang-specific javascript">
+<p>1. import</p>
+</blockquote>
+
+<blockquote class="lang-specific javascript">
+<p>Option a. <code>script</code> tag</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"https://firekast.io/sdk/js/1.0.0/firekast.min.js"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre>
+<blockquote class="lang-specific javascript">
+<p>Option b. <a href="https://webpack.github.io/" target="blank">Webpack</a>, <a href="http://browserify.org/" target="blank">Browserify</a>...</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">Firekast</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'firekast'</span><span class="p">);</span>
+</code></pre>
+<blockquote class="lang-specific javascript">
+<p>Option c. <a href="http://requirejs.org/docs/whyamd.html" target="blank">AMD</a> module syntax</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">define</span><span class="p">([</span><span class="s2">"firekast"</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Firekast</span><span class="p">)</span> <span class="p">{</span> 
+  <span class="c1">//... </span>
+<span class="p">});</span>
+</code></pre>
+<blockquote class="lang-specific javascript">
+<p>2. Initialize the SDK</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Firekast</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
+  <span class="na">api_key</span><span class="p">:</span> <span class="s1">'YOUR_API_KEY'</span>
+<span class="p">});</span>
+</code></pre>
+<p>We use common dependency managers to distribute our SDKs and make installation as straightforward as possible.</p>
+
+<p><a href="https://guides.cocoapods.org/using/getting-started.html">Cocoapods</a> for iOS, and <a href="https://developer.android.com/studio/build/dependencies.html">Gradle</a> for android.</p>
+
+<p>Our javascript SDK is not yet available on the public npm registry. Please, <a href="https://firekast.zendesk.com/hc/en-gb/requests/new">let us know</a> if you would love so.</p>
+
+<aside class="notice lang-specific javascript">
+You must replace <code>YOUR_API_KEY</code> with your personal <a href="#api-key">API key</a>, available in the Firekast dashboard.</a>.
+</aside>
+
+<aside class="notice lang-specific java swift">
+You must replace <code>YOUR_CLIENT_KEY</code> with your personal <a href="#clientkey">clientKey</a>, available in the Firekast dashboard.</a>.
+</aside>
+
+<aside class="notice lang-specific java swift">
+You must replace <code>YOUR_APPLICATION_ID</code> with your <a href="#applicationid">app's id</a>, available in the Firekast dashboard.
+</aside>
+
+<aside class="notice lang-specific swift">
+Deployment Target: iOS 8.0 >=
+</aside>
+
+<aside class="notice lang-specific java">
+Android SDK: 16 >=
+</aside>
+
+<!--
+<aside class="notice">
+To activate the javascript SDK, you must add your website domains (eg. https://www.pscp.tv) so only your app is able to make requests. This can be done in your dashboard app settings.
+</aside>
+-->
+<h1 id='getting-started'>Getting Started</h1><h2 id='live-stream'>Live stream</h2><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">streamer</span> <span class="o">=</span> <span class="kt">FKStreamer</span><span class="p">()</span> <span class="c1">// 1. initializes streamer</span>
+<span class="k">let</span> <span class="nv">camera</span> <span class="o">=</span> <span class="n">streamer</span><span class="o">.</span><span class="nf">showCamera</span><span class="p">(</span><span class="o">.</span><span class="n">front</span><span class="p">,</span> <span class="nv">in</span><span class="p">:</span> <span class="n">myView</span><span class="p">)</span> <span class="c1">// 2. open camera inside myView</span>
+
+<span class="n">streamer</span><span class="o">.</span><span class="n">requestStream</span> <span class="p">{</span> <span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span> <span class="c1">// 3. create a stream</span>
+    <span class="n">streamer</span><span class="o">.</span><span class="nf">startStreaming</span><span class="p">(</span><span class="nv">on</span><span class="p">:</span> <span class="n">stream</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span> <span class="c1">// 4. start streaming firekast</span>
+<span class="p">}</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="c1">// 1. get fragment from layout</span>
+<span class="n">mCameraFragment</span> <span class="o">=</span> <span class="o">(</span><span class="n">FKCameraFragment</span><span class="o">)</span> <span class="n">getSupportFragmentManager</span><span class="o">().</span><span class="na">findFragmentById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">camera_fragment</span><span class="o">);</span>
+<span class="n">mCameraFragment</span><span class="o">.</span><span class="na">getCameraAsync</span><span class="o">(</span><span class="k">new</span> <span class="n">FKCameraFragment</span><span class="o">.</span><span class="na">OnCameraReadyCallback</span><span class="o">()</span> <span class="o">{</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCameraReady</span><span class="o">(</span><span class="nd">@Nullable</span> <span class="n">FKCamera</span> <span class="n">camera</span><span class="o">,</span> <span class="nd">@Nullable</span> <span class="n">FKError</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// 2. get camera as soon as it's available</span>
+    <span class="n">mCamera</span> <span class="o">=</span> <span class="n">camera</span><span class="o">;</span> 
+  <span class="o">}</span>
+<span class="o">});</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">mStreamer</span> <span class="o">=</span> <span class="n">mCameraFragment</span><span class="o">.</span><span class="na">getStreamer</span><span class="o">();</span>
+<span class="c1">// 3. create a stream</span>
+<span class="n">mStreamer</span><span class="o">.</span><span class="na">requestStream</span><span class="o">(</span><span class="k">new</span> <span class="n">FKStreamer</span><span class="o">.</span><span class="na">RequestStreamCallback</span><span class="o">()</span> <span class="o">{</span> 
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">done</span><span class="o">(</span><span class="nd">@Nullable</span> <span class="n">FKStream</span> <span class="n">stream</span><span class="o">,</span> <span class="nd">@Nullable</span> <span class="n">FKError</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// 4. start streaming on firekast</span>
+    <span class="n">mStreamer</span><span class="o">.</span><span class="na">startStreaming</span><span class="o">(</span><span class="n">stream</span><span class="o">,</span> <span class="k">new</span> <span class="n">MyFKStreamingCallback</span><span class="o">());</span>
+  <span class="o">}</span>
+<span class="o">});</span>
+</code></pre>
+<blockquote class="lang-specific javascript">
+<p>The javascript SDK currently only supports <a href="#watch-live-or-replay-as-vod">live and vod</a> content playback, not publishing.</p>
+</blockquote>
+
+<p>This is all you need to do to live stream your front camera 👉</p>
+
+<p>First, you must request for a stream and then, call start streaming method whenever your User decides to.</p>
+<h2 id='live-stream-on-social-networks-simultaneously'>Live stream on social networks simultaneously</h2><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">fbLive</span> <span class="o">=</span> <span class="kt">FKOutput</span><span class="o">.</span><span class="nf">facebook</span><span class="p">(</span><span class="nv">accessToken</span><span class="p">:</span> <span class="s">"YOUR_FACEBOOK_TOKEN"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">ytLive</span> <span class="o">=</span> <span class="kt">FKOutput</span><span class="o">.</span><span class="nf">youtube</span><span class="p">(</span><span class="nv">accessToken</span><span class="p">:</span> <span class="s">"YOUR_YOUTUBE_TOKEN"</span><span class="p">,</span> <span class="nv">title</span><span class="p">:</span> <span class="s">"Awesome title"</span><span class="p">)</span>
+
+<span class="n">streamer</span><span class="o">.</span><span class="nf">requestStream</span><span class="p">(</span><span class="nv">outputs</span><span class="p">:</span> <span class="p">[</span><span class="n">fbLive</span><span class="p">,</span> <span class="n">ytLive</span><span class="p">])</span> <span class="p">{</span> <span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span> <span class="c1">// 3. create a stream specifying outputs</span>
+    <span class="n">streamer</span><span class="o">.</span><span class="nf">startStreaming</span><span class="p">(</span><span class="nv">on</span><span class="p">:</span> <span class="n">stream</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span> <span class="c1">// 4. start streaming on facebook, youtube and firekast</span>
+<span class="p">}</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">FKOutput</span> <span class="n">facebook</span> <span class="o">=</span> <span class="n">FKOutput</span><span class="o">.</span><span class="na">facebook</span><span class="o">(</span><span class="s">"YOUR_TOKEN_FACEBOOK"</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+<span class="n">FKOutput</span> <span class="n">youtube</span> <span class="o">=</span> <span class="n">FKOutput</span><span class="o">.</span><span class="na">youtube</span><span class="o">(</span><span class="s">"YOUR_TOKEN_YOUTUBE"</span><span class="o">,</span> <span class="s">"Awesome title"</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+
+<span class="n">List</span> <span class="n">outputs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+<span class="n">outputs</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">facebook</span><span class="o">);</span>
+<span class="n">outputs</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">youtube</span><span class="o">);</span>
+
+<span class="c1">// 3. create a stream specifying outputs</span>
+<span class="n">mStreamer</span><span class="o">.</span><span class="na">requestStream</span><span class="o">(</span><span class="n">outputs</span><span class="o">,</span> <span class="k">new</span> <span class="n">MyFKRequestStreamCallback</span><span class="o">());</span>
+</code></pre>
+<p>Firekast allows to push your stream to several live streaming platform, such as Facebook or Youtube, simultaneously.</p>
+
+<aside class="notice">
+A stream is always pushed to Firekast so it's available for your mobile or web app.
+</aside>
+<h2 id='access-camera-features'>Access camera features</h2><pre class="highlight swift tab-swift"><code><span class="n">camera</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="o">.</span><span class="n">back</span> <span class="c1">// open back camera</span>
+
+<span class="n">camera</span><span class="o">.</span><span class="n">isMicrophoneEnabled</span> <span class="o">=</span> <span class="kc">false</span> <span class="c1">// mute microphone</span>
+
+<span class="k">if</span> <span class="n">camera</span><span class="o">.</span><span class="n">isFlashAvailable</span> <span class="p">{</span>
+    <span class="n">camera</span><span class="o">.</span><span class="n">isFlashEnabled</span> <span class="o">=</span> <span class="kc">true</span> <span class="c1">// turn flash on if available for the current camera</span>
+<span class="p">}</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">mCamera</span><span class="o">.</span><span class="na">switchToPosition</span><span class="o">(</span><span class="n">Position</span><span class="o">.</span><span class="na">BACK</span><span class="o">);</span> <span class="c1">// open back camera</span>
+
+<span class="n">mCamera</span><span class="o">.</span><span class="na">setMicrophoneEnabled</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span> <span class="c1">// mute microphone</span>
+
+<span class="k">if</span> <span class="o">(</span><span class="n">mCamera</span><span class="o">.</span><span class="na">isFlashAvailable</span><span class="o">())</span> <span class="o">{</span>
+    <span class="n">mCamera</span><span class="o">.</span><span class="na">setFlashEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span> <span class="c1">// turn flash on if available for the current camera</span>
+<span class="o">}</span>
+</code></pre>
+<p>Adding camera often leads to boilerplate codes, especially on Android where you must pay attention on your Activity or Fragment lifecycle. </p>
+
+<p>Our SDK manages everything for you and provides simple interface to interact with  commonly used features.</p>
+<h2 id='watch-live-or-replay-as-vod'>Watch live or replay as VOD</h2><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">player</span> <span class="o">=</span> <span class="kt">FKPlayer</span><span class="p">()</span> <span class="c1">// 1. initialize player</span>
+<span class="n">player</span><span class="o">.</span><span class="nf">show</span><span class="p">(</span><span class="nv">in</span><span class="p">:</span> <span class="n">myView</span><span class="p">)</span> <span class="c1">// 2. display player in myView</span>
+
+<span class="n">player</span><span class="o">.</span><span class="nf">play</span><span class="p">(</span><span class="nv">streamId</span><span class="p">:</span> <span class="s">"THE_STREAM_ID"</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span> <span class="c1">// 3. play the video </span>
+</code></pre><pre class="highlight java tab-java"><code><span class="c1">// 1. add the player in your layout</span>
+<span class="o">&lt;</span><span class="n">io</span><span class="o">.</span><span class="na">firekast</span><span class="o">.</span><span class="na">FKPlayerView</span>
+    <span class="nl">android:</span><span class="n">id</span><span class="o">=</span><span class="s">"@+id/videoView"</span>
+    <span class="nl">android:</span><span class="n">layout_width</span><span class="o">=</span><span class="s">"200dp"</span>
+    <span class="nl">android:</span><span class="n">layout_height</span><span class="o">=</span><span class="s">"110dp"</span> <span class="o">/&gt;</span>
+
+<span class="c1">// 2. listen for player callback (optional) and play the video</span>
+<span class="n">mVideoView</span><span class="o">.</span><span class="na">setPlayerListener</span><span class="o">(</span><span class="k">new</span> <span class="n">MyFKPlayerCallback</span><span class="o">());</span>
+<span class="n">mPlayerView</span><span class="o">.</span><span class="na">play</span><span class="o">(</span><span class="s">"THE_STREAM_ID"</span><span class="o">);</span>
+</code></pre>
+<blockquote class="lang-specific javascript">
+<p>The player wraps around <code><a href="https://github.com/clappr/clappr">clappr</a></code>.</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"player"</span><span class="o">&gt;&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+  <span class="nx">Firekast</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
+    <span class="na">api_key</span><span class="p">:</span> <span class="s1">'YOUR_API_KEY'</span>
+  <span class="p">});</span>
+  <span class="kr">const</span> <span class="nx">player</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Firekast</span><span class="p">.</span><span class="nx">Player</span><span class="p">({</span>
+    <span class="na">parent_id</span><span class="p">:</span>   <span class="s1">'#player'</span><span class="p">,</span>
+    <span class="na">stream_id</span><span class="p">:</span>   <span class="s1">'THE_STREAM_ID'</span>
+  <span class="p">});</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre>
+<p>The player will figure out whether the stream is live or vod and will adapt the player UI accordingly.</p>
+
+<aside class="notice">
+Once a live is completed, the stream becomes instantly available for VOD playback.
+</aside>
+<h1 id='sdk-stream'>SDK | Stream</h1>
+<blockquote class="lang-specific">
+ <p>Our APIs can be used on your backend to list your streams and manage your applications.</p>
+ <p><a href="https://firekast.zendesk.com/hc/en-gb/requests/new" target="blank">Contact us to discuss your needs.</a></p>
+</blockquote>
+
+<p>A stream describes one video content. A stream is unique and is associated to an application.</p>
+<h2 id='id'>id</h2>
+<p>This is the unique id of the object, see <a href="#streamId">streamId</a>. It is assigned when the <a href="#request-for-a-stream">Stream object is created</a>.</p>
+<h2 id='state'>state</h2>
+<p>During its life time, a stream goes though different states:</p>
+
+<ul>
+<li>waiting: the stream has been created and is waiting for a video to be streamed</li>
+<li>timeout: the stream has been waiting for too long and has been destroyed</li>
+<li>live</li>
+<li>processing: transitioning from live to vod</li>
+<li>vod</li>
+</ul>
+
+<p>Stream&#39;s lifecycle can be either:</p>
+
+<ul>
+<li>waiting -&gt; live -&gt; processing -&gt; vod</li>
+<li>waiting -&gt; timeout</li>
+</ul>
+<h1 id='sdk-streamer'>SDK | Streamer</h1>
+<blockquote class="lang-specific javascript">
+<p>The javascript SDK currently only supports <a href="#watch-live-or-replay-as-vod">live and vod</a> content playback, not publishing.</p>
+</blockquote>
+
+<p>The streamer handles the stream creation and let you stream on your application.</p>
+<h2 id='request-for-a-stream'>Request for a stream</h2><pre class="highlight swift tab-swift"><code><span class="n">streamer</span><span class="o">.</span><span class="nf">requestStream</span><span class="p">()</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">mStreamer</span><span class="o">.</span><span class="na">requestStream</span><span class="o">(</span><span class="k">new</span> <span class="n">MyFKRequestStreamCallback</span><span class="o">());</span>
+</code></pre>
+<p>Before being able to start streaming, you must request for a stream. This will create a stream on Firekast server.</p>
+
+<p>This new created stream is immediatly visible in your dashboard.</p>
+<h2 id='specify-outputs'>Specify outputs</h2><pre class="highlight swift tab-swift"><code><span class="n">streamer</span><span class="o">.</span><span class="nf">requestStream</span><span class="p">(</span><span class="nv">outputs</span><span class="p">:</span> <span class="p">[])</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">mStreamer</span><span class="o">.</span><span class="na">requestStream</span><span class="o">(</span><span class="n">listOfOutputs</span><span class="o">,</span> <span class="k">new</span> <span class="n">MyFKRequestStreamCallback</span><span class="o">());</span>
+</code></pre>
+<p>Firekast lets you push your live stream to several live streaming platform, such as Facebook or Youtube, simultaneously.</p>
+
+<p>If you want to repush on social networks, you must provide corresponding information so the server create a special stream.</p>
+<h2 id='start-and-stop-streaming'>Start and stop streaming</h2>
+<blockquote class="lang-specific swift java">
+<p>Start streaming</p>
+</blockquote>
+<pre class="highlight swift tab-swift"><code><span class="n">streamer</span><span class="o">.</span><span class="nf">startStreaming</span><span class="p">(</span><span class="nv">on</span><span class="p">:</span> <span class="n">stream</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">mStreamer</span><span class="o">.</span><span class="na">startStreaming</span><span class="o">(</span><span class="n">stream</span><span class="o">,</span> <span class="k">new</span> <span class="n">MyFKStreamingCallback</span><span class="o">());</span>
+</code></pre>
+<blockquote class="lang-specific swift java">
+<p>Stop streaming</p>
+</blockquote>
+<pre class="highlight swift tab-swift"><code><span class="n">streamer</span><span class="o">.</span><span class="nf">stopStreaming</span><span class="p">()</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">mStreamer</span><span class="o">.</span><span class="na">stopStreaming</span><span class="o">()</span>
+</code></pre>
+<p>Once you have created a stream, you can start streaming whenever your User is ready.</p>
+<h2 id='listen-for-events-while-streaming'>Listen for events while streaming</h2><pre class="highlight swift tab-swift"><code><span class="kd">func</span> <span class="nf">streamer</span><span class="p">(</span><span class="n">_</span> <span class="nv">streamer</span><span class="p">:</span> <span class="kt">FKStreamer</span><span class="p">,</span> <span class="n">willStartOn</span> <span class="nv">stream</span><span class="p">:</span> <span class="kt">FKStream</span><span class="p">?,</span> <span class="n">unless</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">FKError</span><span class="p">?)</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">streamer</span><span class="p">(</span><span class="n">_</span> <span class="nv">streamer</span><span class="p">:</span> <span class="kt">FKStreamer</span><span class="p">,</span> <span class="n">didStopOn</span> <span class="nv">stream</span><span class="p">:</span> <span class="kt">FKStream</span><span class="p">?,</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">FKError</span><span class="p">?)</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">streamer</span><span class="p">(</span><span class="n">_</span> <span class="nv">streamer</span><span class="p">:</span> <span class="kt">FKStreamer</span><span class="p">,</span> <span class="n">networkQualityDidUpdate</span> <span class="nv">rating</span><span class="p">:</span> <span class="kt">Float</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kd">private</span> <span class="kd">class</span> <span class="nc">MyStreamingCallback</span> <span class="kd">implements</span> <span class="n">FKStreamer</span><span class="o">.</span><span class="na">StreamingCallback</span> <span class="o">{</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSteamWillStartUnless</span><span class="o">(</span><span class="nd">@Nullable</span> <span class="n">FKStream</span> <span class="n">stream</span><span class="o">,</span> <span class="nd">@Nullable</span> <span class="n">FKError</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// ...</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onStreamDidStop</span><span class="o">(</span><span class="n">FKStream</span> <span class="n">stream</span><span class="o">,</span> <span class="n">FKError</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// ...</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onStreamingUpdateAvailable</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">lag</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// ...</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p>When start streaming you might want to adapt your UI depending on events. You will be notified whether the streaming starts properly, stops normally or prematurely, and streaming conditions.</p>
+
+<aside class="notice">
+A stream can be stopped by the SDK if network conditions has been low for too long), on the dashboard, or by the server. So you should adapt your UI/UX accordingly.
+</aside>
+<h1 id='sdk-player'>SDK | Player</h1>
+<p>The player lets you play any stream of your current application. Whether the stream is live or VOD, the player will figure it out and adapt its UI.</p>
+<h2 id='initialization'>Initialization</h2>
+<blockquote class="lang-specific swift">
+<p>The player is a wrap arount <code><a href="https://developer.apple.com/documentation/mediaplayer/mpmovieplayercontroller">MPMoviePlayerController</a></code>, and is even simpler to use.</p>
+</blockquote>
+<pre class="highlight swift tab-swift"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
+  <span class="n">player</span> <span class="o">=</span> <span class="kt">FKPlayer</span><span class="p">()</span>
+  <span class="n">player</span><span class="o">.</span><span class="nf">show</span><span class="p">(</span><span class="nv">in</span><span class="p">:</span> <span class="n">playerContainerView</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote class="lang-specific java">
+<p>The player is based on <code><a href="https://github.com/google/ExoPlayer">ExoPlayer</a></code> and is wrapped into a simple view.</p>
+</blockquote>
+<pre class="highlight java tab-java"><code><span class="o">&lt;</span><span class="n">io</span><span class="o">.</span><span class="na">firekast</span><span class="o">.</span><span class="na">FKPlayerView</span>
+  <span class="nl">android:</span><span class="n">id</span><span class="o">=</span><span class="s">"@+id/videoView"</span>
+  <span class="nl">android:</span><span class="n">layout_width</span><span class="o">=</span><span class="s">"match parent"</span> 
+  <span class="nl">android:</span><span class="n">layout_height</span><span class="o">=</span><span class="s">"110dp"</span> <span class="o">/&gt;</span>
+</code></pre>
+<blockquote class="lang-specific javascript">
+<p>The player wraps around <code><a href="https://github.com/clappr/clappr">clappr</a></code>.</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"player"</span><span class="o">&gt;&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+  <span class="nx">Firekast</span><span class="p">.</span><span class="nx">API</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
+    <span class="na">api_key</span><span class="p">:</span> <span class="s1">'YOUR_API_KEY'</span>
+  <span class="p">});</span>
+  <span class="kr">const</span> <span class="nx">player</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Firekast</span><span class="p">.</span><span class="nx">Player</span><span class="p">({</span>
+    <span class="na">parent_id</span><span class="p">:</span>   <span class="s1">'#player'</span><span class="p">,</span>
+    <span class="na">stream_id</span><span class="p">:</span>   <span class="s1">'THE_STREAM_ID'</span><span class="p">,</span>
+    <span class="na">clappr_config</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">mediacontrol</span><span class="p">:</span> <span class="p">{</span> <span class="na">seekbar</span><span class="p">:</span> <span class="s2">"#E113D3"</span><span class="p">,</span> <span class="na">buttons</span><span class="p">:</span> <span class="s2">"#66B2FF"</span> <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre>
+<p>For each platform, we wrap the most common player so we expose only methods that count.</p>
+
+<aside class="notice">
+Video ratio is 16:9. If your view does not fit this ratio, the player automatically fit inside the video with automatic padding to maintain its ratio.
+</aside>
+
+<aside class="notice lang-specific swift">
+On iOS, the player can play only one video at a time.
+</aside>
+
+<aside class="notice lang-specific javascript">
+Replace <code>THE_STREAM_ID</code> with the stream-you-want-to-watch's id.
+</aside>
+<h2 id='play-and-stop'>Play and stop</h2><pre class="highlight swift tab-swift"><code><span class="n">player</span><span class="o">.</span><span class="nf">play</span><span class="p">(</span><span class="nv">streamId</span><span class="p">:</span> <span class="s">"THE_STREAM_ID"</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="n">player</span><span class="o">.</span><span class="nf">stop</span><span class="p">()</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">mPlayerView</span><span class="o">.</span><span class="na">play</span><span class="o">(</span><span class="s">"THE_STREAM_ID"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">mPlayerView</span><span class="o">.</span><span class="na">stop</span><span class="o">();</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">player</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'ready'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">player</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">player</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
+</code></pre>
+<blockquote class="lang-specific javascript">
+<p>The following methods are also available.</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">player</span><span class="p">.</span><span class="nx">pause</span><span class="p">()</span>
+<span class="nx">player</span><span class="p">.</span><span class="nx">seek</span><span class="p">(</span><span class="nx">seconds</span><span class="p">:</span><span class="nb">Number</span><span class="p">)</span>
+<span class="nx">player</span><span class="p">.</span><span class="nx">mute</span><span class="p">()</span>
+<span class="nx">player</span><span class="p">.</span><span class="nx">setVolume</span><span class="p">(</span><span class="nx">percent</span><span class="p">:</span><span class="nb">Number</span><span class="p">)</span>
+<span class="nx">player</span><span class="p">.</span><span class="nx">getCurrentTime</span><span class="p">():</span><span class="nb">Number</span>
+<span class="nx">player</span><span class="p">.</span><span class="nx">getDuration</span><span class="p">():</span><span class="nb">Number</span>
+<span class="nx">player</span><span class="p">.</span><span class="nx">isPlaying</span><span class="p">():</span><span class="nb">Boolean</span>
+<span class="nx">player</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span>
+</code></pre>
+<p>The player aims to be very simple. </p>
+
+<p>Call play by providing the <a href="#streamId">streamId</a>. The player will first fetch the stream, determines whether it&#39;s live or vod, and starts to play. </p>
+
+<p>The playback controller UI automatically adapts whether the player is playing a live or vod stream.</p>
+
+<aside class="notice lang-specific swift java">
+Replace <code>THE_STREAM_ID</code> with the stream-you-want-to-watch's id.
+</aside>
+<h2 id='listen-for-player-events'>Listen for player events</h2><pre class="highlight swift tab-swift"><code><span class="kd">func</span> <span class="nf">player</span><span class="p">(</span><span class="n">_</span> <span class="nv">player</span><span class="p">:</span> <span class="kt">FKPlayer</span><span class="p">,</span> <span class="n">stateDidChanged</span> <span class="nv">state</span><span class="p">:</span> <span class="kt">FKPlayer</span><span class="o">.</span><span class="kt">State</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">player</span><span class="p">(</span><span class="n">_</span> <span class="nv">player</span><span class="p">:</span> <span class="kt">FKPlayer</span><span class="p">,</span> <span class="n">videoDurationIsAvailable</span> <span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">player</span><span class="p">(</span><span class="n">_</span> <span class="nv">player</span><span class="p">:</span> <span class="kt">FKPlayer</span><span class="p">,</span> <span class="n">willPlay</span> <span class="nv">stream</span><span class="p">:</span> <span class="kt">FKStream</span><span class="p">?,</span> <span class="n">unless</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">FKError</span><span class="p">?)</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">mPlayerView</span> <span class="o">=</span> <span class="o">(</span><span class="n">FKPlayerView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">videoView</span><span class="o">);</span>
+<span class="n">mPlayerView</span><span class="o">.</span><span class="na">setPlayerListener</span><span class="o">(</span><span class="k">new</span> <span class="n">FKPlayerView</span><span class="o">.</span><span class="na">Callback</span><span class="o">()</span> <span class="o">{</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onPlayerWillPlay</span><span class="o">(</span><span class="nd">@Nullable</span> <span class="n">FKStream</span> <span class="n">stream</span><span class="o">,</span> <span class="nd">@Nullable</span> <span class="n">FKError</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// ...</span>
+  <span class="o">}</span>
+<span class="o">});</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">events</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">'ready'</span><span class="p">,</span>
+  <span class="s1">'play'</span><span class="p">,</span>
+  <span class="s1">'stop'</span><span class="p">,</span>
+  <span class="s1">'ended'</span><span class="p">,</span>
+  <span class="s1">'error'</span><span class="p">,</span>
+  <span class="s1">'timeupdate'</span><span class="p">,</span>
+  <span class="s1">'volumechange'</span><span class="p">,</span>
+  <span class="s1">'seek'</span><span class="p">,</span>
+  <span class="s1">'resize'</span>
+<span class="p">];</span>
+
+<span class="nx">events</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span> <span class="nx">event</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">player</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'ready'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Player emitted </span><span class="p">${</span><span class="nx">event</span><span class="p">}</span><span class="s2">`</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="nx">player</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'ready'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">player</span><span class="p">.</span><span class="nx">play</span><span class="p">());</span>
+
+</code></pre>
+<p>You may want to listen for player callback so you can adapt adapt your UI accordingly. Indeed, since the stream is fetched internally to determine whether its live, vod, etc... the request can fail. There is no retry strategy so you may notify your user about the failure.</p>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="swift">iOS</a>
+                <a href="#" data-language-name="java">android</a>
+                <a href="#" data-language-name="javascript">javascript</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
