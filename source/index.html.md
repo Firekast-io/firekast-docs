@@ -363,16 +363,16 @@ mPlayerView.play("THE_STREAM_ID");
 <p>The player wraps around <code><a href="https://github.com/clappr/clappr">clappr</a></code>.</p>
 </blockquote>
 ```javascript
-  <div id="player"></div>
-  <script>
-    Firekast.API.init({
-                api_key: 'YOUR_API_KEY'
-            });
-    const player = new Firekast.Player({
-                parent_id:   '#player',
-                stream_id:   'THE_STREAM_ID'
-            });
-  </script>
+<div id="player"></div>
+<script>
+  Firekast.API.init({
+    api_key: 'YOUR_API_KEY'
+  });
+  const player = new Firekast.Player({
+    parent_id:   '#player',
+    stream_id:   'THE_STREAM_ID'
+  });
+</script>
 ```
 
 The player will figure out whether the stream is live or vod and will adapt the player UI accordingly.
@@ -550,16 +550,19 @@ override func viewDidLoad() {
 </blockquote>
 
 ```javascript
-  <div id="player"></div>
-  <script>
-    Firekast.API.init({
-                api_key: 'YOUR_API_KEY'
-            });
-    const player = new Firekast.Player({
-                parent_id:   '#player',
-                stream_id:   'THE_STREAM_ID'
-            });
-  </script>
+<div id="player"></div>
+<script>
+  Firekast.API.init({
+    api_key: 'YOUR_API_KEY'
+  });
+  const player = new Firekast.Player({
+    parent_id:   '#player',
+    stream_id:   'THE_STREAM_ID',
+    clappr_config: {
+      mediacontrol: { seekbar: "#E113D3", buttons: "#66B2FF" }
+    }
+  });
+</script>
 ```
 
 For each platform, we wrap the most common player so we expose only methods that count.
