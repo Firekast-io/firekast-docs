@@ -94,9 +94,9 @@ use_frameworks!
 ```
 
 ```swift
-# Set the same version name X.Y.Z. for both Firekast and VideoCore pod. Here 1.1.0.
-pod 'Firekast', :podspec => 'http://firekast.io/sdk/ios/v1.1.0/Firekast.podspec'
-pod 'VideoCore', :git => 'https://github.com/Firekast-io/VideoCore.git', :tag => 'fk-1.1.0'
+# Set the same version name X.Y.Z. for both Firekast and VideoCore pod. Here 1.1.1.
+pod 'Firekast', :podspec => 'http://firekast.io/sdk/ios/v1.1.1/Firekast.podspec'
+pod 'VideoCore', :git => 'https://github.com/Firekast-io/VideoCore.git', :tag => 'fk-1.1.1'
 
 # Please note, first `pod install` may be long, please be patient :)
 ```
@@ -222,6 +222,14 @@ You must replace <code>YOUR_CLIENT_KEY</code> with your personal <a href="#clien
 
 <aside class="notice lang-specific java swift">
 You must replace <code>YOUR_APPLICATION_ID</code> with your <a href="#applicationid">app's id</a>, available in the Firekast dashboard.
+</aside>
+
+<aside class="notice lang-specific swift">
+Deployment Target: iOS 8.0 >=
+</aside>
+
+<aside class="notice lang-specific java">
+Android SDK: 16 >=
 </aside>
 
 <!--
