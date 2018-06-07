@@ -2,15 +2,13 @@
 <!doctype html>
 <html>
   <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-91354928-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-91354928-1');
-    </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-NXH3F9L');</script>
+    <!-- End Google Tag Manager -->
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -211,6 +209,8 @@
   </head>
 
   <body class="index" data-languages="[&quot;swift&quot;,&quot;java&quot;,&quot;javascript&quot;]">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXH3F9L"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -391,20 +391,20 @@ If an application is deleted, all the videos it contains will be deleted as well
 <pre class="highlight swift tab-swift"><code><span class="n">pod</span> <span class="n">install</span>
 </code></pre>
 <blockquote class="lang-specific swift">
-<p>3. initialize the SDK</p>
-</blockquote>
-<pre class="highlight swift tab-swift"><code><span class="kd">import</span> <span class="kt">Firekast</span>
-</code></pre><pre class="highlight swift tab-swift"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplicationLaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
-  <span class="kt">Firekast</span><span class="o">.</span><span class="nf">initialize</span><span class="p">(</span><span class="nv">clientKey</span><span class="p">:</span> <span class="s">"YOUR_CLIENT_KEY"</span><span class="p">,</span> <span class="nv">applicationId</span><span class="p">:</span> <span class="s">"YOUR_APPLICATION_ID"</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre>
-<blockquote class="lang-specific swift">
-<p>4. specify camera and microphone usage description in your <code>info.pList</code></p>
+<p>3. specify camera and microphone usage description in your <code>info.pList</code></p>
 </blockquote>
 <pre class="highlight swift tab-swift"><code><span class="o">&lt;</span><span class="n">key</span><span class="o">&gt;</span><span class="kt">NSCameraUsageDescription</span><span class="o">&lt;/</span><span class="n">key</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="kt">Camera</span> <span class="n">usage</span> <span class="n">description</span><span class="o">&lt;/</span><span class="n">string</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="n">key</span><span class="o">&gt;</span><span class="kt">NSMicrophoneUsageDescription</span><span class="o">&lt;/</span><span class="n">key</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="kt">Microphone</span> <span class="n">usage</span> <span class="n">description</span><span class="o">&lt;/</span><span class="n">string</span><span class="o">&gt;</span>
+</code></pre>
+<blockquote class="lang-specific swift">
+<p>4. initialize the SDK</p>
+</blockquote>
+<pre class="highlight swift tab-swift"><code><span class="kd">import</span> <span class="kt">Firekast</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplicationLaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+  <span class="kt">Firekast</span><span class="o">.</span><span class="nf">initialize</span><span class="p">(</span><span class="nv">clientKey</span><span class="p">:</span> <span class="s">"YOUR_CLIENT_KEY"</span><span class="p">,</span> <span class="nv">applicationId</span><span class="p">:</span> <span class="s">"YOUR_APPLICATION_ID"</span><span class="p">)</span>
+<span class="p">}</span>
 </code></pre>
 <blockquote class="lang-specific java">
 <p>1. edit your project root build.gradle</p>
@@ -420,21 +420,21 @@ If an application is deleted, all the videos it contains will be deleted as well
 <p>2. edit your app build.gradle</p>
 </blockquote>
 <pre class="highlight java tab-java"><code><span class="n">dependencies</span> <span class="o">{</span>
-    <span class="n">implementation</span> <span class="err">'</span><span class="n">io</span><span class="o">.</span><span class="na">firekast</span><span class="o">:</span><span class="nl">firekast:</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span><span class="err">'</span>
+    <span class="n">implementation</span> <span class="err">'</span><span class="n">io</span><span class="o">.</span><span class="na">firekast</span><span class="o">:</span><span class="nl">firekast:</span><span class="mf">1.1</span><span class="o">.</span><span class="mi">0</span><span class="err">'</span>
     <span class="n">implementation</span> <span class="err">'</span><span class="n">com</span><span class="o">.</span><span class="na">google</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">exoplayer</span><span class="o">:</span><span class="nl">exoplayer:</span><span class="n">r1</span><span class="o">.</span><span class="mf">5.0</span><span class="err">'</span>
 <span class="o">}</span>
 </code></pre>
 <blockquote class="lang-specific java">
-<p>3. initialize the SDK</p>
+<p>3. add camera, record audio and internet permission in your <code>AndroidManifest.xml</code></p>
 </blockquote>
-<pre class="highlight java tab-java"><code><span class="n">Firekast</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"YOUR_CLIENT_KEY"</span><span class="o">,</span> <span class="s">"YOUR_APPLICATION_ID"</span><span class="o">,</span> <span class="n">Log</span><span class="o">.</span><span class="na">VERBOSE</span><span class="o">);</span>
+<pre class="highlight java tab-java"><code><span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"android.permission.CAMERA"</span> <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"android.permission.RECORD_AUDIO"</span> <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"android.permission.INTERNET"</span> <span class="o">/&gt;</span>
 </code></pre>
 <blockquote class="lang-specific java">
-<p>4. add camera, record audio and internet permission in your <code>AndroidManifest.xml</code></p>
+<p>4. initialize the SDK</p>
 </blockquote>
-<pre class="highlight java tab-java"><code><span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"android.permission.CAMERA"</span><span class="o">/&gt;</span>
-<span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"android.permission.RECORD_AUDIO"</span><span class="o">/&gt;</span>
-<span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"android.permission.INTERNET"</span><span class="o">/&gt;</span>
+<pre class="highlight java tab-java"><code><span class="n">Firekast</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"YOUR_CLIENT_KEY"</span><span class="o">,</span> <span class="s">"YOUR_APPLICATION_ID"</span><span class="o">);</span>
 </code></pre>
 <blockquote class="lang-specific javascript">
 <p>1. import</p>
