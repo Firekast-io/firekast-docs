@@ -110,7 +110,18 @@ pod install
 ```
 
 <blockquote class="lang-specific swift">
-<p>3. initialize the SDK</p>
+<p>3. specify camera and microphone usage description in your <code>info.pList</code></p>
+</blockquote>
+
+```swift
+<key>NSCameraUsageDescription</key>
+<string>Camera usage description</string>
+<key>NSMicrophoneUsageDescription</key>
+<string>Microphone usage description</string>
+```
+
+<blockquote class="lang-specific swift">
+<p>4. initialize the SDK</p>
 </blockquote>
 
 ```swift
@@ -121,17 +132,6 @@ import Firekast
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
   Firekast.initialize(clientKey: "YOUR_CLIENT_KEY", applicationId: "YOUR_APPLICATION_ID")
 }
-```
-
-<blockquote class="lang-specific swift">
-<p>4. specify camera and microphone usage description in your <code>info.pList</code></p>
-</blockquote>
-
-```swift
-<key>NSCameraUsageDescription</key>
-<string>Camera usage description</string>
-<key>NSMicrophoneUsageDescription</key>
-<string>Microphone usage description</string>
 ```
 
 <blockquote class="lang-specific java">
@@ -153,27 +153,27 @@ allprojects {
 
 ```java
 dependencies {
-    implementation 'io.firekast:firekast:1.0.0'
+    implementation 'io.firekast:firekast:1.1.0'
     implementation 'com.google.android.exoplayer:exoplayer:r1.5.0'
 }
 ```
 
 <blockquote class="lang-specific java">
-<p>3. initialize the SDK</p>
+<p>3. add camera, record audio and internet permission in your <code>AndroidManifest.xml</code></p>
 </blockquote>
 
 ```java
-Firekast.initialize(this, "YOUR_CLIENT_KEY", "YOUR_APPLICATION_ID", Log.VERBOSE);
+<uses-permission android:name="android.permission.CAMERA" />
+<uses-permission android:name="android.permission.RECORD_AUDIO" />
+<uses-permission android:name="android.permission.INTERNET" />
 ```
 
 <blockquote class="lang-specific java">
-<p>4. add camera, record audio and internet permission in your <code>AndroidManifest.xml</code></p>
+<p>4. initialize the SDK</p>
 </blockquote>
 
 ```java
-<uses-permission android:name="android.permission.CAMERA"/>
-<uses-permission android:name="android.permission.RECORD_AUDIO"/>
-<uses-permission android:name="android.permission.INTERNET"/>
+Firekast.initialize(this, "YOUR_CLIENT_KEY", "YOUR_APPLICATION_ID");
 ```
 
 <blockquote class="lang-specific javascript">
