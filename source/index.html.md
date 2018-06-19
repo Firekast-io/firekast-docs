@@ -153,8 +153,8 @@ allprojects {
 
 ```java
 dependencies {
-    implementation 'io.firekast:firekast:1.1.0'
-    implementation 'com.google.android.exoplayer:exoplayer:r1.5.0'
+    implementation 'io.firekast:firekast:1.1.2'
+    implementation 'com.google.android.exoplayer:exoplayer:2.6.1'
 }
 ```
 
