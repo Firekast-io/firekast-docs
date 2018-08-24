@@ -94,9 +94,9 @@ use_frameworks!
 ```
 
 ```swift
-# Set the same version name X.Y.Z. for both Firekast and VideoCore pod. Here 1.1.1.
-pod 'Firekast', :podspec => 'http://firekast.io/sdk/ios/v1.1.1/Firekast.podspec'
-pod 'VideoCore', :git => 'https://github.com/Firekast-io/VideoCore.git', :tag => 'fk-1.1.1'
+# Set the same version name X.Y.Z. for both Firekast and VideoCore pod. Here 1.2.0.
+pod 'Firekast', :podspec => 'http://firekast.io/sdk/ios/v1.2.0/Firekast.podspec'
+pod 'VideoCore', :git => 'https://github.com/Firekast-io/VideoCore.git', :tag => 'fk-1.2.0'
 
 # Please note, first `pod install` may be long, please be patient :)
 ```
@@ -488,11 +488,11 @@ Once you have created a stream, you can start streaming whenever your User is re
 ## Listen for events while streaming
 
 ```swift
-func streamer(_ streamer: FKStreamer, willStartOn stream: FKStream?, unless error: FKError?) {
+func streamer(_ streamer: FKStreamer, willStartOn stream: FKStream?, unless error: NSError?) {
   // ...
 }
 
-func streamer(_ streamer: FKStreamer, didStopOn stream: FKStream?, error: FKError?) {
+func streamer(_ streamer: FKStreamer, didStopOn stream: FKStream?, error: NSError?) {
   // ...
 }
 
@@ -653,7 +653,7 @@ func player(_ player: FKPlayer, videoDurationIsAvailable duration: TimeInterval)
   // ...
 }
 
-func player(_ player: FKPlayer, willPlay stream: FKStream?, unless error: FKError?) {
+func player(_ player: FKPlayer, willPlay stream: FKStream?, unless error: NSError?) {
   // ...
 }
 ```
