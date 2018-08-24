@@ -379,9 +379,9 @@ If an application is deleted, all the videos it contains will be deleted as well
 <p>1. edit your podfile</p>
 </blockquote>
 <pre class="highlight swift tab-swift"><code><span class="n">use_frameworks</span><span class="o">!</span>
-</code></pre><pre class="highlight swift tab-swift"><code><span class="cp"># Set the same version name X.Y.Z. for both Firekast and VideoCore pod. Here 1.1.1.</span>
-<span class="n">pod</span> <span class="err">'</span><span class="kt">Firekast</span><span class="err">'</span><span class="p">,</span> <span class="p">:</span><span class="n">podspec</span> <span class="o">=&gt;</span> <span class="err">'</span><span class="nv">http</span><span class="p">:</span><span class="c1">//firekast.io/sdk/ios/v1.1.1/Firekast.podspec'</span>
-<span class="n">pod</span> <span class="err">'</span><span class="kt">VideoCore</span><span class="err">'</span><span class="p">,</span> <span class="p">:</span><span class="n">git</span> <span class="o">=&gt;</span> <span class="err">'</span><span class="nv">https</span><span class="p">:</span><span class="c1">//github.com/Firekast-io/VideoCore.git', :tag =&gt; 'fk-1.1.1'</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="cp"># Set the same version name X.Y.Z. for both Firekast and VideoCore pod. Here 1.2.0.</span>
+<span class="n">pod</span> <span class="err">'</span><span class="kt">Firekast</span><span class="err">'</span><span class="p">,</span> <span class="p">:</span><span class="n">podspec</span> <span class="o">=&gt;</span> <span class="err">'</span><span class="nv">http</span><span class="p">:</span><span class="c1">//firekast.io/sdk/ios/v1.2.0/Firekast.podspec'</span>
+<span class="n">pod</span> <span class="err">'</span><span class="kt">VideoCore</span><span class="err">'</span><span class="p">,</span> <span class="p">:</span><span class="n">git</span> <span class="o">=&gt;</span> <span class="err">'</span><span class="nv">https</span><span class="p">:</span><span class="c1">//github.com/Firekast-io/VideoCore.git', :tag =&gt; 'fk-1.2.0'</span>
 
 <span class="cp"># Please note, first `pod install` may be long, please be patient :)</span>
 </code></pre>
@@ -657,11 +657,11 @@ Once a live is completed, the stream becomes instantly available for VOD playbac
 </code></pre><pre class="highlight java tab-java"><code><span class="n">mStreamer</span><span class="o">.</span><span class="na">stopStreaming</span><span class="o">()</span>
 </code></pre>
 <p>Once you have created a stream, you can start streaming whenever your User is ready.</p>
-<h2 id='listen-for-events-while-streaming'>Listen for events while streaming</h2><pre class="highlight swift tab-swift"><code><span class="kd">func</span> <span class="nf">streamer</span><span class="p">(</span><span class="n">_</span> <span class="nv">streamer</span><span class="p">:</span> <span class="kt">FKStreamer</span><span class="p">,</span> <span class="n">willStartOn</span> <span class="nv">stream</span><span class="p">:</span> <span class="kt">FKStream</span><span class="p">?,</span> <span class="n">unless</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">FKError</span><span class="p">?)</span> <span class="p">{</span>
+<h2 id='listen-for-events-while-streaming'>Listen for events while streaming</h2><pre class="highlight swift tab-swift"><code><span class="kd">func</span> <span class="nf">streamer</span><span class="p">(</span><span class="n">_</span> <span class="nv">streamer</span><span class="p">:</span> <span class="kt">FKStreamer</span><span class="p">,</span> <span class="n">willStartOn</span> <span class="nv">stream</span><span class="p">:</span> <span class="kt">FKStream</span><span class="p">?,</span> <span class="n">unless</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="p">{</span>
   <span class="c1">// ...</span>
 <span class="p">}</span>
 
-<span class="kd">func</span> <span class="nf">streamer</span><span class="p">(</span><span class="n">_</span> <span class="nv">streamer</span><span class="p">:</span> <span class="kt">FKStreamer</span><span class="p">,</span> <span class="n">didStopOn</span> <span class="nv">stream</span><span class="p">:</span> <span class="kt">FKStream</span><span class="p">?,</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">FKError</span><span class="p">?)</span> <span class="p">{</span>
+<span class="kd">func</span> <span class="nf">streamer</span><span class="p">(</span><span class="n">_</span> <span class="nv">streamer</span><span class="p">:</span> <span class="kt">FKStreamer</span><span class="p">,</span> <span class="n">didStopOn</span> <span class="nv">stream</span><span class="p">:</span> <span class="kt">FKStream</span><span class="p">?,</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="p">{</span>
   <span class="c1">// ...</span>
 <span class="p">}</span>
 
@@ -778,7 +778,7 @@ Replace <code>THE_STREAM_ID</code> with the stream-you-want-to-watch's id.
   <span class="c1">// ...</span>
 <span class="p">}</span>
 
-<span class="kd">func</span> <span class="nf">player</span><span class="p">(</span><span class="n">_</span> <span class="nv">player</span><span class="p">:</span> <span class="kt">FKPlayer</span><span class="p">,</span> <span class="n">willPlay</span> <span class="nv">stream</span><span class="p">:</span> <span class="kt">FKStream</span><span class="p">?,</span> <span class="n">unless</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">FKError</span><span class="p">?)</span> <span class="p">{</span>
+<span class="kd">func</span> <span class="nf">player</span><span class="p">(</span><span class="n">_</span> <span class="nv">player</span><span class="p">:</span> <span class="kt">FKPlayer</span><span class="p">,</span> <span class="n">willPlay</span> <span class="nv">stream</span><span class="p">:</span> <span class="kt">FKStream</span><span class="p">?,</span> <span class="n">unless</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="p">{</span>
   <span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre><pre class="highlight java tab-java"><code><span class="n">mPlayerView</span> <span class="o">=</span> <span class="o">(</span><span class="n">FKPlayerView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">videoView</span><span class="o">);</span>
