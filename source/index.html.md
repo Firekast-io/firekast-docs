@@ -6,9 +6,11 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - java: android
   - javascript
 
+toc_headers:
+  - <a href='https://firekast.io/'>🏡 firekast.io</a>
+  - <a href='https://dashboard.firekast.io/'>🖥️  Access your dashboard</a>
+  
 toc_footers:
-  - <a href='https://dashboard.firekast.io/'>Access your dashboard</a>
-  - <a href='https://firekast.io/'>Back to firekast.io</a>
   - <ul>API Reference<li><a href="https://firekast.io/sdk/ios/docs">iOS</a></li><li><a href="https://firekast.io/sdk/android/docs">Android</a></li></ul>
   - <p>Made with 🍕 in Paris, <a href="http://www.agoranov.com/#startup">Agoranov</a></p>
 
