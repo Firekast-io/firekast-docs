@@ -379,9 +379,9 @@ If an application is deleted, all the videos it contains will be deleted as well
 <p>1. edit your podfile</p>
 </blockquote>
 <pre class="highlight swift tab-swift"><code><span class="n">use_frameworks</span><span class="o">!</span>
-</code></pre><pre class="highlight swift tab-swift"><code><span class="cp"># Set the same version name X.Y.Z. for both Firekast and VideoCore pod. Here 1.2.0.</span>
-<span class="n">pod</span> <span class="err">'</span><span class="kt">Firekast</span><span class="err">'</span><span class="p">,</span> <span class="p">:</span><span class="n">podspec</span> <span class="o">=&gt;</span> <span class="err">'</span><span class="nv">http</span><span class="p">:</span><span class="c1">//firekast.io/sdk/ios/v1.2.0/Firekast.podspec'</span>
-<span class="n">pod</span> <span class="err">'</span><span class="kt">VideoCore</span><span class="err">'</span><span class="p">,</span> <span class="p">:</span><span class="n">git</span> <span class="o">=&gt;</span> <span class="err">'</span><span class="nv">https</span><span class="p">:</span><span class="c1">//github.com/Firekast-io/VideoCore.git', :tag =&gt; 'fk-1.2.0'</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="cp"># Set the same version name X.Y.Z. for both Firekast and VideoCore pod. Here 1.3.0.</span>
+<span class="n">pod</span> <span class="err">'</span><span class="kt">Firekast</span><span class="err">'</span><span class="p">,</span> <span class="p">:</span><span class="n">podspec</span> <span class="o">=&gt;</span> <span class="err">'</span><span class="nv">http</span><span class="p">:</span><span class="c1">//firekast.io/sdk/ios/v1.3.0/Firekast.podspec'</span>
+<span class="n">pod</span> <span class="err">'</span><span class="kt">VideoCore</span><span class="err">'</span><span class="p">,</span> <span class="p">:</span><span class="n">git</span> <span class="o">=&gt;</span> <span class="err">'</span><span class="nv">https</span><span class="p">:</span><span class="c1">//github.com/Firekast-io/VideoCore.git', :tag =&gt; 'fk-1.3.0'</span>
 
 <span class="cp"># Please note, first `pod install` may be long, please be patient :)</span>
 </code></pre>
@@ -420,7 +420,7 @@ If an application is deleted, all the videos it contains will be deleted as well
 <p>2. edit your app build.gradle</p>
 </blockquote>
 <pre class="highlight java tab-java"><code><span class="n">dependencies</span> <span class="o">{</span>
-    <span class="n">implementation</span> <span class="o">(</span><span class="err">'</span><span class="n">io</span><span class="o">.</span><span class="na">firekast</span><span class="o">:</span><span class="nl">firekast:</span><span class="mf">1.2</span><span class="o">.</span><span class="mi">0</span><span class="err">'</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">implementation</span> <span class="o">(</span><span class="err">'</span><span class="n">io</span><span class="o">.</span><span class="na">firekast</span><span class="o">:</span><span class="nl">firekast:</span><span class="mf">1.2</span><span class="o">.</span><span class="mi">2</span><span class="err">'</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">exclude</span> <span class="nl">module:</span> <span class="err">'</span><span class="n">support</span><span class="o">-</span><span class="n">v7</span><span class="err">'</span>
         <span class="n">exclude</span> <span class="nl">module:</span> <span class="err">'</span><span class="n">support</span><span class="o">-</span><span class="n">v13</span><span class="err">'</span>
     <span class="o">}</span>
