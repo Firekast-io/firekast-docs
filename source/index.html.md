@@ -189,7 +189,7 @@ Firekast.initialize(this, "YOUR_CLIENT_KEY", "YOUR_APPLICATION_ID");
 </blockquote>
 
 ```javascript
-<script src="https://firekast.io/sdk/js/1.0.0/firekast.min.js"></script>
+<script src="https://firekast.io/sdk/js/latest/firekast.min.js"></script>
 ```
 
 <blockquote class="lang-specific javascript">
