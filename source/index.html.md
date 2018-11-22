@@ -96,9 +96,9 @@ use_frameworks!
 ```
 
 ```swift
-# Set the same version name X.Y.Z. for both Firekast and VideoCore pod. Here 1.3.0.
-pod 'Firekast', :podspec => 'http://firekast.io/sdk/ios/v1.3.0/Firekast.podspec'
-pod 'VideoCore', :git => 'https://github.com/Firekast-io/VideoCore.git', :tag => 'fk-1.3.0'
+# Set the same version name X.Y.Z. for both Firekast and VideoCore pod.
+pod 'Firekast', :podspec => 'http://firekast.io/sdk/ios/v1.3.1/Firekast.podspec'
+pod 'VideoCore', :git => 'https://github.com/Firekast-io/VideoCore.git', :tag => 'fk-1.3.1'
 
 # Please note, first `pod install` may be long, please be patient :)
 ```
@@ -155,7 +155,7 @@ allprojects {
 
 ```java
 dependencies {
-    implementation ('io.firekast:firekast:1.2.2') {
+    implementation ('io.firekast:firekast:1.2.3') {
         exclude module: 'support-v7'
         exclude module: 'support-v13'
     }
