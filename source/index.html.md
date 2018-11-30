@@ -85,10 +85,12 @@ It is available in the Firekast dashboard, within your application and looks lik
 
 Each new device (mobile or web) that reaches our server is counted as a new active user once a month.
 
-# Installation
+# Getting Started
+
+## Installation
 
 <blockquote class="lang-specific swift">
-<p>1. edit your podfile</p>
+<p>1. Edit your podfile</p>
 </blockquote>
 
 ```swift
@@ -97,14 +99,14 @@ use_frameworks!
 
 ```swift
 # Set the same version name X.Y.Z. for both Firekast and VideoCore pod.
-pod 'Firekast', :podspec => 'http://firekast.io/sdk/ios/v1.3.1/Firekast.podspec'
-pod 'VideoCore', :git => 'https://github.com/Firekast-io/VideoCore.git', :tag => 'fk-1.3.1'
+pod 'Firekast', :podspec => 'http://firekast.io/sdk/ios/v1.3.3/Firekast.podspec'
+pod 'VideoCore', :git => 'https://github.com/Firekast-io/VideoCore.git', :tag => 'fk-1.3.3'
 
 # Please note, first `pod install` may be long, please be patient :)
 ```
 
 <blockquote class="lang-specific swift">
-<p>2. run in terminal</p>
+<p>2. Run in terminal</p>
 </blockquote>
 
 ```swift
@@ -112,7 +114,7 @@ pod install
 ```
 
 <blockquote class="lang-specific swift">
-<p>3. specify camera and microphone usage description in your <code>info.pList</code></p>
+<p>3. Specify camera and microphone usage description in your <code>info.pList</code></p>
 </blockquote>
 
 ```swift
@@ -123,7 +125,7 @@ pod install
 ```
 
 <blockquote class="lang-specific swift">
-<p>4. initialize the SDK</p>
+<p>4. Initialize the SDK</p>
 </blockquote>
 
 ```swift
@@ -137,7 +139,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 ```
 
 <blockquote class="lang-specific java">
-<p>1. edit your project root build.gradle</p>
+<p>1. Edit your project root build.gradle</p>
 </blockquote>
 
 ```java
@@ -150,20 +152,20 @@ allprojects {
 ```
 
 <blockquote class="lang-specific java">
-<p>2. edit your app build.gradle</p>
+<p>2. Edit your app build.gradle</p>
 </blockquote>
 
 ```java
 dependencies {
-    implementation ('io.firekast:firekast:1.2.3') {
-        exclude module: 'support-v7'
-        exclude module: 'support-v13'
-    }
+  implementation('io.firekast:firekast:1.2.4') // {
+  //   exclude group: "com.android.support"
+  // }
+  // ☝️ Uncomment above lines if targeting API 26 and below
 }
 ```
 
 <blockquote class="lang-specific java">
-<p>3. add camera, record audio and internet permission in your <code>AndroidManifest.xml</code></p>
+<p>3. Add camera, record audio and internet permission in your <code>AndroidManifest.xml</code></p>
 </blockquote>
 
 ```java
@@ -173,7 +175,7 @@ dependencies {
 ```
 
 <blockquote class="lang-specific java">
-<p>4. initialize the SDK</p>
+<p>4. Initialize the SDK</p>
 </blockquote>
 
 ```java
@@ -181,11 +183,7 @@ Firekast.initialize(this, "YOUR_CLIENT_KEY", "YOUR_APPLICATION_ID");
 ```
 
 <blockquote class="lang-specific javascript">
-<p>1. import</p>
-</blockquote>
-
-<blockquote class="lang-specific javascript">
-<p>Option a. <code>script</code> tag</p>
+<p>1a. Import with <code>script</code> tag</p>
 </blockquote>
 
 ```javascript
@@ -193,7 +191,7 @@ Firekast.initialize(this, "YOUR_CLIENT_KEY", "YOUR_APPLICATION_ID");
 ```
 
 <blockquote class="lang-specific javascript">
-<p>Option b. <a href="https://webpack.github.io/" target="blank">Webpack</a>, <a href="http://browserify.org/" target="blank">Browserify</a>...</p>
+<p>1b. Import with <a href="https://webpack.github.io/" target="blank">Webpack</a>, <a href="http://browserify.org/" target="blank">Browserify</a>...</p>
 </blockquote>
 
 ```javascript
@@ -201,7 +199,7 @@ const Firekast = require('firekast');
 ```
 
 <blockquote class="lang-specific javascript">
-<p>Option c. <a href="http://requirejs.org/docs/whyamd.html" target="blank">AMD</a> module syntax</p>
+<p>1c. Import with <a href="http://requirejs.org/docs/whyamd.html" target="blank">AMD</a> module syntax</p>
 </blockquote>
 
 ```javascript
@@ -220,30 +218,25 @@ Firekast.init({
 });
 ```
 
-We use common dependency managers to distribute our SDKs and make installation as straightforward as possible.
+<p class="lang-specific swift">Firekast iOS SDK is distributed via <a href="https://guides.cocoapods.org/using/getting-started.html">Cocoapods</a>.</p>
 
-[Cocoapods](https://guides.cocoapods.org/using/getting-started.html) for iOS, and [Gradle](https://developer.android.com/studio/build/dependencies.html) for android.
+<p class="lang-specific java">Firekast Android SDK is distributed via <a href="https://developer.android.com/studio/build/dependencies.html">Gradle</a>.</p>
 
-Our javascript SDK is not yet available on the public npm registry. Please, <a href="https://firekast.zendesk.com/hc/en-gb/requests/new">let us know</a> if you would love so.
+<p class="lang-specific javascript">Several options are available to import Firekast Javascript SDK in your project.<br/><br/>Note that the JS SDK is not yet available on the public npm registry. Please, <a href="https://firekast.zendesk.com/hc/en-gb/requests/new">let us know</a> if you would love so.</p> 
 
 <aside class="notice lang-specific javascript">
 You must replace <code>YOUR_API_KEY</code> with your personal <a href="#api-key">API key</a>, available in the Firekast dashboard.</a>.
 </aside>
 
 <aside class="notice lang-specific java swift">
-You must replace <code>YOUR_CLIENT_KEY</code> with your personal <a href="#clientkey">clientKey</a>, available in the Firekast dashboard.</a>.
-</aside>
-
-<aside class="notice lang-specific java swift">
-You must replace <code>YOUR_APPLICATION_ID</code> with your <a href="#applicationid">app's id</a>, available in the Firekast dashboard.
-</aside>
+You must replace <code>YOUR_CLIENT_KEY</code> and <code>YOUR_APPLICATION_ID</code> with your personal <a href="#clientkey">clientKey</a> and <a href="#applicationid">app's id</a>, both available in the Firekast dashboard.</aside>
 
 <aside class="notice lang-specific swift">
-Deployment Target: iOS 8.0 >=
+Min Deployment Target: iOS 8.0 >=
 </aside>
 
 <aside class="notice lang-specific java">
-Android SDK: 16 >=
+Min Android SDK: 16 >=
 </aside>
 
 <!--
@@ -252,12 +245,10 @@ To activate the javascript SDK, you must add your website domains (eg. https://w
 </aside>
 -->
 
-# Getting Started
-
 ## Live stream
 
 ```swift
-let streamer = FKStreamer() // 1. initializes streamer
+let streamer = FKStreamer(usecase: .portrait) // 1. initializes streamer
 let camera = streamer.showCamera(.front, in: myView) // 2. open camera inside myView
 
 streamer.requestStream { (stream, error) in // 3. create a stream
@@ -492,39 +483,31 @@ Once you have created a stream, you can start streaming whenever your User is re
 ## Listen for events while streaming
 
 ```swift
-func streamer(_ streamer: FKStreamer, willStartOn stream: FKStream?, unless error: NSError?) {
-  // ...
-}
-
-func streamer(_ streamer: FKStreamer, didStopOn stream: FKStream?, error: NSError?) {
-  // ...
-}
-
-func streamer(_ streamer: FKStreamer, networkQualityDidUpdate rating: Float) {
-  // ...
-}
+func streamer(_ streamer: FKStreamer, willStart stream: FKStream?, unless error: NSError?) {}
+func streamer(_ streamer: FKStreamer, didBecomeLive stream: FKStream) {}
+func streamer(_ streamer: FKStreamer, didStop stream: FKStream?, error: NSError?) {}
+func streamer(_ streamer: FKStreamer, networkQualityDidUpdate rating: Float) {}
 ```
 
 ```java
 private class MyStreamingCallback implements FKStreamer.StreamingCallback {
   @Override
-  public void onSteamWillStartUnless(@Nullable FKStream stream, @Nullable FKError error) {
-    // ...
-  }
-
+  public void onSteamWillStartUnless(@Nullable FKStream stream, @Nullable FKError error) {}
+  
   @Override
-  public void onStreamDidStop(FKStream stream, FKError error) {
-    // ...
-  }
-
+  public void onStreamDidBecomeLive(@NonNullable FKStream stream) {}
+  
   @Override
-  public void onStreamingUpdateAvailable(boolean lag) {
-    // ...
-  }
+  public void onStreamDidStop(@Nullable FKStream stream, FKError error) {}
+  
+  @Override
+  public void onStreamingUpdateAvailable(boolean lag) {}
 }
 ```
 
 When start streaming you might want to adapt your UI depending on events. You will be notified whether the streaming starts properly, stops normally or prematurely, and streaming conditions.
+
+<aside class="notice">Once `startStreaming` is called, frames are sent to Firekast’s servers. We guarantee that frames are stored and that stream is live as soon as stream's state is `live`, SDK provides `didBecomeLive` callback for that.</aside>
 
 <aside class="notice">
 A stream can be stopped by the SDK if network conditions has been low for too long), on the dashboard, or by the server. So you should adapt your UI/UX accordingly.
@@ -571,10 +554,7 @@ override func viewDidLoad() {
   });
   const player = new Firekast.Player({
     parent_id:   '#player',
-    stream_id:   'THE_STREAM_ID',
-    clappr_config: {
-      mediacontrol: { seekbar: "#E113D3", buttons: "#66B2FF" }
-    }
+    stream_id:   'THE_STREAM_ID'
   });
 </script>
 ```
@@ -649,26 +629,16 @@ Replace <code>THE_STREAM_ID</code> with the stream-you-want-to-watch's id.
 ## Listen for player events
 
 ```swift
-func player(_ player: FKPlayer, stateDidChanged state: FKPlayer.State) {
-  // ...
-}
-
-func player(_ player: FKPlayer, videoDurationIsAvailable duration: TimeInterval) {
-  // ...
-}
-
-func player(_ player: FKPlayer, willPlay stream: FKStream?, unless error: NSError?) {
-  // ...
-}
+func player(_ player: FKPlayer, stateDidChanged state: FKPlayer.State) {}
+func player(_ player: FKPlayer, videoDurationIsAvailable duration: TimeInterval) {}
+func player(_ player: FKPlayer, willPlay stream: FKStream?, unless error: NSError?) {}
 ```
 
 ```java
 mPlayerView = (FKPlayerView) findViewById(R.id.videoView);
 mPlayerView.setPlayerListener(new FKPlayerView.Callback() {
   @Override
-  public void onPlayerWillPlay(@Nullable FKStream stream, @Nullable FKError error) {
-    // ...
-  }
+  public void onPlayerWillPlay(@Nullable FKStream stream, @Nullable FKError error) {}
 });
 ```
 
@@ -694,3 +664,24 @@ player.on('ready', () => player.play());
 ```
 
 You may want to listen for player callback so you can adapt adapt your UI accordingly. Indeed, since the stream is fetched internally to determine whether its live, vod, etc... the request can fail. There is no retry strategy so you may notify your user about the failure.
+
+## UI Customization
+
+```swift
+player.scalingMode = .aspectFit
+player.controlStyle = .fullscreen
+```
+
+```java
+mPlayerView.getExoPlayerView(); // Give access to ExoPlayerView
+mPlayerView.getExoPlayerView().setControllerAutoShow(false); // For example
+```
+
+```javascript
+const player = new Firekast.Player({
+  [...]
+  clappr_config: {
+    mediacontrol: { seekbar: "#E113D3", buttons: "#66B2FF" }
+  }
+});
+```
