@@ -99,8 +99,8 @@ use_frameworks!
 
 ```swift
 # Set the same version name X.Y.Z. for both Firekast and VideoCore pod.
-pod 'Firekast', :podspec => 'http://firekast.io/sdk/ios/v1.3.3/Firekast.podspec'
-pod 'VideoCore', :git => 'https://github.com/Firekast-io/VideoCore.git', :tag => 'fk-1.3.3'
+pod 'Firekast', :podspec => 'http://firekast.io/sdk/ios/v1.4.0/Firekast.podspec'
+pod 'VideoCore', :git => 'https://github.com/Firekast-io/VideoCore.git', :tag => 'fk-1.4.0'
 
 # Please note, first `pod install` may be long, please be patient :)
 ```
@@ -348,8 +348,10 @@ Our SDK manages everything for you and provides simple interface to interact wit
 ```swift
 let player = FKPlayer() // 1. initialize player
 player.show(in: myView) // 2. display player in myView
+player.delegate = self
 
-player.play(streamId: "THE_STREAM_ID", delegate: self) // 3. play the video 
+let stream = FKStream(withoutDataExceptStreamId: "STREAM_ID")
+player.play(stream) // 3. play the video starting - in that example - from the beginning.
 ```
 
 ```java
@@ -519,14 +521,11 @@ The player lets you play any stream of your current application. Whether the str
 
 ## Initialization
 
-<blockquote class="lang-specific swift">
-<p>The player is a wrap arount <code><a href="https://developer.apple.com/documentation/mediaplayer/mpmovieplayercontroller">MPMoviePlayerController</a></code>, and is even simpler to use.</p>
-</blockquote>
-
 ```swift
 override func viewDidLoad() {
   super.viewDidLoad()
   player = FKPlayer()
+  player.delegate = self
   player.show(in: playerContainerView)
 }
 ```
@@ -566,7 +565,7 @@ Video ratio is 16:9. If your view does not fit this ratio, the player automatica
 </aside>
 
 <aside class="notice lang-specific swift">
-On iOS, the player can play only one video at a time.
+The player is based on <code><a href="https://developer.apple.com/documentation/avfoundation/avplayer">AVPlayer</a></code>.
 </aside>
 
 <aside class="notice lang-specific javascript">
@@ -576,11 +575,18 @@ Replace <code>THE_STREAM_ID</code> with the stream-you-want-to-watch's id.
 ## Play and stop
 
 ```swift
-player.play(streamId: "THE_STREAM_ID", delegate: self)
+let stream = FKStream(withoutDataExceptStreamId: "STREAM_ID")
+player.play(stream)
 ```
 
 ```swift
-player.stop()
+player.pause()
+player.resume()
+```
+
+```swift
+// import CoreMedia
+player.seek(to: CMTime(seconds: 30, preferredTimescale: 1))
 ```
 
 ```java
@@ -618,9 +624,13 @@ player.destroy()
 
 The player aims to be very simple. 
 
-Call play by providing the [streamId](#streamId). The player will first fetch the stream, determines whether it's live or vod, and starts to play. 
+Play a stream. The player will fetch the stream (if necessary) and start playing right away.
 
-The playback controller UI automatically adapts whether the player is playing a live or vod stream.
+The playback controller UI automatically adapts whether the player is playing a live or VOD stream.
+
+<p class="lang-specific swift">Once playing, video can be paused and resumed programmatically if needed.</p>
+
+<p class="lang-specific swift">Use <code>seek</code> to set the current playback time to a specified time.</p>
 
 <aside class="notice lang-specific swift java">
 Replace <code>THE_STREAM_ID</code> with the stream-you-want-to-watch's id.
@@ -631,7 +641,7 @@ Replace <code>THE_STREAM_ID</code> with the stream-you-want-to-watch's id.
 ```swift
 func player(_ player: FKPlayer, stateDidChanged state: FKPlayer.State) {}
 func player(_ player: FKPlayer, videoDurationIsAvailable duration: TimeInterval) {}
-func player(_ player: FKPlayer, willPlay stream: FKStream?, unless error: NSError?) {}
+func player(_ player: FKPlayer, willPlay stream: FKStream, unless error: NSError?) {}
 ```
 
 ```java
@@ -668,8 +678,8 @@ You may want to listen for player callback so you can adapt adapt your UI accord
 ## UI Customization
 
 ```swift
-player.scalingMode = .aspectFit
-player.controlStyle = .fullscreen
+player.videoGravity = .resizeAspectFill
+player.showPlaybackControls = false
 ```
 
 ```java
