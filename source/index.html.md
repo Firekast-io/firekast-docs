@@ -157,7 +157,7 @@ allprojects {
 
 ```java
 dependencies {
-  implementation('io.firekast:firekast:1.2.4') // {
+  implementation('io.firekast:firekast:1.4.0') // {
   //   exclude group: "com.android.support"
   // }
   // ☝️ Uncomment above lines if targeting API 26 and below
@@ -355,15 +355,19 @@ player.play(stream) // 3. play the video starting - in that example - from the b
 ```
 
 ```java
-// 1. add the player in your layout
+// 1. add the player view in your layout
 <io.firekast.FKPlayerView
-    android:id="@+id/videoView"
+    android:id="@+id/playerView"
     android:layout_width="200dp"
     android:layout_height="110dp" />
 
-// 2. listen for player callback (optional) and play the video
-mVideoView.setPlayerListener(new MyFKPlayerCallback());
-mPlayerView.play("THE_STREAM_ID");
+// 2. get the player from the view
+mPlayer = mPlayerView.getPlayer();
+mPlayer.setCallback(new MyPlayerCallback());
+
+// 3. play the stream starting - in that example - from the beginning.
+FKStream stream = FKStream.newEmptyInstance("STREAM_ID")
+mPlayer.play(stream);
 ```
 
 <blockquote class="lang-specific javascript">
@@ -535,10 +539,17 @@ override func viewDidLoad() {
 </blockquote>
 
 ```java
+// In your layout:
+
 <io.firekast.FKPlayerView
-  android:id="@+id/videoView"
+  android:id="@+id/playerView"
   android:layout_width="match parent" 
   android:layout_height="110dp" />
+
+// Then in your code:
+
+mPlayerView = (FKPlayerView) findViewById(R.id.playerView);
+mPlayer = mPlayerView.getPlayer();
 ```
 
 <blockquote class="lang-specific javascript">
@@ -590,11 +601,16 @@ player.seek(to: CMTime(seconds: 30, preferredTimescale: 1))
 ```
 
 ```java
-mPlayerView.play("THE_STREAM_ID");
+mPlayer.play("THE_STREAM_ID");
 ```
 
 ```java
-mPlayerView.stop();
+mPlayer.pause();
+mPlayer.resume();
+```
+
+```java
+mPlayer.seek(TimeUnit.SECONDS.toMillis(30));
 ```
 
 ```javascript
@@ -645,10 +661,11 @@ func player(_ player: FKPlayer, willPlay stream: FKStream, unless error: NSError
 ```
 
 ```java
-mPlayerView = (FKPlayerView) findViewById(R.id.videoView);
-mPlayerView.setPlayerListener(new FKPlayerView.Callback() {
+mPlayer.setCallback(new FKPlayer.Callback() {
   @Override
-  public void onPlayerWillPlay(@Nullable FKStream stream, @Nullable FKError error) {}
+  public void onPlayerWillPlay(@NonNull FKStream stream, @Nullable FKError error) {}
+  @Override
+  public void onPlayerStateChanged(@NonNull FKPlayer.State state) {}
 });
 ```
 
@@ -683,8 +700,9 @@ player.showPlaybackControls = false
 ```
 
 ```java
-mPlayerView.getExoPlayerView(); // Give access to ExoPlayerView
-mPlayerView.getExoPlayerView().setControllerAutoShow(false); // For example
+mPlayer.setShowPlaybackControls(true); // default is true
+mPlayer.setPlaybackControlsMargins(...); // default is 8dp
+mPlayer.setPlaybackControlsBackground(R.drawable.my_player_controls_background); // default is a 8dp rounded semi-transparent black rectangle
 ```
 
 ```javascript
