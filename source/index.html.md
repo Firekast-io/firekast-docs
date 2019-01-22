@@ -15,6 +15,11 @@ toc_footers:
   - <p>Made with 🍕 in Paris, <a href="http://www.agoranov.com/#startup">Agoranov</a></p>
 
 search: false
+
+includes:
+  - release_notes_ios
+  - release_notes_android
+
 ---
 
 # Welcome
@@ -713,3 +718,7 @@ const player = new Firekast.Player({
   }
 });
 ```
+
+# Release Notes
+
+Follow on the right panel what's new in releases.

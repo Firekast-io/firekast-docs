@@ -547,7 +547,28 @@ html, body {
       padding: $code-annotation-padding 2em;
       color: #eee;
       font-weight: bold;
+      
+      &>span {
+        float: right;
+        font-style: italic;
+        font-weight: 100;
+        // display: table-cell;
+        // vertical-align: bottom;
+        color: $release-notes-text;
+      }
     }
+
+    &>pre {
+      @extend %default-font;
+      color: $release-notes-text;
+      width: 100%;
+      white-space: pre-wrap;
+      
+      &>code {
+        color: $code-text;
+      }
+    }
+    
   }
 }
 
