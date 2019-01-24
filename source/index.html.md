@@ -524,6 +524,52 @@ When start streaming you might want to adapt your UI depending on events. You wi
 A stream can be stopped by the SDK if network conditions has been low for too long), on the dashboard, or by the server. So you should adapt your UI/UX accordingly.
 </aside>
 
+## Test bandwidth
+
+<blockquote class="lang-specific swift java">
+<p>First, use <code>testBandwidth</code> method to start streaming on a test stream (content is not recorded).</p>
+</blockquote>
+
+```swift
+let testDuration: TimeInterval = 10
+streamer.testBandwidth(duration: testDuration, delegate: self)
+```
+
+```java
+long testDuration = 15000;
+mStreamer.testBandwidth(testDuration, this);
+```
+<blockquote class="lang-specific swift">
+<p>Then, watch <code>FKStreamerDelegate</code> and average <code>rating</code> values to estimate whether User streaming condition is good enough.</p>
+</blockquote>
+
+<blockquote class="lang-specific java">
+<p>Then, watch <code>FKStreamer.Callback</code> and count how often lag is `true`. A lag is fired each time the SDK encounters difficulty to send a frame, meaning bad network conditions.</p>
+</blockquote>
+
+```swift
+func streamer(_ streamer: FKStreamer, networkQualityDidUpdate rating: Float) {
+    // rating from 0 (bad) to 1 (excellent network conditions)
+  }
+```
+
+```java
+@Override
+public void onStreamingUpdateAvailable(boolean lag) {
+  // check for lag == true occurences. Too often is bad.
+}
+```
+
+Call `testBandwidth` method to simulate live streaming and estimate User's current bandwidth quality by watching streamer callback.
+
+What's behind the scene? 
+
+This method puts User in real streaming conditions by starting streaming camera frames and audio to Firekast servers but nothing is actually recorded.
+
+<aside class="notice">
+We recommand test duration to be between 2 and 30 seconds. The longer the more accurate.
+</aside>
+
 # SDK | Player
 
 The player lets you play any stream of your current application. Whether the stream is live or VOD, the player will figure it out and adapt its UI.
