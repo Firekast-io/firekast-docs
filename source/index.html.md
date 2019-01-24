@@ -434,7 +434,7 @@ Stream's lifecycle can be either:
 
 The streamer handles the stream creation and let you stream on your application.
 
-## Request for a stream
+## Create streams
 
 ```swift
 streamer.requestStream()
@@ -444,23 +444,9 @@ streamer.requestStream()
 mStreamer.requestStream(new MyFKRequestStreamCallback());
 ```
 
-Before being able to start streaming, you must request for a stream. This will create a stream on Firekast server.
+Before being able to start streaming, you must first create a stream. This will create a stream on Firekast server.
 
-This new created stream is immediatly visible in your dashboard.
-
-## Specify outputs
-
-```swift
-streamer.requestStream(outputs: [])
-```
-
-```java
-mStreamer.requestStream(listOfOutputs, new MyFKRequestStreamCallback());
-```
-
-Firekast lets you push your live stream to several live streaming platform, such as Facebook or Youtube, simultaneously.
-
-If you want to repush on social networks, you must provide corresponding information so the server create a special stream.
+This newly created stream is immediatly visible in your dashboard.
 
 ## Start and stop streaming
 
@@ -491,7 +477,7 @@ mStreamer.stopStreaming()
 Once you have created a stream, you can start streaming whenever your User is ready.
 
 
-## Listen for events while streaming
+## Events while streaming
 
 ```swift
 func streamer(_ streamer: FKStreamer, willStart stream: FKStream?, unless error: NSError?) {}
@@ -518,11 +504,25 @@ private class MyStreamingCallback implements FKStreamer.StreamingCallback {
 
 When start streaming you might want to adapt your UI depending on events. You will be notified whether the streaming starts properly, stops normally or prematurely, and streaming conditions.
 
-<aside class="notice">Once `startStreaming` is called, frames are sent to Firekast’s servers. We guarantee that frames are stored and that stream is live as soon as stream's state is `live`, SDK provides `didBecomeLive` callback for that.</aside>
+<aside class="notice">Once <code>startStreaming</code> is called, frames are sent to Firekast’s servers. We guarantee that frames are stored and that stream is live as soon as stream's state is <code>live</code>, SDK provides <code>didBecomeLive</code> callback for that.</aside>
 
 <aside class="notice">
 A stream can be stopped by the SDK if network conditions has been low for too long), on the dashboard, or by the server. So you should adapt your UI/UX accordingly.
 </aside>
+
+## Restream social
+
+```swift
+streamer.requestStream(outputs: [])
+```
+
+```java
+mStreamer.requestStream(listOfOutputs, new MyFKRequestStreamCallback());
+```
+
+Firekast lets you push your live stream to several live streaming platform, such as Facebook or Youtube, simultaneously.
+
+If you want to repush on social networks, you must provide corresponding information so the server could create a special stream.
 
 ## Test bandwidth
 
@@ -627,7 +627,7 @@ Video ratio is 16:9. If your view does not fit this ratio, the player automatica
 </aside>
 
 <aside class="notice lang-specific swift">
-The player is based on <code><a href="https://developer.apple.com/documentation/avfoundation/avplayer">AVPlayer</a></code>.
+The player is based on <code><a href="https://developer.apple.com/documentation/avkit/avplayerviewcontroller">AVPlayerViewController</a></code>.
 </aside>
 
 <aside class="notice lang-specific javascript">
@@ -652,7 +652,8 @@ player.seek(to: CMTime(seconds: 30, preferredTimescale: 1))
 ```
 
 ```java
-mPlayer.play("THE_STREAM_ID");
+FKStream stream = FKStream.newEmptyInstance("THE_STREAM_ID")
+mPlayer.play(stream);
 ```
 
 ```java
@@ -695,9 +696,9 @@ Play a stream. The player will fetch the stream (if necessary) and start playing
 
 The playback controller UI automatically adapts whether the player is playing a live or VOD stream.
 
-<p class="lang-specific swift">Once playing, video can be paused and resumed programmatically if needed.</p>
+Once playing, video can be paused and resumed programmatically if needed.
 
-<p class="lang-specific swift">Use <code>seek</code> to set the current playback time to a specified time.</p>
+Use <code>seek</code> to set the current playback time to a specified time.
 
 <aside class="notice lang-specific swift java">
 Replace <code>THE_STREAM_ID</code> with the stream-you-want-to-watch's id.
@@ -764,6 +765,16 @@ const player = new Firekast.Player({
   }
 });
 ```
+
+We provide basic customization of the playback controls UI.
+
+<p class="lang-specific swift">Note that <code><a href="https://developer.apple.com/documentation/avkit/avplayerviewcontroller">AVPlayerViewController</a></code> provides very little control over the UI. We only wrapped what we found useful.</p>
+
+<p>Please <a href="mailto:contact@firekast.io">let us know</a> if you need more control over the player UI.</p>
+
+<aside class="notice lang-specific swift java">
+<code>FKPlayer</code> provides all the tools (resume, pause, seek) to let you eventually build your custom playback controls.
+</aside>
 
 # Release Notes
 

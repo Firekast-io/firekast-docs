@@ -3,7 +3,7 @@
 <pre>
 Built with Swift 4.2.1 (Xcode 10.1).
 New:
-* Replace internal use of MPMoviePlayerController (deprecated) with AVPlayer. Implementation changes slightly: 
+* Replace internal use of MPMoviePlayerController (deprecated) with AVPlayerViewController. Implementation changes slightly: 
   * FKPlayerDelegate is now set to FKPlayer and no more passed through FKPlayer.play(_:at:).  
   * Show or hide native playback controls using FKPlayer.showPlaybackControls().
   * While playing, control programmatically the playback with FKPlayer.pause(), FKPlayer.resume() or FKPlayer.seek(to:).
