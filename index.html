@@ -290,16 +290,19 @@
             <a href="#sdk-streamer" class="toc-h1 toc-link" data-title="SDK | Streamer">SDK | Streamer</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#request-for-a-stream" class="toc-h2 toc-link" data-title="Request for a stream">Request for a stream</a>
-                  </li>
-                  <li>
-                    <a href="#specify-outputs" class="toc-h2 toc-link" data-title="Specify outputs">Specify outputs</a>
+                    <a href="#create-streams" class="toc-h2 toc-link" data-title="Create streams">Create streams</a>
                   </li>
                   <li>
                     <a href="#start-and-stop-streaming" class="toc-h2 toc-link" data-title="Start and stop streaming">Start and stop streaming</a>
                   </li>
                   <li>
-                    <a href="#listen-for-events-while-streaming" class="toc-h2 toc-link" data-title="Listen for events while streaming">Listen for events while streaming</a>
+                    <a href="#events-while-streaming" class="toc-h2 toc-link" data-title="Events while streaming">Events while streaming</a>
+                  </li>
+                  <li>
+                    <a href="#restream-social" class="toc-h2 toc-link" data-title="Restream social">Restream social</a>
+                  </li>
+                  <li>
+                    <a href="#test-bandwidth" class="toc-h2 toc-link" data-title="Test bandwidth">Test bandwidth</a>
                   </li>
               </ul>
           </li>
@@ -319,6 +322,9 @@
                     <a href="#ui-customization" class="toc-h2 toc-link" data-title="UI Customization">UI Customization</a>
                   </li>
               </ul>
+          </li>
+          <li>
+            <a href="#release-notes" class="toc-h1 toc-link" data-title="Release Notes">Release Notes</a>
           </li>
       </ul>
         <ul class="toc-footer">
@@ -635,18 +641,12 @@ Once a live is completed, the stream becomes instantly available for VOD playbac
 </blockquote>
 
 <p>The streamer handles the stream creation and let you stream on your application.</p>
-<h2 id='request-for-a-stream'>Request for a stream</h2><pre class="highlight swift tab-swift"><code><span class="n">streamer</span><span class="o">.</span><span class="nf">requestStream</span><span class="p">()</span>
+<h2 id='create-streams'>Create streams</h2><pre class="highlight swift tab-swift"><code><span class="n">streamer</span><span class="o">.</span><span class="nf">requestStream</span><span class="p">()</span>
 </code></pre><pre class="highlight java tab-java"><code><span class="n">mStreamer</span><span class="o">.</span><span class="na">requestStream</span><span class="o">(</span><span class="k">new</span> <span class="n">MyFKRequestStreamCallback</span><span class="o">());</span>
 </code></pre>
-<p>Before being able to start streaming, you must request for a stream. This will create a stream on Firekast server.</p>
+<p>Before being able to start streaming, you must first create a stream. This will create a stream on Firekast server.</p>
 
-<p>This new created stream is immediatly visible in your dashboard.</p>
-<h2 id='specify-outputs'>Specify outputs</h2><pre class="highlight swift tab-swift"><code><span class="n">streamer</span><span class="o">.</span><span class="nf">requestStream</span><span class="p">(</span><span class="nv">outputs</span><span class="p">:</span> <span class="p">[])</span>
-</code></pre><pre class="highlight java tab-java"><code><span class="n">mStreamer</span><span class="o">.</span><span class="na">requestStream</span><span class="o">(</span><span class="n">listOfOutputs</span><span class="o">,</span> <span class="k">new</span> <span class="n">MyFKRequestStreamCallback</span><span class="o">());</span>
-</code></pre>
-<p>Firekast lets you push your live stream to several live streaming platform, such as Facebook or Youtube, simultaneously.</p>
-
-<p>If you want to repush on social networks, you must provide corresponding information so the server create a special stream.</p>
+<p>This newly created stream is immediatly visible in your dashboard.</p>
 <h2 id='start-and-stop-streaming'>Start and stop streaming</h2>
 <blockquote class="lang-specific swift java">
 <p>Start streaming</p>
@@ -661,7 +661,7 @@ Once a live is completed, the stream becomes instantly available for VOD playbac
 </code></pre><pre class="highlight java tab-java"><code><span class="n">mStreamer</span><span class="o">.</span><span class="na">stopStreaming</span><span class="o">()</span>
 </code></pre>
 <p>Once you have created a stream, you can start streaming whenever your User is ready.</p>
-<h2 id='listen-for-events-while-streaming'>Listen for events while streaming</h2><pre class="highlight swift tab-swift"><code><span class="kd">func</span> <span class="nf">streamer</span><span class="p">(</span><span class="n">_</span> <span class="nv">streamer</span><span class="p">:</span> <span class="kt">FKStreamer</span><span class="p">,</span> <span class="n">willStart</span> <span class="nv">stream</span><span class="p">:</span> <span class="kt">FKStream</span><span class="p">?,</span> <span class="n">unless</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="p">{}</span>
+<h2 id='events-while-streaming'>Events while streaming</h2><pre class="highlight swift tab-swift"><code><span class="kd">func</span> <span class="nf">streamer</span><span class="p">(</span><span class="n">_</span> <span class="nv">streamer</span><span class="p">:</span> <span class="kt">FKStreamer</span><span class="p">,</span> <span class="n">willStart</span> <span class="nv">stream</span><span class="p">:</span> <span class="kt">FKStream</span><span class="p">?,</span> <span class="n">unless</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="p">{}</span>
 <span class="kd">func</span> <span class="nf">streamer</span><span class="p">(</span><span class="n">_</span> <span class="nv">streamer</span><span class="p">:</span> <span class="kt">FKStreamer</span><span class="p">,</span> <span class="n">didBecomeLive</span> <span class="nv">stream</span><span class="p">:</span> <span class="kt">FKStream</span><span class="p">)</span> <span class="p">{}</span>
 <span class="kd">func</span> <span class="nf">streamer</span><span class="p">(</span><span class="n">_</span> <span class="nv">streamer</span><span class="p">:</span> <span class="kt">FKStreamer</span><span class="p">,</span> <span class="n">didStop</span> <span class="nv">stream</span><span class="p">:</span> <span class="kt">FKStream</span><span class="p">?,</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="p">{}</span>
 <span class="kd">func</span> <span class="nf">streamer</span><span class="p">(</span><span class="n">_</span> <span class="nv">streamer</span><span class="p">:</span> <span class="kt">FKStreamer</span><span class="p">,</span> <span class="n">networkQualityDidUpdate</span> <span class="nv">rating</span><span class="p">:</span> <span class="kt">Float</span><span class="p">)</span> <span class="p">{}</span>
@@ -681,10 +681,49 @@ Once a live is completed, the stream becomes instantly available for VOD playbac
 </code></pre>
 <p>When start streaming you might want to adapt your UI depending on events. You will be notified whether the streaming starts properly, stops normally or prematurely, and streaming conditions.</p>
 
-<aside class="notice">Once `startStreaming` is called, frames are sent to Firekast’s servers. We guarantee that frames are stored and that stream is live as soon as stream's state is `live`, SDK provides `didBecomeLive` callback for that.</aside>
+<aside class="notice">Once <code>startStreaming</code> is called, frames are sent to Firekast’s servers. We guarantee that frames are stored and that stream is live as soon as stream's state is <code>live</code>, SDK provides <code>didBecomeLive</code> callback for that.</aside>
 
 <aside class="notice">
 A stream can be stopped by the SDK if network conditions has been low for too long), on the dashboard, or by the server. So you should adapt your UI/UX accordingly.
+</aside>
+<h2 id='restream-social'>Restream social</h2><pre class="highlight swift tab-swift"><code><span class="n">streamer</span><span class="o">.</span><span class="nf">requestStream</span><span class="p">(</span><span class="nv">outputs</span><span class="p">:</span> <span class="p">[])</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">mStreamer</span><span class="o">.</span><span class="na">requestStream</span><span class="o">(</span><span class="n">listOfOutputs</span><span class="o">,</span> <span class="k">new</span> <span class="n">MyFKRequestStreamCallback</span><span class="o">());</span>
+</code></pre>
+<p>Firekast lets you push your live stream to several live streaming platform, such as Facebook or Youtube, simultaneously.</p>
+
+<p>If you want to repush on social networks, you must provide corresponding information so the server could create a special stream.</p>
+<h2 id='test-bandwidth'>Test bandwidth</h2>
+<blockquote class="lang-specific swift java">
+<p>First, use <code>testBandwidth</code> method to start streaming on a test stream (content is not recorded).</p>
+</blockquote>
+<pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">testDuration</span><span class="p">:</span> <span class="kt">TimeInterval</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">streamer</span><span class="o">.</span><span class="nf">testBandwidth</span><span class="p">(</span><span class="nv">duration</span><span class="p">:</span> <span class="n">testDuration</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kt">long</span> <span class="n">testDuration</span> <span class="o">=</span> <span class="mi">15000</span><span class="o">;</span>
+<span class="n">mStreamer</span><span class="o">.</span><span class="na">testBandwidth</span><span class="o">(</span><span class="n">testDuration</span><span class="o">,</span> <span class="k">this</span><span class="o">);</span>
+</code></pre>
+<blockquote class="lang-specific swift">
+<p>Then, watch <code>FKStreamerDelegate</code> and average <code>rating</code> values to estimate whether User streaming condition is good enough.</p>
+</blockquote>
+
+<blockquote class="lang-specific java">
+<p>Then, watch <code>FKStreamer.Callback</code> and count how often lag is `true`. A lag is fired each time the SDK encounters difficulty to send a frame, meaning bad network conditions.</p>
+</blockquote>
+<pre class="highlight swift tab-swift"><code><span class="kd">func</span> <span class="nf">streamer</span><span class="p">(</span><span class="n">_</span> <span class="nv">streamer</span><span class="p">:</span> <span class="kt">FKStreamer</span><span class="p">,</span> <span class="n">networkQualityDidUpdate</span> <span class="nv">rating</span><span class="p">:</span> <span class="kt">Float</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// rating from 0 (bad) to 1 (excellent network conditions)</span>
+  <span class="p">}</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onStreamingUpdateAvailable</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">lag</span><span class="o">)</span> <span class="o">{</span>
+  <span class="c1">// check for lag == true occurences. Too often is bad.</span>
+<span class="o">}</span>
+</code></pre>
+<p>Call <code>testBandwidth</code> method to simulate live streaming and estimate User&#39;s current bandwidth quality by watching streamer callback.</p>
+
+<p>What&#39;s behind the scene? </p>
+
+<p>This method puts User in real streaming conditions by starting streaming camera frames and audio to Firekast servers but nothing is actually recorded.</p>
+
+<aside class="notice">
+We recommand test duration to be between 2 and 30 seconds. The longer the more accurate.
 </aside>
 <h1 id='sdk-player'>SDK | Player</h1>
 <p>The player lets you play any stream of your current application. Whether the stream is live or VOD, the player will figure it out and adapt its UI.</p>
@@ -731,7 +770,7 @@ Video ratio is 16:9. If your view does not fit this ratio, the player automatica
 </aside>
 
 <aside class="notice lang-specific swift">
-The player is based on <code><a href="https://developer.apple.com/documentation/avfoundation/avplayer">AVPlayer</a></code>.
+The player is based on <code><a href="https://developer.apple.com/documentation/avkit/avplayerviewcontroller">AVPlayerViewController</a></code>.
 </aside>
 
 <aside class="notice lang-specific javascript">
@@ -743,7 +782,8 @@ Replace <code>THE_STREAM_ID</code> with the stream-you-want-to-watch's id.
 <span class="n">player</span><span class="o">.</span><span class="nf">resume</span><span class="p">()</span>
 </code></pre><pre class="highlight swift tab-swift"><code><span class="c1">// import CoreMedia</span>
 <span class="n">player</span><span class="o">.</span><span class="nf">seek</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="kt">CMTime</span><span class="p">(</span><span class="nv">seconds</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="nv">preferredTimescale</span><span class="p">:</span> <span class="mi">1</span><span class="p">))</span>
-</code></pre><pre class="highlight java tab-java"><code><span class="n">mPlayer</span><span class="o">.</span><span class="na">play</span><span class="o">(</span><span class="s">"THE_STREAM_ID"</span><span class="o">);</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">FKStream</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">FKStream</span><span class="o">.</span><span class="na">newEmptyInstance</span><span class="o">(</span><span class="s">"THE_STREAM_ID"</span><span class="o">)</span>
+<span class="n">mPlayer</span><span class="o">.</span><span class="na">play</span><span class="o">(</span><span class="n">stream</span><span class="o">);</span>
 </code></pre><pre class="highlight java tab-java"><code><span class="n">mPlayer</span><span class="o">.</span><span class="na">pause</span><span class="o">();</span>
 <span class="n">mPlayer</span><span class="o">.</span><span class="na">resume</span><span class="o">();</span>
 </code></pre><pre class="highlight java tab-java"><code><span class="n">mPlayer</span><span class="o">.</span><span class="na">seek</span><span class="o">(</span><span class="n">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">.</span><span class="na">toMillis</span><span class="o">(</span><span class="mi">30</span><span class="o">));</span>
@@ -770,9 +810,9 @@ Replace <code>THE_STREAM_ID</code> with the stream-you-want-to-watch's id.
 
 <p>The playback controller UI automatically adapts whether the player is playing a live or VOD stream.</p>
 
-<p class="lang-specific swift">Once playing, video can be paused and resumed programmatically if needed.</p>
+<p>Once playing, video can be paused and resumed programmatically if needed.</p>
 
-<p class="lang-specific swift">Use <code>seek</code> to set the current playback time to a specified time.</p>
+<p>Use <code>seek</code> to set the current playback time to a specified time.</p>
 
 <aside class="notice lang-specific swift java">
 Replace <code>THE_STREAM_ID</code> with the stream-you-want-to-watch's id.
@@ -818,6 +858,227 @@ Replace <code>THE_STREAM_ID</code> with the stream-you-want-to-watch's id.
   <span class="p">}</span>
 <span class="p">});</span>
 </code></pre>
+<p>We provide basic customization of the playback controls UI.</p>
+
+<p class="lang-specific swift">Note that <code><a href="https://developer.apple.com/documentation/avkit/avplayerviewcontroller">AVPlayerViewController</a></code> provides very little control over the UI. We only wrapped what we found useful.</p>
+
+<p>Please <a href="mailto:contact@firekast.io">let us know</a> if you need more control over the player UI.</p>
+
+<aside class="notice lang-specific swift java">
+<code>FKPlayer</code> provides all the tools (resume, pause, seek) to let you eventually build your custom playback controls.
+</aside>
+<h1 id='release-notes'>Release Notes</h1>
+<p>Follow on the right panel what&#39;s new in releases.</p>
+<blockquote class="lang-specific swift">
+<p>v1.5.0<span>2019-01-25</span></p>
+<pre>
+Built with Swift 4.2.1 (Xcode 10.1).
+* Abality to disable video capture while streaming with <code>isVideoCaptureEnabled</code>.
+* Renaming <code>isMicrophoneEnabled</code> into <code>isAudioCaptureEnabled</code>.
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific swift">
+<p>v1.4.0<span>2019-01-16</span></p>
+<pre>
+Built with Swift 4.2.1 (Xcode 10.1).
+New:
+* Replace internal use of MPMoviePlayerController (deprecated) with AVPlayerViewController. Implementation changes slightly: 
+  * FKPlayerDelegate is now set to FKPlayer and no more passed through FKPlayer.play(_:at:).  
+  * Show or hide native playback controls using FKPlayer.showPlaybackControls().
+  * While playing, control programmatically the playback with FKPlayer.pause(), FKPlayer.resume() or FKPlayer.seek(to:).
+  * Get the current playback position with FKPlayer.currentTime.
+  * ScalingMode becomes FKPlayer.VideoGravity.
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific swift">
+<p>v1.3.3<span>2018-11-29</span></p>
+<pre>
+Build with Swift 4.2 (Xcode 10).
+New:
+* AppStore distribution bug fix.
+* Framework includes bitcode.
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific swift">
+<p>v1.3.1<span>2018-11-20</span></p>
+<pre>
+Build with Swift 4.2 (Xcode 10).
+New:
+* Add FKStreamerDelegate.streamer(_:didBecomeLive:) that notifies as soon as the stream is LIVE on Firekast Servers, meaning the stream is broadcast and VOD is getting recorded.
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific swift">
+<p>v1.3.0<span>2018-10-11</span></p>
+<pre>
+Build with Swift 4.2 (Xcode 10).
+New:
+* Support Swift 4.2
+* FKPlayer supports controlStyle and scaleMode options
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific swift">
+<p>v1.2.2<span>2018-09-27</span></p>
+<pre>
+Build with Swift 4.1.2 (Xcode 9.4.1).
+New:
+* Call capture() on camera to get a snapshot of the camera preview
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific swift">
+<p>v1.2.1<span>2018-09-20</span></p>
+<pre>
+Build with Swift 4.1.2 (Xcode 9.4.1).
+Fixes:
+* Optimizes streaming for portrait or orientation 
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific swift">
+<p>v1.2.0<span>2018-09-20</span></p>
+<pre>
+Build with Swift 4.1.2 (Xcode 9.4.1).
+What's new:
+* Objective-C retro-compatible
+* FKError replaced by NSError for Objective-C retro-compatibility
+* NSError extension method: fk() to convert NSError into FKError 
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific swift">
+<p>v1.1.1<span>2018-04-20</span></p>
+<pre>
+Built with Swift 4.1 (Xcode 9.3).
+What's new:
+* Minor fixes
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific swift">
+<p>v1.1.0<span>2018-01-08</span></p>
+<pre>
+Built with Swift 4.0.3 (Xcode 9.2).
+What's new:
+* 100% documented.
+* Refactoring, Streamer and Player, functions and parameters should be more straight forward.
+* Live stream on **Facebook** and/or **Youtube** and Firekast simultaneous. See LiveStreamingPlatform.
+* Use **camera features** by enabling torch, microphone, choosing your device's camera. See Camera.
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific swift">
+<p>v1.0.0<span>2017-05-24</span></p>
+<pre>
+Built with Swift 3.1
+First release of FirekastStreamer and FirekastPlayer to stream and play video with its streamId.
+</pre>
+</blockquote>
+<blockquote class="lang-specific java">
+<p>v1.5.0<span>2019-01-28</span></p>
+<pre>
+* Abality to disable video capture while streaming with <code>setVideoCaptureEnabled</code>.
+* Renaming <code>setMicrophoneEnabled</code> into <code>setAudioCaptureEnabled</code>.
+* Fix <code>FKPlayer.Callback#onPlayerWillPlay(FKStream, FKError)</code> that used to be called with error <code>null</code> when reaching the end of a live stream.
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific java">
+<p>v1.4.0<span>2019-01-16</span></p>
+<pre>
+* FKPlayer refactoring. What's changed:
+   * Use play(FKStream stream, long at) to start playing the given stream at a specific time.
+   * While playing, use pause() and resume().
+   * Call getCurrentPosition() to get the current playback position in time.
+   * Call getState() to retrieve the current player state and setCallback(FKPlayer.Callback callback) to track events.
+   * Call setPlaybackConstrolsMargins and setPlaybackControlsBackground to customize the playback controls UI.
+   * Finally, call release() when the player is no longer required.
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific java">
+<p>v1.2.5<span>2019-01-03</span></p>
+<pre>
+* Returns the player's playback position, in milliseconds.
+* Bug fixes
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific java">
+<p>v1.2.4<span>2018-11-30</span></p>
+<pre>
+* Add FKPlayerView.Callback#onPlayerStateChanged(boolean playWhenReady, int playbackState) callback to notify of player's state changes.
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific java">
+<p>v1.2.3<span>2018-11-20</span></p>
+<pre>
+* Add FKStreamer.StreamingCallback#onStreamDidBecomeLive(@NonNull FKStream stream) callback to notify as soon as flagged LIVE on Firekast Servers, meaning the stream is actually live.
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific java">
+<p>v1.2.2<span>2018-11-09</span></p>
+<pre>
+* Add support for emulators (Android Virtual Devices) 🎉. Apps embedding the SDK can run on AVD but note that streaming is only possible for AVD with API 23 and above.
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific java">
+<p>v1.2.1<span>2018-09-27</span></p>
+<pre>
+* ExoPlayer`'s PlayerView accessor available in FKPlayerView`
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific java">
+<p>v1.2.0<span>2018-09-17</span></p>
+<pre>
+* Specify ExoPlayer dependency is not required anymore in dependencies
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific java">
+<p>v1.1.2<span>2018-06-21</span></p>
+<pre>
+* HTTP request bug fix.
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific java">
+<p>v1.1.1<span>2018-05-11</span></p>
+<pre>
+What's new:
+* Fix aspect ratio issue.
+* Fix camera position issue in FKCameraFragment.Builder.
+* Retrieve FKStreamer in FKCamera ready callback. 
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific java">
+<p>v1.1.0<span>2018-03-29</span></p>
+<pre>
+What's new:
+* 100% documented.
+* Refactoring, FKStreamer and FKPlayerView, functions and parameters should be more straight forward.
+* Introducing FKStream object with its stream id, state and more. 
+* Live stream on **Facebook** and/or **Youtube** and Firekast simultaneous. See FKOutput.
+* Use **camera features** by enabling torch, microphone, choosing your device's camera. See FKCamera.
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific java">
+<p>v1.0.0<span>2017-05-25</span></p>
+<pre>
+First release.
+</pre>
+</blockquote>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
