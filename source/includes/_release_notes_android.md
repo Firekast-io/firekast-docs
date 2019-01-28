@@ -1,4 +1,13 @@
 <blockquote class="lang-specific java">
+<p>v1.5.0<span>2019-01-28</span></p>
+<pre>
+* Abality to disable video capture while streaming with <code>setVideoCaptureEnabled</code>.
+* Renaming <code>setMicrophoneEnabled</code> into <code>setAudioCaptureEnabled</code>.
+* Fix <code>FKPlayer.Callback#onPlayerWillPlay(FKStream, FKError)</code> that used to be called with error <code>null</code> when reaching the end of a live stream.
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific java">
 <p>v1.4.0<span>2019-01-16</span></p>
 <pre>
 * FKPlayer refactoring. What's changed:

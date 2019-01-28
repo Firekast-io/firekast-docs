@@ -1,4 +1,13 @@
 <blockquote class="lang-specific swift">
+<p>v1.5.0<span>2019-01-25</span></p>
+<pre>
+Built with Swift 4.2.1 (Xcode 10.1).
+* Abality to disable video capture while streaming with <code>isVideoCaptureEnabled</code>.
+* Renaming <code>isMicrophoneEnabled</code> into <code>isAudioCaptureEnabled</code>.
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific swift">
 <p>v1.4.0<span>2019-01-16</span></p>
 <pre>
 Built with Swift 4.2.1 (Xcode 10.1).
