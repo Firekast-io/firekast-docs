@@ -19,6 +19,7 @@ search: false
 includes:
   - release_notes_ios
   - release_notes_android
+  - release_notes_js
 
 ---
 
