@@ -137,6 +137,12 @@ Firekast.init({
 
 <p class="lang-specific javascript">Several options are available to import Firekast Javascript SDK in your project.<br/><br/>Note that the JS SDK is not yet available on the public npm registry. Please, <a href="https://firekast.zendesk.com/hc/en-gb/requests/new">let us know</a> if you would love so.</p> 
 
+<p class="lang-specific swift">
+For <strong>Objective-C</strong> projects:
+</p>
+<ul class="lang-specific swift"><li>Set <code>Always Embed Swift Standard Libraries</code> to <code>Yes</code> in your project Build Settings. Otherwise you will encounter a <code>dyld: Library not loaded</code> error.</li>
+<li>Use <code>#import "Firekast/Firekast-Swift.h"</code> to import Firekast SDK in your code.</li></ul>
+
 <aside class="notice lang-specific javascript">
 You must replace <code>YOUR_APP_PUBLIC_KEY</code> with your <a href="#api-keys">public key</a>, available in app's settings in your dashboard.</a>.
 </aside>
