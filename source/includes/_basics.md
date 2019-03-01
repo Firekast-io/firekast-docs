@@ -54,6 +54,8 @@ It is available in the Firekast dashboard, within your application and looks lik
 
 
 
-## Active users
+## Active Users
 
-Each new device (mobile or web) that reaches our server is counted as a new active user once a month.
+In the <strong>current month</strong>, every <strong>new device</strong> (mobile or web) that reaches our server is counted as a new Active User for the month.
+
+<aside class="warning"><a href="https://firekast.io/pricing">Plans</a> are based on both active users and simultaneous live streams. Be warned that streams creation will be rejected as soon as the limit is reached.<br/>We highly recommand to move on a paid plan as soon as you go on production.</aside>
