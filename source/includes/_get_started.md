@@ -149,7 +149,7 @@ Min Deployment Target: iOS 8.0 >=
 </aside>
 
 <aside class="notice lang-specific java">
-Min Android SDK: 16 >=
+Min Android SDK: 19 >=
 </aside>
 
 <!--
