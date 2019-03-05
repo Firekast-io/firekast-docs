@@ -1,8 +1,12 @@
-# SDK | Player
+# SDK - Player
 
 The player lets you play any stream of your current application. Whether the stream is live or VOD, the player will figure it out and adapt its UI.
 
 ## Initialization
+
+<blockquote class="lang-specific swift">
+<p>The player is based on <code><a href="https://developer.apple.com/documentation/avkit/avplayerviewcontroller">AVPlayerViewController</a></code>.</p>
+</blockquote>
 
 ```swift
 override func viewDidLoad() {
@@ -43,26 +47,18 @@ mPlayer = mPlayerView.getPlayer();
   });
   const player = new Firekast.Player({
     parent_id:   '#player',
-    stream_id:   'THE_STREAM_ID'
+    stream_id:   'STREAM_ID'
   });
 </script>
 ```
 
-For each platform, we wrap the most common player so we expose only methods that count.
+For each platform, we wrapped the most common player and its methods to make it simpler and expose what's count.
 
 <aside class="notice">
 Video ratio is 16:9. If your view does not fit this ratio, the player automatically fit inside the video with automatic padding to maintain its ratio.
 </aside>
 
-<aside class="notice lang-specific swift">
-The player is based on <code><a href="https://developer.apple.com/documentation/avkit/avplayerviewcontroller">AVPlayerViewController</a></code>.
-</aside>
-
-<aside class="notice lang-specific javascript">
-Replace <code>THE_STREAM_ID</code> with the stream-you-want-to-watch's id.
-</aside>
-
-## Play and stop
+## Play and Stop
 
 ```swift
 let stream = FKStream(withoutDataExceptStreamId: "STREAM_ID")
@@ -80,7 +76,7 @@ player.seek(to: CMTime(seconds: 30, preferredTimescale: 1))
 ```
 
 ```java
-FKStream stream = FKStream.newEmptyInstance("THE_STREAM_ID")
+FKStream stream = FKStream.newEmptyInstance("STREAM_ID")
 mPlayer.play(stream);
 ```
 
@@ -120,19 +116,21 @@ player.destroy()
 
 The player aims to be very simple. 
 
-Play a stream. The player will fetch the stream (if necessary) and start playing right away.
+Call `play` to start playing the stream right away, whether the stream is live or VOD.
 
-The playback controller UI automatically adapts whether the player is playing a live or VOD stream.
+The playback controller UI adapts automatically depending on the state of the stream.
 
 Once playing, video can be paused and resumed programmatically if needed.
 
 Use <code>seek</code> to set the current playback time to a specified time.
 
-<aside class="notice lang-specific swift java">
-Replace <code>THE_STREAM_ID</code> with the stream-you-want-to-watch's id.
+When playing a live that finally reaches its ends, the playback stops at the end of the live and allows to replay the stream as a VOD.
+
+<aside class="notice">
+Replace <code>STREAM_ID</code> with the streamId of the stream you want to watch.
 </aside>
 
-## Listen for player events
+## Events
 
 ```swift
 func player(_ player: FKPlayer, stateDidChanged state: FKPlayer.State) {}
@@ -170,7 +168,9 @@ player.on('ready', () => player.play());
 
 ```
 
-You may want to listen for player callback so you can adapt adapt your UI accordingly. Indeed, since the stream is fetched internally to determine whether its live, vod, etc... the request can fail. There is no retry strategy so you may notify your user about the failure.
+You may want to listen for player callback so you can update your UI accordingly. 
+
+Note that the stream may need to be fetched (automatically by the SDK) first before it can be played. For some reason it is possible that the request fails. You should definitely notify your User about that failure so User can retry eventually.
 
 ## UI Customization
 
@@ -201,5 +201,5 @@ We provide basic customization of the playback controls UI.
 <p>Please <a href="mailto:contact@firekast.io">let us know</a> if you need more control over the player UI.</p>
 
 <aside class="notice lang-specific swift java">
-<code>FKPlayer</code> provides all the tools (resume, pause, seek) to let you eventually build your custom playback controls.
+<code>FKPlayer</code> provides all the tools (<code>resume</code>, <code>pause</code>, <code>seek</code>, playback position) to let you eventually build your custom playback controls.
 </aside>

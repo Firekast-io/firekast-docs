@@ -1,26 +1,28 @@
-# SDK | Streamer
+# SDK - Streamer
 
 <blockquote class="lang-specific javascript">
 <p>The javascript SDK currently only supports <a href="#watch-live-or-replay-as-vod">live and vod</a> content playback, not publishing.</p>
 </blockquote>
 
-The streamer handles the stream creation and let you stream on your application.
+The streamer is responsible for creating streams and actually sends frames and audio for live broadcasting.
 
-## Create streams
+## Create Streams
 
 ```swift
-streamer.requestStream()
+streamer.createStream()
 ```
 
 ```java
-mStreamer.requestStream(new MyFKRequestStreamCallback());
+mStreamer.createStream(new AppCreateStreamCallback());
 ```
 
-Before being able to start streaming, you must first create a stream. This will create a stream on Firekast server.
+First step to do live broadcasting is to create a stream.
+
+This call provisions server resources to handle live streaming, create and returns a [stream](#sdk-stream) with state `waiting`. Waiting for frames and audio to be sent.
 
 This newly created stream is immediatly visible in your dashboard.
 
-## Start and stop streaming
+## Go Live
 
 <blockquote class="lang-specific swift java">
 <p>Start streaming</p>
@@ -31,7 +33,7 @@ streamer.startStreaming(on: stream, delegate: self)
 ```
 
 ```java
-mStreamer.startStreaming(stream, new MyFKStreamingCallback());
+mStreamer.startStreaming(stream, new AppStreamingCallback());
 ```
 
 <blockquote class="lang-specific swift java">
@@ -48,53 +50,68 @@ mStreamer.stopStreaming()
 
 Once you have created a stream, you can start streaming whenever your User is ready.
 
+Then, stop streaming whenever your User is done.
 
-## Events while streaming
+<aside class="notice">
+It is good practise to call <code>stopStreaming()</code> when User leaves the dedicated screen.
+</aside>
+
+## Events
 
 ```swift
-func streamer(_ streamer: FKStreamer, willStart stream: FKStream?, unless error: NSError?) {}
+func streamer(_ streamer: FKStreamer, willStart stream: FKStream, unless error: NSError?) {}
 func streamer(_ streamer: FKStreamer, didBecomeLive stream: FKStream) {}
-func streamer(_ streamer: FKStreamer, didStop stream: FKStream?, error: NSError?) {}
-func streamer(_ streamer: FKStreamer, networkQualityDidUpdate rating: Float) {}
+func streamer(_ streamer: FKStreamer, didStop stream: FKStream, error: NSError?) {}
+func streamer(_ streamer: FKStreamer, didUpdateStreamHealth health: Float) {}
 ```
 
 ```java
-private class MyStreamingCallback implements FKStreamer.StreamingCallback {
+private class AppStreamingCallback implements FKStreamer.StreamingCallback {
   @Override
-  public void onSteamWillStartUnless(@Nullable FKStream stream, @Nullable FKError error) {}
+  public void onSteamWillStartUnless(@NonNullable FKStream stream, @Nullable FKError error) {}
   
   @Override
   public void onStreamDidBecomeLive(@NonNullable FKStream stream) {}
   
   @Override
-  public void onStreamDidStop(@Nullable FKStream stream, FKError error) {}
+  public void onStreamDidStop(@NonNullable FKStream stream, FKError error) {}
   
   @Override
   public void onStreamingUpdateAvailable(boolean lag) {}
 }
 ```
 
-When start streaming you might want to adapt your UI depending on events. You will be notified whether the streaming starts properly, stops normally or prematurely, and streaming conditions.
+Your app can rely on the streamer events to adapt its UI. Events notify whether the live broadcasting has started properly or failed, stopped normally or prematurely, and how the live stream is performing.
 
-<aside class="notice">Once <code>startStreaming</code> is called, frames are sent to Firekast’s servers. We guarantee that frames are stored and that stream is live as soon as stream's state is <code>live</code>, SDK provides <code>didBecomeLive</code> callback for that.</aside>
+<aside class="notice">Once <code>startStreaming</code> is called, frames and audio are being sent to our server. However we guarantee that frames and audio are recorded (VOD) and are live as soon as stream's state is <code>live</code>. The SDK provides <code>didBecomeLive</code> callback for that.</aside>
 
 <aside class="notice">
-A stream can be stopped by the SDK if network conditions has been low for too long), on the dashboard, or by the server. So you should adapt your UI/UX accordingly.
+Since a stream can be stopped in many ways (SDK, dashboard, server), it is important to rely `didStop` callback to update your UI.
 </aside>
 
-## Restream social
+## Restream
 
 ```swift
-streamer.requestStream(outputs: [])
+streamer.createStream(outputs: listOfRtmpLink) { (stream, error) in 
+ // ...
+}
 ```
 
 ```java
-mStreamer.requestStream(listOfOutputs, new MyFKRequestStreamCallback());
+mStreamer.createStream(mListOfRtmpLink, new AppCreateStreamCallback());
 ```
 
-Firekast lets you push your live stream to several live streaming platform, such as Facebook or Youtube, simultaneously.
+Firekast allows to push your live stream simultaneously to other live streaming platforms, such as Facebook, Youtube, etc...
 
-If you want to repush on social networks, you must provide corresponding information so the server could create a special stream.
+Refer to the targeted platform API docs to find out how to generate a live stream and get its RTMP link.
+
+<aside class="notice">
+Note that the stream remains pushed to Firekast so it's still accessible on your mobile or web app.
+</aside>
+
+<aside class="warning">
+For the moment, Firekast allows <strong>3 restreams max</strong> per stream. Please <a href="https://firekast.zendesk.com/hc/en-gb/requests/new">contact us</a> if you need more.
+</aside>
 
 ## Test bandwidth
 

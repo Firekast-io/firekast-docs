@@ -4,6 +4,29 @@ Before we start, let's introduce some Firekast basics concepts. You may already 
 
 *Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less. -- Marie Curie*
 
+## Apps
+
+On your [dashboard](https://dashboard.firekast.io), you can create as many applications as you like. 
+
+A Firekast application has:
+
+* a name.
+* a plan, free or paying, see [pricing](https://firekast.io/pricing).
+* a unique (and renewalable) set of private and public [keys](#api-keys).
+* list associated videos regardless of their status (live, VOD...).
+
+Each of these information are editable later.
+
+An application can be deleted if you decide so.
+
+<aside class="warning">
+Deleting an application <strong>deletes</strong> all its videos. This cannot be undone.
+</aside>
+
+<aside class="success">
+For a given end application we recommand you create 2 Firekast applications: one for your <strong>development</strong>, the other to go for <strong>production</strong>.
+</aside>
+
 ## API Keys
 
 API keys allow to initialize SDKs so they can request our REST API. Firekast provides a set of two (renewable) API keys : one that **must** remain private and one that aims to be public. 
@@ -26,31 +49,11 @@ To improve security we rethink how SDKs get initialized and introduced private a
 Prefer to update mobile SDKs and use private keys instead of using clientKey and applicationId.
 </aside>
 
-## Application
+## Stream ID
 
-On your dashboard, you can create as many applications as you like. An application is identified with its unique **applicationId** and gathers all the streams you have made using this id.
+The unique identifier for a stream, see [stream.id](#id).
 
-To create an application, you must specify a *name* (usually your company name or app name), and specify a *plan* (free or paying, see [pricing](https://firekast.zendesk.com/hc/en-gb/requests/new)). Each of these information can be edited later.
-
-An application can be deleted if you decide so.
-
-<aside class="warning">
-If an application is deleted, all the videos it contains will be deleted as well.
-</aside>
-
-## applicationId
-
-The id that uniquely identifies an application.
-
-It is available in the Firekast dashboard and looks like `e8078520-0ccf-35e7-8493-034e3c17d8c0`.
-
-## streamId
-
-The id that uniquely identifies a stream in your application. See [stream.id](#id).
-
-It is available in the Firekast dashboard, within your application and looks like `d17j39tg4noar25g3`.
-
-
+It is available though our SDKs, visible in the dashboard, and looks like `d17j39tg4noar25g3`.
 
 ## Active Users
 
