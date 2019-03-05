@@ -4,28 +4,26 @@ Before we start, let's introduce some Firekast basics concepts. You may already 
 
 *Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less. -- Marie Curie*
 
-## API key
+## API Keys
 
-The API key allows you to make a restricted set of calls through our REST API. 
-The API only allows calls to get streams for playback, typically for use with our JS Player.
+API keys allow to initialize SDKs so they can request our REST API. Firekast provides a set of two (renewable) API keys : one that **must** remain private and one that aims to be public. 
 
-<aside>
-With custom authorizations, our APIs can be used on your backend to list your streams and manage your applications.
-<a href="https://firekast.zendesk.com/hc/en-gb/requests/new">contact us</a> to discuss your needs.
-</aside>
+### Private key
 
-<aside>
-The API key is not intended to be used with the Android or iOS SDKs, for these you should use the [clientKey](#clientkey) as detailed below.
-</aside>
+Use this key to initialize the mobile SDK and make HTTPS requests.
 
-## clientKey
+### Public key
 
-This is your private account key. It is created once you create an account on Firekast dashboard. This key is needed for mobile SDK initialization.
-
-It is available in Firekast dashboard and looks like `c8178e40-0ccf-35e7-a17c-5b26c0cf5f87`.
+Use this key to initialize the JavaScript Player.
 
 <aside class="warning">
-Keep your client key it private, do NOT share it!
+The private key <strong>must</strong> remain confidential. It allows, among other things, to create and delete videos. Do not use the private key in your public website when using Firekast WebPlayerJS as source code is visible to anyone.
+</aside>
+
+<aside class="notice">
+Note that <strong>clientKey</strong> and <strong>applicationId</strong> are now <strong>deprecated</strong>.<br/>
+To improve security we rethink how SDKs get initialized and introduced private and public keys.<br/>
+Prefer to update mobile SDKs and use private keys instead of using clientKey and applicationId.
 </aside>
 
 ## Application

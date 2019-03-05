@@ -47,7 +47,7 @@ import Firekast
 
 ```swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-  Firekast.initialize(clientKey: "YOUR_CLIENT_KEY", applicationId: "YOUR_APPLICATION_ID")
+  Firekast.initialize(privateKey: "YOUR_APP_PRIVATE_KEY")
 }
 ```
 
@@ -92,7 +92,7 @@ dependencies {
 </blockquote>
 
 ```java
-Firekast.initialize(this, "YOUR_CLIENT_KEY", "YOUR_APPLICATION_ID");
+Firekast.initialize(this, "YOUR_APP_PRIVATE_KEY");
 ```
 
 <blockquote class="lang-specific javascript">
@@ -127,7 +127,7 @@ define(["firekast"], function(Firekast) {
 
 ```javascript
 Firekast.init({
-  api_key: 'YOUR_API_KEY'
+  api_key: 'YOUR_APP_PUBLIC_KEY'
 });
 ```
 
@@ -138,11 +138,11 @@ Firekast.init({
 <p class="lang-specific javascript">Several options are available to import Firekast Javascript SDK in your project.<br/><br/>Note that the JS SDK is not yet available on the public npm registry. Please, <a href="https://firekast.zendesk.com/hc/en-gb/requests/new">let us know</a> if you would love so.</p> 
 
 <aside class="notice lang-specific javascript">
-You must replace <code>YOUR_API_KEY</code> with your personal <a href="#api-key">API key</a>, available in the Firekast dashboard.</a>.
+You must replace <code>YOUR_APP_PUBLIC_KEY</code> with your <a href="#api-keys">public key</a>, available in app's settings in your dashboard.</a>.
 </aside>
 
 <aside class="notice lang-specific java swift">
-You must replace <code>YOUR_CLIENT_KEY</code> and <code>YOUR_APPLICATION_ID</code> with your personal <a href="#clientkey">clientKey</a> and <a href="#applicationid">app's id</a>, both available in the Firekast dashboard.</aside>
+You must replace <code>YOUR_APP_PRIVATE_KEY</code> with your app <a href="#api-keys">private key</a>, available in app's settings in your dashboard.</aside>
 
 <aside class="notice lang-specific swift">
 Min Deployment Target: iOS 8.0 >=
@@ -151,12 +151,6 @@ Min Deployment Target: iOS 8.0 >=
 <aside class="notice lang-specific java">
 Min Android SDK: 19 >=
 </aside>
-
-<!--
-<aside class="notice">
-To activate the javascript SDK, you must add your website domains (eg. https://www.pscp.tv) so only your app is able to make requests. This can be done in your dashboard app settings.
-</aside>
--->
 
 ## Live stream
 
@@ -290,7 +284,7 @@ mPlayer.play(stream);
 <div id="player"></div>
 <script>
   Firekast.API.init({
-    api_key: 'YOUR_API_KEY'
+    api_key: 'YOUR_APP_PUBLIC_KEY'
   });
   const player = new Firekast.Player({
     parent_id:   '#player',
