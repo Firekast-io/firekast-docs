@@ -12,8 +12,8 @@ use_frameworks!
 
 ```swift
 # Set the same version name X.Y.Z. for both Firekast and VideoCore pod.
-pod 'Firekast', :podspec => 'http://firekast.io/sdk/ios/v1.4.0/Firekast.podspec'
-pod 'VideoCore', :git => 'https://github.com/Firekast-io/VideoCore.git', :tag => 'fk-1.4.0'
+pod 'Firekast', :podspec => 'https://firekast.io/sdk/ios/vX.Y.Z/Firekast.podspec'
+pod 'VideoCore', :git => 'https://github.com/Firekast-io/VideoCore.git', :tag => 'fk-X.Y.Z'
 
 # Please note, first `pod install` may be long, please be patient :)
 ```
@@ -70,7 +70,7 @@ allprojects {
 
 ```java
 dependencies {
-  implementation('io.firekast:firekast:1.4.0') // {
+  implementation('io.firekast:firekast:X.Y.Z') // {
   //   exclude group: "com.android.support"
   // }
   // ☝️ Uncomment above lines if targeting API 26 and below
@@ -143,6 +143,10 @@ You must replace <code>YOUR_APP_PUBLIC_KEY</code> with your <a href="#api-keys">
 
 <aside class="notice lang-specific java swift">
 You must replace <code>YOUR_APP_PRIVATE_KEY</code> with your app <a href="#api-keys">private key</a>, available in app's settings in your dashboard.</aside>
+
+<aside class="notice lang-specific java swift">
+<strong>X.Y.Z</strong>: visit <a href="#release-notes">Release Notes</a> section to find out the latest version of the SDK.
+</aside>
 
 <aside class="notice lang-specific swift">
 Min Deployment Target: iOS 8.0 >=
