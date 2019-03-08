@@ -113,48 +113,53 @@ Note that the stream remains pushed to Firekast so it's still accessible on your
 For the moment, Firekast allows <strong>3 restreams max</strong> per stream. Please <a href="https://firekast.zendesk.com/hc/en-gb/requests/new">contact us</a> if you need more.
 </aside>
 
-## Test bandwidth
+## Test Bandwidth
 
 <blockquote class="lang-specific swift java">
-<p>First, use <code>testBandwidth</code> method to start streaming on a test stream (content is not recorded).</p>
+<p>Testing bandwidth for 15 seconds</p>
 </blockquote>
 
 ```swift
-let testDuration: TimeInterval = 10
-streamer.testBandwidth(duration: testDuration, delegate: self)
+let testDuration: TimeInterval = 15
+streamer.startStreaming(on: FKStream.bandwidthTest, delegate: self)
+DispatchQueue.main.asyncAfter(deadline: .now() + testDuration) { [weak self] in
+  guard let this = self else { return }
+  this.streamer.stopStreaming()
+}
 ```
 
 ```java
-long testDuration = 15000;
-mStreamer.testBandwidth(testDuration, this);
+long durationMs = 15000;
+mStreamer.startStreaming(FKStream.bandwidthTest, new AppStreamingCallback());
+mHandler.sendEmptyMessageDelayed(MSG_TEST_BANDWIDTH_STOP_STREAMING, durationMs)
 ```
-<blockquote class="lang-specific swift">
-<p>Then, watch <code>FKStreamerDelegate</code> and average <code>rating</code> values to estimate whether User streaming condition is good enough.</p>
-</blockquote>
 
-<blockquote class="lang-specific java">
-<p>Then, watch <code>FKStreamer.Callback</code> and count how often lag is `true`. A lag is fired each time the SDK encounters difficulty to send a frame, meaning bad network conditions.</p>
+<blockquote class="lang-specific swift java">
+<p>Observe stream health</p>
 </blockquote>
 
 ```swift
-func streamer(_ streamer: FKStreamer, networkQualityDidUpdate rating: Float) {
-    // rating from 0 (bad) to 1 (excellent network conditions)
-  }
+func streamer(_ streamer: FKStreamer, didUpdateStreamHealth health: Float) {
+  // stream health between 70-100% is good.
+}
 ```
 
 ```java
 @Override
-public void onStreamingUpdateAvailable(boolean lag) {
-  // check for lag == true occurences. Too often is bad.
+public void onStreamHealthDidUpdate(boolean congestion, float health) {
+    // congestion means frames and audio is waiting for network to be sent. Note that, while congested, the camera preview stucks on the frame and will resume as soon as data is sent.
+    // stream health between 70-100% is good.
 }
 ```
 
-Call `testBandwidth` method to simulate live streaming and estimate User's current bandwidth quality by watching streamer callback.
+Run a test bandwidth to know whether the network is good enough to provide a healthy live stream.
 
-What's behind the scene? 
+Running a test bandwidth consists of streaming on a dummy stream `FKStream.testBandwidth`, that our server recognizes and whose frames and audio are not recorded. Then, while streaming, observe `onStreamDidUpdate`'s streamer callback to estimate the global streaming performance of the test.
 
-This method puts User in real streaming conditions by starting streaming camera frames and audio to Firekast servers but nothing is actually recorded.
+The stream health indicates how the live stream is performing. A stream health around 70-100% indicates that the live stream is good.
+
+If the stream health falls below this range for a consistent period, it suggests the network may not be capable of providing a healthy live stream.
 
 <aside class="notice">
-We recommand test duration to be between 2 and 30 seconds. The longer the more accurate.
+We recommand test duration to be between 5 and 30 seconds. The longer the more accurate.
 </aside>
