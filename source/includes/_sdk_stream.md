@@ -85,6 +85,8 @@ curl -X PUT \
 
 It can be updated as soon as the stream is created and can be retrieved by fetching the stream.
 
+<aside class="notice">Note that, metadata lenght must be <= 512. Please <a href="https://firekast.zendesk.com/hc/en-gb/requests/new">contact us</a> if you need more.</aside>
+
 ## Find All
 
 <blockquote class="lang-specific swift java shell"><p>Fetch your app's streams, starting with the most recent.</p></blockquote>
