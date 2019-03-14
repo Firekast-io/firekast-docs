@@ -162,6 +162,11 @@ Min Deployment Target: iOS 8.0 >=
 Min Android SDK: 19 >=
 </aside>
 
+
+<blockquote class="lang-specific swift">
+<p>3. Specify camera and microphone usage description in your <code>info.pList</code></p>
+</blockquote>
+
 ## Live stream
 
 ```swift
@@ -214,15 +219,17 @@ public void handleClick(View view) {
 }
 ```
 
-<blockquote class="lang-specific javascript">
-<p>The javascript SDK currently only supports <a href="#watch-live-or-replay-as-vod">live and vod</a> content playback, not publishing.</p>
+<blockquote class="lang-specific javascript shell">
+<p class="lang-specific shell">Streams can be created using our mobile streaming SDKs.</p>
+<p class="lang-specific javascript">The javascript SDK currently only supports <a href="#watch-live-or-replay-as-vod">live and vod</a> content playback, not publishing.</p>
 </blockquote>
 
-This is all you need to do to live stream the device camera 👉
 
-First, you must request for a stream and then, call start streaming method whenever your User decides to.
+This is all you need to do to live stream the device camera.
 
-## Restream simultaneously
+First, you must request for a stream and then, call start streaming method whenever your User is ready.
+
+## Restream simultaneously to multiple platforms
 
 ```swift
 // 1. Checkout desired platforms API to create a RTMP link ready to receive a live stream.
@@ -248,7 +255,7 @@ outputs.add(youtubeRtmpLink);
 mStreamer.createStream(outputs, new AppCreateStreamCallback());
 ```
 
-Firekast allows to push your live stream simultaneously to other live streaming platforms, such as Facebook, Youtube, etc...
+Firekast allows to push your live stream simultaneously to other live streaming platforms and social medias, such as Facebook, Youtube, Twitch, Periscope etc...
 
 <aside class="notice">
 Note that the stream remains pushed to Firekast so it's still accessible on your mobile or web app.
@@ -258,7 +265,7 @@ Note that the stream remains pushed to Firekast so it's still accessible on your
 For the moment, Firekast allows <strong>3 restreams max</strong> per stream. Please <a href="https://firekast.zendesk.com/hc/en-gb/requests/new">contact us</a> if you need more.
 </aside>
 
-## Access camera features
+## Camera Features
 
 ```swift
 camera.position = .back // opens back camera
@@ -324,11 +331,11 @@ mPlayer.play(stream);
 <div id="player"></div>
 <script>
   Firekast.API.init({
-    api_key: 'YOUR_APP_PUBLIC_KEY'
+    public_key: 'YOUR_APP_PUBLIC_KEY'
   });
   const player = new Firekast.Player({
     parent_id:   '#player',
-    stream_id:   'THE_STREAM_ID'
+    stream_id:   'STREAM_ID'
   });
 </script>
 ```
@@ -338,3 +345,17 @@ The player figures out whether the stream is live or VOD. Its UI gets updated ac
 <aside class="notice">
 Once a live is completed, the stream becomes instantly available for VOD playback.
 </aside>
+
+## Making HTTP requests
+
+<blockquote class="lang-specific shell"><p>Authorization header using your app's api key.</p></blockquote>
+```shell
+curl https://api.firekast.io/v2/apps/myapp/streams \
+    -H 'Authorization: SDK %YOUR-APP-PRIVATE-KEY%'
+ ```
+
+<blockquote class="lang-specific swift java javascript"><p>switch language tab to 'cURL' to view sample HTTP requests</p></blockquote>
+
+You can use your private key to make authorized http requests to out API.
+
+Check out our full [REST API documentation](https://firekast-doc.herokuapp.com/v2/)

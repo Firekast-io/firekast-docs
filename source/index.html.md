@@ -5,6 +5,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - swift: iOS
   - java: android
   - javascript
+  - shell: cURL
 
 toc_headers:
   - <a href='https://firekast.io/'>🏡 firekast.io</a>
@@ -20,7 +21,7 @@ search: false
 includes:
   - welcome
   - basics
-  - demos
+  - sample_apps
   - get_started
   - sdk_stream
   - sdk_streamer

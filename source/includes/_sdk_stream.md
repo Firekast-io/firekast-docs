@@ -1,32 +1,41 @@
 # SDK - Stream
 
-<blockquote class="lang-specific">
- <p>Our APIs can be used on your backend to list your streams and manage your applications.</p>
- <p><a href="https://firekast.zendesk.com/hc/en-gb/requests/new" target="blank">Contact us to discuss your needs.</a></p>
-</blockquote>
-
-A stream describes one video content. A stream is unique and is associated to an application.
+A stream describes one video content. A stream is unique and is **associated to an [application](#apps)**.
 
 ## id
 
-This is the unique String identifier of the object, assigned once at the stream creation time (`createStream`).
+<blockquote class="lang-specific shell"><p>Fetch a stream from our API using its ID:</p></blockquote>
 
-See also [streamId](#stream-id).
+```shell
+curl https://api.firekast.io/v2/streams/%YOUR-STREAM-ID% -H 'Authorization: SDK %YOUR-APP-PRIVATE-KEY%'
+```
+
+<blockquote class="lang-specific shell"><p>Delete a stream:</p></blockquote>
+```shell
+# This operation is not recoverable.
+curl -X DELETE \
+    https://api.firekast.io/v2/streams/%YOUR-STREAM-ID% \
+    -H 'Authorization: SDK %YOUR-APP-PRIVATE-KEY%' 
+```
+
+The unique identifier for a stream, assigned once at the stream creation time (`createStream`).
+It is available though mobile SDKs, visible in the dashboard, and looks like `d17j39tg4noar25g3`.
 
 ## state
 
-During its life time, a stream goes though different states:
+During its life time, a stream goes though predefined states:
 
-* waiting: the stream has been created and is waiting to receive frames and audio from `FKStreamer`.
-* timeout: the stream has been waiting for too long and has been destroyed.
-* live: the stream is live.
-* processing: transitioning from live to vod state.
-* vod: the stream is available for replay.
+* `waiting`: the stream has been created and is waiting to receive frames and audio from the [streamer](#sdk-streamer).
+* `live`: the stream is [live](#go-live) and available for [playback](#sdk-player) immediately.
+* `vod`: the stream is available for [playback](#sdk-player) immediately.
+* `timeout`: the stream stopped and has not received any data.
+* `processing`: this state is used by our VOD upload API - If you want to use this API, please [contact us](https://firekast.zendesk.com/hc/en-gb/requests/new).
 
-Stream's lifecycle can be either:
+The typical live stream lifecycle is `waiting` → `live` → `vod`.
 
-* Expected behavior: `waiting` → `live` → `processing` → `vod`
-* In case no frame and audio received until ingest timeout: `waiting` → `timeout`.
+If a stream has been `waiting` but never received video data from the streamer, it transitions to `timeout`.
+
+If a stream is `live` and stops receiving video data, it transitions to `vod`.
 
 ## timeout
 
@@ -38,8 +47,79 @@ let timeout: Date = stream.ingestTimeout // available only when stream's state i
 Date timeout = stream.getIngestTimeout() // available only when stream's state is WAITING.
 ```
 
-When a stream is created we provision accordingly resources on our servers while waiting for frames and audio. As we cannot block resources forever, we introduced a timeout date (`ingestTimeout`) after which we free server resources for the given stream. Usually a stream waits for frames and audio for about 10 minutes. 
+The stream timeout deadline (`ingestTimeout`) is a date available while a stream state is `waiting`. After that date, if a streamer hasn't started streaming, the stream's state transitions to `timeout`. It can no longer serve a live broadcast, and doesn't yield any content for playback.
 
-After that date, the stream's state becomes `timeout` and is no more able to receive data.
+If your application no longer uses a stream, you should [stop it](#stop-streaming) explicitely to ensure it frees ressources allocated and immediately stops counting against your [simultanous streamers](#simultaneous-streamers) quota.
 
-Timeout date is available only when stream's state is `waiting`.
+
+## metadata
+
+<blockquote class="lang-specific shell"><p>Update stream's metadata:</p></blockquote>
+
+```swift
+let metadata = ["title":"Awesome title", "description": "An awesome video with awesome people."]
+guard metadata.isValidFirekastMetadata() else { return }
+stream.updateMetadata(with: metadata) { (error) in
+  //...
+}
+```
+
+```java
+Map<String, String> metadata = new HashMap<>();
+metadata.put("title", "Awesome title");
+metadata.put("description", "An awesome video with awesome people.");
+if (FKStream.isMetadataValid(metadata)) {
+    mStream.updateMetadata(metadata, new AppStreamCallback());
+}
+```
+
+```shell
+# The metadata string must be a valid json string.
+curl -X PUT \
+    https://api.firekast.io/v2/streams/%STREAM-ID% \
+    -H 'Authorization: SDK %YOUR-APP-PRIVATE-KEY%' \
+    -d 'metadata={"field":"value","field2":"value2","field3":"value3"}'
+```
+
+`metadata` is a useful stream's property, which you can use to store structured information, by providing a map of key / pair string values.
+
+It can be updated as soon as the stream is created and can be retrieved by fetching the stream.
+
+<aside class="notice">Note that, metadata lenght must be <= 512. Please <a href="https://firekast.zendesk.com/hc/en-gb/requests/new">contact us</a> if you need more.</aside>
+
+## Find All
+
+<blockquote class="lang-specific swift java shell"><p>Fetch your app's streams, starting with the most recent.</p></blockquote>
+
+```shell
+# with states: all, live, timeout, waiting, vod, processing 
+curl https://api.firekast.io/v2/apps/myapp/streams \
+    -H 'Authorization: SDK %YOUR-APP-PRIVATE-KEY%' \
+    -F state=all \
+    -F pageNumber=1 \
+    -F pageSize=20
+```
+
+```swift
+FKStream.findAll() { (numOfPages: Int, pageNumber: Int, pageSize: Int, count: Int, streams, error) in
+  // ...
+}
+```
+
+```java
+FKStream.findAll(0, 100, null, new AppFindAllCallback());
+```
+
+<blockquote class="lang-specific swift java"><p>Add a where clause to filter by state.</p></blockquote>
+
+```swift
+FKStream.findAll(where: .vod) { (numOfPages: Int, pageNumber: Int, pageSize: Int, count: Int, streams, error) in
+  // ...
+}
+```
+
+```java
+FKStream.findAll(0, 100, FKStream.State.VOD, new AppFindAllCallback());
+```
+
+If needed, we provide an easy way to fetch your app's streams.

@@ -1,10 +1,11 @@
 # SDK - Streamer
 
-<blockquote class="lang-specific javascript">
-<p>The javascript SDK currently only supports <a href="#watch-live-or-replay-as-vod">live and vod</a> content playback, not publishing.</p>
+<blockquote class="lang-specific javascript shell">
+<p class="lang-specific shell">Streams can be created using mobile SDKs.</p>
+<p class="lang-specific javascript">The javascript SDK currently only supports <a href="#watch-live-or-replay-as-vod">live and vod</a> content playback, not publishing.</p>
 </blockquote>
 
-The streamer is responsible for creating streams and actually sends frames and audio for live broadcasting.
+The streamer is responsible for creating streams and actually sends frames and audio for live streaming.
 
 ## Create Streams
 
@@ -25,7 +26,7 @@ This newly created stream is immediatly visible in your dashboard.
 ## Go Live
 
 <blockquote class="lang-specific swift java">
-<p>Start streaming</p>
+<p>Start streaming:</p>
 </blockquote>
 
 ```swift
@@ -35,10 +36,21 @@ streamer.startStreaming(on: stream, delegate: self)
 ```java
 mStreamer.startStreaming(stream, new AppStreamingCallback());
 ```
+### Start streaming
 
-<blockquote class="lang-specific swift java">
-<p>Stop streaming</p>
+Once you have created a stream, you can start streaming whenever your User is ready.
+<aside class="notice">You must start streaming before <a href="#timeout">timeout</a>.</aside>
+
+<blockquote class=
+"lang-specific swift java shell">
+<p>Stop streaming:</p>
 </blockquote>
+
+```shell
+curl -X POST \
+    https://api.firekast.io/v2/streams/%STREAM-ID%/stop \
+    -H 'Authorization: SDK %YOUR-APP-PRIVATE-KEY%' 
+```
 
 ```swift
 streamer.stopStreaming()
@@ -47,14 +59,11 @@ streamer.stopStreaming()
 ```java
 mStreamer.stopStreaming()
 ```
-
-Once you have created a stream, you can start streaming whenever your User is ready.
+### Stop streaming
 
 Then, stop streaming whenever your User is done.
 
-<aside class="notice">
-It is good practise to call <code>stopStreaming()</code> when User leaves the dedicated screen.
-</aside>
+<aside class="notice">You should call <code>stopStreaming()</code> when User leaves the dedicated streaming screen.</aside>
 
 ## Events
 
@@ -81,19 +90,19 @@ private class AppStreamingCallback implements FKStreamer.StreamingCallback {
 }
 ```
 
-Your app can rely on the streamer events to adapt its UI. Events notify whether the live broadcasting has started properly or failed, stopped normally or prematurely, and how the live stream is performing.
+Your app can rely on the streamer events to adapt its UI. Events notify whether the live streaming has started properly or failed, stopped normally or prematurely, and how the live stream is performing.
 
 <aside class="notice">Once <code>startStreaming</code> is called, frames and audio are being sent to our server. However we guarantee that frames and audio are recorded (VOD) and are live as soon as stream's state is <code>live</code>. The SDK provides <code>didBecomeLive</code> callback for that.</aside>
 
 <aside class="notice">
-Since a stream can be stopped in many ways (SDK, dashboard, server), it is important to rely `didStop` callback to update your UI.
+Since a stream can be stopped in many ways (SDK, dashboard, server), it is important to rely on <code>didStop</code> callback to update your UI.
 </aside>
 
 ## Restream
 
 ```swift
 streamer.createStream(outputs: listOfRtmpLink) { (stream, error) in 
- // ...
+  // ...
 }
 ```
 
@@ -101,7 +110,7 @@ streamer.createStream(outputs: listOfRtmpLink) { (stream, error) in
 mStreamer.createStream(mListOfRtmpLink, new AppCreateStreamCallback());
 ```
 
-Firekast allows to push your live stream simultaneously to other live streaming platforms, such as Facebook, Youtube, etc...
+Firekast allows to push your live stream simultaneously to other live streaming platforms and social medias, such as Facebook, Youtube, Twitch, Periscope etc...
 
 Refer to the targeted platform API docs to find out how to generate a live stream and get its RTMP link.
 
@@ -163,3 +172,23 @@ If the stream health falls below this range for a consistent period, it suggests
 <aside class="notice">
 We recommand test duration to be between 5 and 30 seconds. The longer the more accurate.
 </aside>
+
+## Quality
+
+```swift
+streamer.quality = .standard
+```
+
+```java
+mStreamer.setQuality(FKQuality.STANDARD);
+```
+
+Mobile SDKs stream at the highest possible resolution allowed by your plan.
+
+In case your internet connection does not provide sufficient bandwidth, SDK will degrade encoding quality to keep up with available bandwidth at the target resolution. 
+
+However, we still encourage to run a [test bandwidth](#test-bandwidth) before creating a stream. Depending on the outcome of that test, you may decide to start streaming at a lower resolution in order to provide your Users a smooth streaming experience and consistent image quality.
+
+<aside class="notice">Once streamer starts encoding, it is not possible to change the resolution on the fly.</aside>
+
+<!-- <aside class="warning">You are responsible of targetting a resolution inferior or equal that is handled by your plan, otherwise <code>createStream</code> will fail.</aside> -->
