@@ -68,3 +68,39 @@ curl -X PUT \
 
 You can edit stream metadata as soon as the stream has been created.
 
+## Find All
+
+<blockquote class="lang-specific swift java shell"><p>Fetch your app's streams, starting with the most recent.</p></blockquote>
+
+```shell
+# with states: all, live, timeout, waiting, vod, processing 
+curl https://api.firekast.io/v2/apps/myapp/streams \
+    -H 'Authorization: SDK %YOUR-APP-PRIVATE-KEY%' \
+    -F state=all \
+    -F pageNumber=1 \
+    -F pageSize=20
+```
+
+```swift
+FKStream.findAll() { (numOfPages: Int, pageNumber: Int, pageSize: Int, count: Int, streams, error) in
+  // ...
+}
+```
+
+```java
+FKStream.findAll(0, 100, null, new AppFindAllCallback());
+```
+
+<blockquote class="lang-specific swift java"><p>Add a where clause to filter by state.</p></blockquote>
+
+```swift
+FKStream.findAll(where: .vod) { (numOfPages: Int, pageNumber: Int, pageSize: Int, count: Int, streams, error) in
+  // ...
+}
+```
+
+```java
+FKStream.findAll(0, 100, FKStream.State.VOD, new AppFindAllCallback());
+```
+
+If needed, we provide an easy way to fetch your app's streams.

@@ -6,17 +6,6 @@ Before we start, let's introduce some Firekast basics concepts. You may already 
 
 ## Apps
 
-<blockquote class="lang-specific shell"><p>Fetching your streams, starting with the most recent.</p></blockquote>
-
-```shell
-# with states: all, live, timeout, waiting, vod, processing 
-curl https://api.firekast.io/v2/apps/myapp/streams \
-    -H 'Authorization: SDK %YOUR-APP-PRIVATE-KEY%' \
-    -F state=all \
-    -F pageNumber=1 \
-    -F pageSize=20
-```
-
 On your [dashboard](https://dashboard.firekast.io), you can create as many applications as you like. 
 
 A Firekast application has:
