@@ -43,7 +43,7 @@ mPlayer = mPlayerView.getPlayer();
 <div id="player"></div>
 <script>
   Firekast.API.init({
-    api_key: 'YOUR_APP_PUBLIC_KEY'
+    public_key: 'YOUR_APP_PUBLIC_KEY'
   });
   const player = new Firekast.Player({
     parent_id:   '#player',

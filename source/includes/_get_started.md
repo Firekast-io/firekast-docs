@@ -162,6 +162,29 @@ Min Deployment Target: iOS 8.0 >=
 Min Android SDK: 19 >=
 </aside>
 
+
+<blockquote class="lang-specific swift">
+<p>3. Specify camera and microphone usage description in your <code>info.pList</code></p>
+</blockquote>
+
+
+## Making HTTP requests
+
+<blockquote class="lang-specific shell"><p>Authorization header using your app's api key.</p></blockquote>
+```shell
+curl https://api.firekast.io/v2/apps/myapp/streams \
+    -H 'Authorization: SDK %YOUR-APP-PRIVATE-KEY%'
+ ```
+
+<blockquote class="lang-specific swift java javascript"><p>switch language tab to 'cURL' to view sample HTTP requests</p></blockquote>
+
+You can use your private key to make authorized http requests to out API.
+
+Check out our full [REST api documentation](https://firekast-doc.herokuapp.com/v2/)
+
+
+
+
 ## Live stream
 
 ```swift
@@ -214,15 +237,17 @@ public void handleClick(View view) {
 }
 ```
 
-<blockquote class="lang-specific javascript">
-<p>The javascript SDK currently only supports <a href="#watch-live-or-replay-as-vod">live and vod</a> content playback, not publishing.</p>
+<blockquote class="lang-specific javascript shell">
+<p class="lang-specific shell">Streams can be created using our mobile streaming SDKs.</p>
+<p class="lang-specific javascript">The javascript SDK currently only supports <a href="#watch-live-or-replay-as-vod">live and vod</a> content playback, not publishing.</p>
 </blockquote>
+
 
 This is all you need to do to live stream the device camera 👉
 
 First, you must request for a stream and then, call start streaming method whenever your User decides to.
 
-## Restream simultaneously
+## Restream simultaneously to multiple social medias
 
 ```swift
 // 1. Checkout desired platforms API to create a RTMP link ready to receive a live stream.
@@ -324,11 +349,11 @@ mPlayer.play(stream);
 <div id="player"></div>
 <script>
   Firekast.API.init({
-    api_key: 'YOUR_APP_PUBLIC_KEY'
+    public_key: 'YOUR_APP_PUBLIC_KEY'
   });
   const player = new Firekast.Player({
     parent_id:   '#player',
-    stream_id:   'THE_STREAM_ID'
+    stream_id:   'STREAM_ID'
   });
 </script>
 ```

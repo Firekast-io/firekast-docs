@@ -1,8 +1,11 @@
 # SDK - Streamer
 
-<blockquote class="lang-specific javascript">
-<p>The javascript SDK currently only supports <a href="#watch-live-or-replay-as-vod">live and vod</a> content playback, not publishing.</p>
+<blockquote class="lang-specific javascript shell">
+<p class="lang-specific shell">Streams can be created using our mobile streaming SDKs.</p>
+<p class="lang-specific javascript">The javascript SDK currently only supports <a href="#watch-live-or-replay-as-vod">live and vod</a> content playback, not publishing.</p>
 </blockquote>
+
+
 
 The streamer is responsible for creating streams and actually sends frames and audio for live broadcasting.
 
@@ -27,7 +30,6 @@ This newly created stream is immediatly visible in your dashboard.
 <blockquote class="lang-specific swift java">
 <p>Start streaming</p>
 </blockquote>
-
 ```swift
 streamer.startStreaming(on: stream, delegate: self)
 ```
@@ -35,10 +37,21 @@ streamer.startStreaming(on: stream, delegate: self)
 ```java
 mStreamer.startStreaming(stream, new AppStreamingCallback());
 ```
+###Start streaming
 
-<blockquote class="lang-specific swift java">
+Once you have created a stream, you can start streaming whenever your User is ready.
+<aside class="notice">You need to start streaming before <a href="#timeout">timeout</a></aside>
+
+<blockquote class=
+"lang-specific swift java shell">
 <p>Stop streaming</p>
 </blockquote>
+
+```shell
+curl -X POST \
+    https://api.firekast.io/v2/streams/%YOUR-STREAM-ID%/stop \
+    -H 'Authorization: SDK %YOUR-APP-PRIVATE-KEY%' 
+```
 
 ```swift
 streamer.stopStreaming()
@@ -47,14 +60,11 @@ streamer.stopStreaming()
 ```java
 mStreamer.stopStreaming()
 ```
-
-Once you have created a stream, you can start streaming whenever your User is ready.
+###Stop streaming
 
 Then, stop streaming whenever your User is done.
 
-<aside class="notice">
-It is good practise to call <code>stopStreaming()</code> when User leaves the dedicated screen.
-</aside>
+<aside class="notice"> You should call <code>stopStreaming()</code> when User leaves the dedicated streaming screen.</aside>
 
 ## Events
 
