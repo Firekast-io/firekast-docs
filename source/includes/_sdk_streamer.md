@@ -1,13 +1,11 @@
 # SDK - Streamer
 
 <blockquote class="lang-specific javascript shell">
-<p class="lang-specific shell">Streams can be created using our mobile streaming SDKs.</p>
+<p class="lang-specific shell">Streams can be created using mobile SDKs.</p>
 <p class="lang-specific javascript">The javascript SDK currently only supports <a href="#watch-live-or-replay-as-vod">live and vod</a> content playback, not publishing.</p>
 </blockquote>
 
-
-
-The streamer is responsible for creating streams and actually sends frames and audio for live broadcasting.
+The streamer is responsible for creating streams and actually sends frames and audio for live streaming.
 
 ## Create Streams
 
@@ -28,8 +26,9 @@ This newly created stream is immediatly visible in your dashboard.
 ## Go Live
 
 <blockquote class="lang-specific swift java">
-<p>Start streaming</p>
+<p>Start streaming:</p>
 </blockquote>
+
 ```swift
 streamer.startStreaming(on: stream, delegate: self)
 ```
@@ -37,19 +36,19 @@ streamer.startStreaming(on: stream, delegate: self)
 ```java
 mStreamer.startStreaming(stream, new AppStreamingCallback());
 ```
-###Start streaming
+### Start streaming
 
 Once you have created a stream, you can start streaming whenever your User is ready.
-<aside class="notice">You need to start streaming before <a href="#timeout">timeout</a></aside>
+<aside class="notice">You must start streaming before <a href="#timeout">timeout</a>.</aside>
 
 <blockquote class=
 "lang-specific swift java shell">
-<p>Stop streaming</p>
+<p>Stop streaming:</p>
 </blockquote>
 
 ```shell
 curl -X POST \
-    https://api.firekast.io/v2/streams/%YOUR-STREAM-ID%/stop \
+    https://api.firekast.io/v2/streams/%STREAM-ID%/stop \
     -H 'Authorization: SDK %YOUR-APP-PRIVATE-KEY%' 
 ```
 
@@ -60,11 +59,11 @@ streamer.stopStreaming()
 ```java
 mStreamer.stopStreaming()
 ```
-###Stop streaming
+### Stop streaming
 
 Then, stop streaming whenever your User is done.
 
-<aside class="notice"> You should call <code>stopStreaming()</code> when User leaves the dedicated streaming screen.</aside>
+<aside class="notice">You should call <code>stopStreaming()</code> when User leaves the dedicated streaming screen.</aside>
 
 ## Events
 
@@ -91,19 +90,19 @@ private class AppStreamingCallback implements FKStreamer.StreamingCallback {
 }
 ```
 
-Your app can rely on the streamer events to adapt its UI. Events notify whether the live broadcasting has started properly or failed, stopped normally or prematurely, and how the live stream is performing.
+Your app can rely on the streamer events to adapt its UI. Events notify whether the live streaming has started properly or failed, stopped normally or prematurely, and how the live stream is performing.
 
 <aside class="notice">Once <code>startStreaming</code> is called, frames and audio are being sent to our server. However we guarantee that frames and audio are recorded (VOD) and are live as soon as stream's state is <code>live</code>. The SDK provides <code>didBecomeLive</code> callback for that.</aside>
 
 <aside class="notice">
-Since a stream can be stopped in many ways (SDK, dashboard, server), it is important to rely `didStop` callback to update your UI.
+Since a stream can be stopped in many ways (SDK, dashboard, server), it is important to rely on <code>didStop</code> callback to update your UI.
 </aside>
 
 ## Restream
 
 ```swift
 streamer.createStream(outputs: listOfRtmpLink) { (stream, error) in 
- // ...
+  // ...
 }
 ```
 

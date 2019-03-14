@@ -38,21 +38,19 @@ Deleting an application <strong>deletes</strong> all its videos. This cannot be 
 For a given end application we recommand you create 2 Firekast applications: one for your <strong>development</strong>, the other to go for <strong>production</strong>.
 </aside>
 
-
 ## API Keys
 
 API keys allow to initialize SDKs so they can request our REST API. Firekast provides a set of two (renewable) API keys : one that **must** remain private and one that aims to be public. 
 
 ### Private key
 
-Use this key to initialize our SDKs and make authorized HTTPS requests.
+Use this key to initialize mobile SDKs and make authorized HTTPS requests.
 
 <aside class="warning">The private key <strong>must</strong> remain confidential. It allows, among other things, to create and delete videos. <strong>Do not use this key in a web browser</strong>.</aside>
 
 ### Public key
 
 Use this key to initialize the web player.
-
 
 ### SDK v1.4.x and before
 
@@ -62,9 +60,9 @@ Until the release of our SDK v1.5 updates, the SDKs would use a combination of <
 
 Please refer to our [sample app repository](#sample-apps) history for sample code using `clientKey` and `applicationId`.
 
-We recommend that you upgrade regularly to the [latest SDK version](#release-notes), as we keep adding new features based on your feedback.
+We recommend that you upgrade regularly to the [latest SDK version](#release-notes), as we keep adding new features based on your feedbacks.
 
-## Simultaneous streamers
+## Simultaneous Streamers
 
 As soon as a streamer creates a live stream, it starts counting in your app's simultaneous streamer count until the live session is done. Both `waiting` and `live` [stream states](#state) are counted when it comes to your app's subscription plan.
  
@@ -74,8 +72,7 @@ Live streams come with a [timeout](#timeout), and should be [stopped](#stop-stre
 
 In the **current month**, each **new device** (mobile or web) that reaches our server is counted as a new Active User.
 
-
-## Free trial terms
+## Free Trial Terms
 
 We recommand to upgrade your app to a paid plan before going to production.
 

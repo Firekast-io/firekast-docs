@@ -243,9 +243,9 @@ public void handleClick(View view) {
 </blockquote>
 
 
-This is all you need to do to live stream the device camera 👉
+This is all you need to do to live stream the device camera.
 
-First, you must request for a stream and then, call start streaming method whenever your User decides to.
+First, you must request for a stream and then, call start streaming method whenever your User is ready.
 
 ## Restream simultaneously to multiple social medias
 

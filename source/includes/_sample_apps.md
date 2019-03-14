@@ -1,4 +1,4 @@
-# Sample apps
+# Sample Apps
 
 <blockquote class="lang-specific swift">
 <p>We provide sample app in both Swift and Objective-C.</p>

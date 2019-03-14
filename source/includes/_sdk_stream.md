@@ -4,13 +4,13 @@ A stream describes one video content. A stream is unique and is **associated to 
 
 ## id
 
-<blockquote class="lang-specific shell"><p>Fetching a stream form our api using its ID</p></blockquote>
+<blockquote class="lang-specific shell"><p>Fetch a stream from our API using its ID:</p></blockquote>
 
 ```shell
 curl https://api.firekast.io/v2/streams/%YOUR-STREAM-ID% -H 'Authorization: SDK %YOUR-APP-PRIVATE-KEY%'
 ```
 
-<blockquote class="lang-specific shell"><p>Deleting a stream.</p></blockquote>
+<blockquote class="lang-specific shell"><p>Delete a stream:</p></blockquote>
 ```shell
 # This operation is not recoverable.
 curl -X DELETE \
@@ -19,8 +19,7 @@ curl -X DELETE \
 ```
 
 The unique identifier for a stream, assigned once at the stream creation time (`createStream`).
-It is available though our SDKs, visible in the dashboard, and looks like `d17j39tg4noar25g3`.
-
+It is available though mobile SDKs, visible in the dashboard, and looks like `d17j39tg4noar25g3`.
 
 ## state
 
@@ -30,13 +29,13 @@ During its life time, a stream goes though predefined states:
 * `live`: the stream is [live](#go-live) and available for [playback](#sdk-player) immediately.
 * `vod`: the stream is available for [playback](#sdk-player) immediately.
 * `timeout`: the stream stopped and has not received any data.
-* `processing`: this state is used by our VOD upload API - If you want to use this api, please [contact us](https://firekast.zendesk.com/hc/en-gb/requests/new).
+* `processing`: this state is used by our VOD upload API - If you want to use this API, please [contact us](https://firekast.zendesk.com/hc/en-gb/requests/new).
 
 The typical live stream lifecycle is `waiting` → `live` → `vod`.
 
-If a stream is `live` and stops receiving video data, it transitions to `vod`.
-
 If a stream has been `waiting` but never received video data from the streamer, it transitions to `timeout`.
+
+If a stream is `live` and stops receiving video data, it transitions to `vod`.
 
 ## timeout
 
@@ -55,11 +54,12 @@ If your application no longer uses a stream, you should [stop it](#stop-streamin
 
 ## metadata
 
-<blockquote class="lang-specific shell"><p>Updating stream metadata</p></blockquote>
+<blockquote class="lang-specific shell"><p>Update stream's metadata:</p></blockquote>
+
 ```shell
 # The metadata string must be a valid json string.
 curl -X PUT \
-    https://api.firekast.io/v2/streams/%YOUR-STREAM-ID% \
+    https://api.firekast.io/v2/streams/%STREAM-ID% \
     -H 'Authorization: SDK %YOUR-APP-PRIVATE-KEY%' \
     -d 'metadata={"field":"value","field2":"value2","field3":"value3"}'
 ```
