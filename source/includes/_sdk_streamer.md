@@ -172,3 +172,23 @@ If the stream health falls below this range for a consistent period, it suggests
 <aside class="notice">
 We recommand test duration to be between 5 and 30 seconds. The longer the more accurate.
 </aside>
+
+## Quality
+
+```swift
+streamer.quality = .standard
+```
+
+```java
+mStreamer.setQuality(FKQuality.STANDARD);
+```
+
+Mobile SDKs stream at the highest possible resolution allowed by your plan.
+
+In case your internet connection does not provide sufficient bandwidth, SDK will degrade encoding quality to keep up with available bandwidth at the target resolution. 
+
+However, we still encourage to run a [test bandwidth](#test-bandwidth) before creating a stream. Depending on the outcome of that test, you may decide to start streaming at a lower resolution in order to provide your Users a smooth streaming experience and consistent image quality.
+
+<aside class="notice">Once streamer starts encoding, it is not possible to change the resolution on the fly.</aside>
+
+<!-- <aside class="warning">You are responsible of targetting a resolution inferior or equal that is handled by your plan, otherwise <code>createStream</code> will fail.</aside> -->
