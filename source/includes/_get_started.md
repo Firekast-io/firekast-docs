@@ -247,7 +247,7 @@ This is all you need to do to live stream the device camera.
 
 First, you must request for a stream and then, call start streaming method whenever your User is ready.
 
-## Restream simultaneously to multiple social medias
+## Restream simultaneously to multiple platforms
 
 ```swift
 // 1. Checkout desired platforms API to create a RTMP link ready to receive a live stream.
@@ -273,7 +273,7 @@ outputs.add(youtubeRtmpLink);
 mStreamer.createStream(outputs, new AppCreateStreamCallback());
 ```
 
-Firekast allows to push your live stream simultaneously to other live streaming platforms, such as Facebook, Youtube, etc...
+Firekast allows to push your live stream simultaneously to other live streaming platforms and social medias, such as Facebook, Youtube, Twitch, Periscope etc...
 
 <aside class="notice">
 Note that the stream remains pushed to Firekast so it's still accessible on your mobile or web app.
@@ -283,7 +283,7 @@ Note that the stream remains pushed to Firekast so it's still accessible on your
 For the moment, Firekast allows <strong>3 restreams max</strong> per stream. Please <a href="https://firekast.zendesk.com/hc/en-gb/requests/new">contact us</a> if you need more.
 </aside>
 
-## Access camera features
+## Camera Features
 
 ```swift
 camera.position = .back // opens back camera

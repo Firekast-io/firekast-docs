@@ -64,9 +64,9 @@ curl -X PUT \
     -d 'metadata={"field":"value","field2":"value2","field3":"value3"}'
 ```
 
-`metadata` is a usefull stream property, which you can use to store structured information, by providing a map of key / pair string values. When later fetching this stream, it will yield the given metadata.
+`metadata` is a useful stream's property, which you can use to store structured information, by providing a map of key / pair string values.
 
-You can edit stream metadata as soon as the stream has been created.
+It can be updated as soon as the stream is created and can be retrieved by fetching the stream.
 
 ## Find All
 

@@ -53,10 +53,12 @@ We recommend that you upgrade regularly to the [latest SDK version](#release-not
 
 ## Simultaneous Streamers
 
-As soon as a streamer creates a live stream, it starts counting in your app's simultaneous streamer count until the live session is done. Both `waiting` and `live` [stream states](#state) are counted when it comes to your app's subscription plan.
- 
-Live streams come with a [timeout](#timeout), and should be [stopped](#stop-streaming) when you are done using them.
+As soon as a streamer creates a live stream, it starts counting a new **simultaneous streamer** until the live session is done. 
 
+A stream with state `waiting` and `live` [stream states](#state) **increases** by 1 the simultaneous streamer counter.
+
+A stream with state `timeout` or `vod` [stream states](#state) **decreases** by 1 the simultaneous streamer counter.
+ 
 ## Active Users
 
 In the **current month**, each **new device** (mobile or web) that reaches our server is counted as a new Active User.

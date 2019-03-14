@@ -110,7 +110,7 @@ streamer.createStream(outputs: listOfRtmpLink) { (stream, error) in
 mStreamer.createStream(mListOfRtmpLink, new AppCreateStreamCallback());
 ```
 
-Firekast allows to push your live stream simultaneously to other live streaming platforms, such as Facebook, Youtube, etc...
+Firekast allows to push your live stream simultaneously to other live streaming platforms and social medias, such as Facebook, Youtube, Twitch, Periscope etc...
 
 Refer to the targeted platform API docs to find out how to generate a live stream and get its RTMP link.
 
