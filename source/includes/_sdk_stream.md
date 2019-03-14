@@ -56,6 +56,23 @@ If your application no longer uses a stream, you should [stop it](#stop-streamin
 
 <blockquote class="lang-specific shell"><p>Update stream's metadata:</p></blockquote>
 
+```swift
+let metadata = ["title":"Awesome title", "description": "An awesome video with awesome people."]
+guard metadata.isValidFirekastMetadata() else { return }
+stream.updateMetadata(with: metadata) { (error) in
+  //...
+}
+```
+
+```java
+Map<String, String> metadata = new HashMap<>();
+metadata.put("title", "Awesome title");
+metadata.put("description", "An awesome video with awesome people.");
+if (FKStream.isMetadataValid(metadata)) {
+    mStream.updateMetadata(metadata, new AppStreamCallback());
+}
+```
+
 ```shell
 # The metadata string must be a valid json string.
 curl -X PUT \
