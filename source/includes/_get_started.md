@@ -167,24 +167,6 @@ Min Android SDK: 19 >=
 <p>3. Specify camera and microphone usage description in your <code>info.pList</code></p>
 </blockquote>
 
-
-## Making HTTP requests
-
-<blockquote class="lang-specific shell"><p>Authorization header using your app's api key.</p></blockquote>
-```shell
-curl https://api.firekast.io/v2/apps/myapp/streams \
-    -H 'Authorization: SDK %YOUR-APP-PRIVATE-KEY%'
- ```
-
-<blockquote class="lang-specific swift java javascript"><p>switch language tab to 'cURL' to view sample HTTP requests</p></blockquote>
-
-You can use your private key to make authorized http requests to out API.
-
-Check out our full [REST api documentation](https://firekast-doc.herokuapp.com/v2/)
-
-
-
-
 ## Live stream
 
 ```swift
@@ -363,3 +345,17 @@ The player figures out whether the stream is live or VOD. Its UI gets updated ac
 <aside class="notice">
 Once a live is completed, the stream becomes instantly available for VOD playback.
 </aside>
+
+## Making HTTP requests
+
+<blockquote class="lang-specific shell"><p>Authorization header using your app's api key.</p></blockquote>
+```shell
+curl https://api.firekast.io/v2/apps/myapp/streams \
+    -H 'Authorization: SDK %YOUR-APP-PRIVATE-KEY%'
+ ```
+
+<blockquote class="lang-specific swift java javascript"><p>switch language tab to 'cURL' to view sample HTTP requests</p></blockquote>
+
+You can use your private key to make authorized http requests to out API.
+
+Check out our full [REST API documentation](https://firekast-doc.herokuapp.com/v2/)
