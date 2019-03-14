@@ -41,7 +41,7 @@ Use this key to initialize mobile SDKs and make authorized HTTPS requests.
 
 Use this key to initialize the web player.
 
-### SDK v1.4.x and before
+### SDK v1.5.x and before
 
 <aside class="notice">
 Until the release of our SDK v1.5 updates, the SDKs would use a combination of <strong>clientKey</strong> and <strong>applicationId</strong>. These are being <strong>deprecated</strong> in favor of private and public key scopes.<br/>
