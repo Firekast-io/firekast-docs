@@ -49,7 +49,7 @@ Until the release of our SDK v1.5 updates, the SDKs would use a combination of <
 
 Please refer to our [sample app repository](#sample-apps) history for sample code using `clientKey` and `applicationId`.
 
-We recommend that you upgrade regularly to the [latest SDK version](#release-notes), as we keep adding new features based on your feedbacks.
+We recommend that you upgrade regularly to the [latest SDK version](#release-notes), as we keep adding new features based on your feedback.
 
 ## Simultaneous Streamers
 

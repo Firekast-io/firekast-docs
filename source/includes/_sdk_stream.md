@@ -87,7 +87,7 @@ It can be updated as soon as the stream is created and can be retrieved by fetch
 
 <aside class="notice">Note that, metadata lenght must be <= 512. Please <a href="https://firekast.zendesk.com/hc/en-gb/requests/new">contact us</a> if you need more.</aside>
 
-## Find All
+## Query
 
 <blockquote class="lang-specific swift java shell"><p>Fetch your app's streams, starting with the most recent.</p></blockquote>
 
@@ -122,4 +122,7 @@ FKStream.findAll(where: .vod) { (numOfPages: Int, pageNumber: Int, pageSize: Int
 FKStream.findAll(0, 100, FKStream.State.VOD, new AppFindAllCallback());
 ```
 
-If needed, we provide an easy way to fetch your app's streams.
+We provide an easy way to fetch your app's streams.
+
+However, we recommend that you manage the streamIDs in your own backend.
+
