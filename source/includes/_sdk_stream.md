@@ -126,3 +126,25 @@ We provide an easy way to fetch your app's streams.
 
 However, we recommend that you manage the streamIDs in your own backend.
 
+## Force Close
+
+```swift
+stream.forceClose { (error) in
+  //...
+}
+```
+
+```java
+mStream.forceClose(new AppStreamCallback());
+```
+
+```shell
+// TODO
+```
+
+Call this function when your user has created a stream but abandoned the idea of going live. That way, the stream moves from state `waiting` to `timeout` instantaneously and your plan's **simultaneous streamer** counter decreases by 1.
+
+<aside class="warning">Calling this function <b>does not</b> call <a href=stop-and-stop-streaming>stopStreaming</a>.</aside>
+
+<aside class="warning">Calling this function <b>while streaming</b> (<code>live</code>) causes <b>data loss</b>! Indeed the streamer continues streaming but server resources has been released and is no more receiving frames and audio.</aside>
+
