@@ -1,4 +1,27 @@
 <blockquote class="lang-specific swift">
+<p>v1.6.0<span>2019-03-20</span></p>
+<pre>
+Built with Swift 4.2.1 (Xcode 10.1).
+<code></code>
+* Security: new API auth keys available in your app settings. Use <code>privateKey</code> to initialize the SDK instead of deprecated <code>clientKey</code> and <code>applicationID</code>. This key must remain confidential.
+* Errors: description readibility has been improved to help support.
+* Restream: we decided to let you choose the platform to which you want to live stream. You are no longer dependent on our implementation, provide us with the RTMP link and that's it. So <code>FKOutput</code> has been abandonned.
+* Delegate's methods in Swift code now support <code>Error</code> instead of <code>NSError</code>.
+* Test Bandwidth: start streaming on <code>FKStream.bandwidthTest</code> stream and observe <code>FKStreamerDelegate.didUpdateStreamHealth(...)</code>.
+* <code>FKStreamer</code>:
+  * <code>requestStream</code> becomes <code>createStream</code>.
+  * <code>stream</code> in delegate's methods is no more optional since it is actually always known.
+  * <code>quality</code>: ability to change the quality for the next created streams.
+  * We have replaced the network quality measure with the notion of stream health. Method <code>networkQualityDidUpdate</code> becomes <code>didUpdateStreamHealth</code>. <strong>We consider that 70% is the minimum rate for a healthy live stream.</strong> Moreover, this value has become more reliable.
+  * Objective-C streamer orientation constants are now prefixed with <code>FKStreamerOrientation</code>.
+* <code>FKStream</code>: 
+  * Query for your app's streams using <code>findAll(...)</code>.
+  * <code>forceClose()</code> allows to force close a stream in case your User created a stream and you know for sure that User will finally not go live.
+  * Objective-C <code>FKStream</code>'s <code>streamId</code> becomes <code>id</code>.
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific swift">
 <p>v1.5.0<span>2019-01-25</span></p>
 <pre>
 Built with Swift 4.2.1 (Xcode 10.1).
