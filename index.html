@@ -208,7 +208,7 @@
       <script src="javascripts/all_nosearch.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;swift&quot;,&quot;java&quot;,&quot;javascript&quot;,&quot;shell&quot;]">
+  <body class="index" data-languages="[&quot;swift&quot;,&quot;objective_c&quot;,&quot;java&quot;,&quot;javascript&quot;,&quot;shell&quot;]">
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXH3F9L"
       height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="#" id="nav-button">
@@ -224,7 +224,8 @@
         </ul>
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
-              <a href="#" data-language-name="swift">iOS</a>
+              <a href="#" data-language-name="swift">swift</a>
+              <a href="#" data-language-name="objective_c">objective-c</a>
               <a href="#" data-language-name="java">android</a>
               <a href="#" data-language-name="javascript">javascript</a>
               <a href="#" data-language-name="shell">cURL</a>
@@ -312,7 +313,7 @@
                     <a href="#go-live" class="toc-h2 toc-link" data-title="Go Live">Go Live</a>
                   </li>
                   <li>
-                    <a href="#events" class="toc-h2 toc-link" data-title="Events">Events</a>
+                    <a href="#streamer-events" class="toc-h2 toc-link" data-title="Streamer Events">Streamer Events</a>
                   </li>
                   <li>
                     <a href="#restream" class="toc-h2 toc-link" data-title="Restream">Restream</a>
@@ -335,7 +336,7 @@
                     <a href="#play-and-stop" class="toc-h2 toc-link" data-title="Play and Stop">Play and Stop</a>
                   </li>
                   <li>
-                    <a href="#events" class="toc-h2 toc-link" data-title="Events">Events</a>
+                    <a href="#player-events" class="toc-h2 toc-link" data-title="Player Events">Player Events</a>
                   </li>
                   <li>
                     <a href="#ui-customization" class="toc-h2 toc-link" data-title="UI Customization">UI Customization</a>
@@ -428,13 +429,13 @@ Until the release of our SDK v1.5 updates, the SDKs would use a combination of <
 If you reach the <strong>free plan</strong> limits, <a href="#create-streams">creating</a> a stream, or <a href="#play-and-stop">watching</a> a stream will temporarily result in a 402 error.
 </aside>
 <h1 id='sample-apps'>Sample Apps</h1>
-<blockquote class="lang-specific swift">
-<p>We provide sample app in both Swift and Objective-C.</p>
+<blockquote class="lang-specific swift objective_c">
+<p>We provide sample apps in both Swift and Objective-C.</p>
 <p>Visit <a href="https://github.com/Firekast-io/firekast-demo-ios">firekast-demo-ios</a>.</p>
 </blockquote>
 
 <blockquote class="lang-specific java">
-<p>We provide sample app in both Kotlin and Java.</p>
+<p>We provide sample apps in both Kotlin and Java.</p>
 <p>Visit <a href="https://github.com/Firekast-io/firekast-demo-android">firekast-demo-android</a>.</p>
 </blockquote>
 
@@ -447,37 +448,75 @@ If you reach the <strong>free plan</strong> limits, <a href="#create-streams">cr
 <li>a player with a play button.</li>
 </ul>
 <h1 id='getting-started'>Getting Started</h1><h2 id='installation'>Installation</h2>
-<blockquote class="lang-specific swift">
+<blockquote class="lang-specific swift objective_c">
 <p>1. Edit your podfile</p>
 </blockquote>
 <pre class="highlight swift tab-swift"><code><span class="n">use_frameworks</span><span class="o">!</span>
-</code></pre><pre class="highlight swift tab-swift"><code><span class="cp"># Set the same version name X.Y.Z. for both Firekast and VideoCore pod.</span>
+
+<span class="cp"># Set the same version name X.Y.Z. for both Firekast and VideoCore pod.</span>
 <span class="n">pod</span> <span class="err">'</span><span class="kt">Firekast</span><span class="err">'</span><span class="p">,</span> <span class="p">:</span><span class="n">podspec</span> <span class="o">=&gt;</span> <span class="err">'</span><span class="nv">https</span><span class="p">:</span><span class="c1">//firekast.io/sdk/ios/vX.Y.Z/Firekast.podspec'</span>
 <span class="n">pod</span> <span class="err">'</span><span class="kt">VideoCore</span><span class="err">'</span><span class="p">,</span> <span class="p">:</span><span class="n">git</span> <span class="o">=&gt;</span> <span class="err">'</span><span class="nv">https</span><span class="p">:</span><span class="c1">//github.com/Firekast-io/VideoCore.git', :tag =&gt; 'fk-X.Y.Z'</span>
 
 <span class="cp"># Please note, first `pod install` may be long, please be patient :)</span>
-</code></pre>
-<blockquote class="lang-specific swift">
-<p>2. Run in terminal</p>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="n">use_frameworks</span><span class="o">!</span>
+
+<span class="cp"># Set the same version name X.Y.Z. for both Firekast and VideoCore pod.
+</span><span class="n">pod</span> <span class="err">'</span><span class="n">Firekast</span><span class="err">'</span><span class="p">,</span> <span class="o">:</span><span class="n">podspec</span> <span class="o">=&gt;</span> <span class="err">'</span><span class="n">https</span><span class="o">:</span><span class="c1">//firekast.io/sdk/ios/vX.Y.Z/Firekast.podspec'
+</span><span class="n">pod</span> <span class="err">'</span><span class="n">VideoCore</span><span class="err">'</span><span class="p">,</span> <span class="o">:</span><span class="n">git</span> <span class="o">=&gt;</span> <span class="err">'</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/Firekast-io/VideoCore.git', :tag =&gt; 'fk-X.Y.Z'
+</span>
+<span class="cp"># Please note, first `pod install` may be long, please be patient :)
+</span></code></pre>
+<blockquote class="lang-specific swift objective_c">
+<p>2. Run</p>
 </blockquote>
-<pre class="highlight swift tab-swift"><code><span class="n">pod</span> <span class="n">install</span>
+<pre class="highlight swift tab-swift"><code><span class="o">&gt;</span> <span class="n">pod</span> <span class="n">install</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="o">&gt;</span> <span class="n">pod</span> <span class="n">install</span>
 </code></pre>
-<blockquote class="lang-specific swift">
+<blockquote class="lang-specific swift objective_c">
 <p>3. Specify camera and microphone usage description in your <code>info.pList</code></p>
 </blockquote>
 <pre class="highlight swift tab-swift"><code><span class="o">&lt;</span><span class="n">key</span><span class="o">&gt;</span><span class="kt">NSCameraUsageDescription</span><span class="o">&lt;/</span><span class="n">key</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="kt">Camera</span> <span class="n">usage</span> <span class="n">description</span><span class="o">&lt;/</span><span class="n">string</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="n">key</span><span class="o">&gt;</span><span class="kt">NSMicrophoneUsageDescription</span><span class="o">&lt;/</span><span class="n">key</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="kt">Microphone</span> <span class="n">usage</span> <span class="n">description</span><span class="o">&lt;/</span><span class="n">string</span><span class="o">&gt;</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="o">&lt;</span><span class="n">key</span><span class="o">&gt;</span><span class="n">NSCameraUsageDescription</span><span class="o">&lt;/</span><span class="n">key</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="n">Camera</span> <span class="n">usage</span> <span class="n">description</span><span class="o">&lt;/</span><span class="n">string</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">key</span><span class="o">&gt;</span><span class="n">NSMicrophoneUsageDescription</span><span class="o">&lt;/</span><span class="n">key</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="n">Microphone</span> <span class="n">usage</span> <span class="n">description</span><span class="o">&lt;/</span><span class="n">string</span><span class="o">&gt;</span>
 </code></pre>
-<blockquote class="lang-specific swift">
+<blockquote class="lang-specific swift objective_c">
 <p>4. Initialize the SDK</p>
 </blockquote>
 <pre class="highlight swift tab-swift"><code><span class="kd">import</span> <span class="kt">Firekast</span>
-</code></pre><pre class="highlight swift tab-swift"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplicationLaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
-  <span class="kt">Firekast</span><span class="o">.</span><span class="nf">initialize</span><span class="p">(</span><span class="nv">privateKey</span><span class="p">:</span> <span class="s">"YOUR_APP_PRIVATE_KEY"</span><span class="p">)</span>
+
+<span class="kd">@UIApplicationMain</span>
+<span class="kd">class</span> <span class="kt">AppDelegate</span><span class="p">:</span> <span class="kt">UIResponder</span><span class="p">,</span> <span class="kt">UIApplicationDelegate</span> <span class="p">{</span>
+
+  <span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplicationLaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+    <span class="kt">Firekast</span><span class="o">.</span><span class="nf">initialize</span><span class="p">(</span><span class="nv">privateKey</span><span class="p">:</span> <span class="s">"YOUR_APP_PRIVATE_KEY"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">true</span>
+  <span class="p">}</span>
+
+  <span class="c1">//...</span>
 <span class="p">}</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="cp">#import "Firekast/Firekast-Swift.h"
+</span>
+<span class="k">@implementation</span> <span class="nc">AppDelegate</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">application</span><span class="p">:(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions</span><span class="p">:(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">Firekast</span> <span class="nf">initializeWithPrivateKey</span><span class="p">:</span><span class="s">@"YOUR_APP_PRIVATE_KEY"</span><span class="p">];</span>
+    <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//...
+</span>
+<span class="k">@end</span>
 </code></pre>
+<blockquote class="lang-specific objective_c">
+<p>5. Edit your project Build Settings</p>
+<p>Set <code>Always Embed Swift Standard Libraries</code> to <code>Yes</code> in your project Build Settings. Otherwise you will encounter a <code>dyld: Library not loaded error</code>.</p>
+</blockquote>
+
 <blockquote class="lang-specific java">
 <p>1. Edit your project root build.gradle</p>
 </blockquote>
@@ -534,41 +573,30 @@ If you reach the <strong>free plan</strong> limits, <a href="#create-streams">cr
   <span class="na">api_key</span><span class="p">:</span> <span class="s1">'YOUR_APP_PUBLIC_KEY'</span>
 <span class="p">});</span>
 </code></pre>
-<p class="lang-specific swift">Firekast iOS SDK is distributed via <a href="https://guides.cocoapods.org/using/getting-started.html">Cocoapods</a>.</p>
+<p class="lang-specific swift objective_c">Firekast iOS SDK is distributed via <a href="https://guides.cocoapods.org/using/getting-started.html">Cocoapods</a>.</p>
 
 <p class="lang-specific java">Firekast Android SDK is distributed via <a href="https://developer.android.com/studio/build/dependencies.html">Gradle</a>.</p>
 
 <p class="lang-specific javascript">Several options are available to import Firekast Javascript SDK in your project.<br/><br/>Note that the JS SDK is not yet available on the public npm registry. Please, <a href="https://firekast.zendesk.com/hc/en-gb/requests/new">let us know</a> if you would love so.</p> 
 
-<p class="lang-specific swift">
-For <strong>Objective-C</strong> projects:
-</p>
-
-<ul class="lang-specific swift"><li>Set <code>Always Embed Swift Standard Libraries</code> to <code>Yes</code> in your project Build Settings. Otherwise you will encounter a <code>dyld: Library not loaded</code> error.</li>
-<li>Use <code>#import "Firekast/Firekast-Swift.h"</code> to import Firekast SDK in your code.</li></ul>
-
 <aside class="notice lang-specific javascript">
 You must replace <code>YOUR_APP_PUBLIC_KEY</code> with your <a href="#api-keys">public key</a>, available in app's settings in your dashboard.</a>.
 </aside>
 
-<aside class="notice lang-specific java swift">
+<aside class="notice lang-specific java swift objective_c">
 You must replace <code>YOUR_APP_PRIVATE_KEY</code> with your app <a href="#api-keys">private key</a>, available in app's settings in your dashboard.</aside>
 
-<aside class="notice lang-specific java swift">
+<aside class="notice lang-specific java swift objective_c">
 <strong>X.Y.Z</strong>: visit <a href="#release-notes">Release Notes</a> section to find out the latest version of the SDK.
 </aside>
 
-<aside class="notice lang-specific swift">
+<aside class="notice lang-specific swift objective_c">
 Min Deployment Target: iOS 8.0 >=
 </aside>
 
 <aside class="notice lang-specific java">
 Min Android SDK: 19 >=
 </aside>
-
-<blockquote class="lang-specific swift">
-<p>3. Specify camera and microphone usage description in your <code>info.pList</code></p>
-</blockquote>
 <h2 id='live-stream'>Live stream</h2><pre class="highlight swift tab-swift"><code><span class="c1">// 1. Initializes the streamer</span>
 <span class="k">let</span> <span class="nv">streamer</span> <span class="o">=</span> <span class="kt">FKStreamer</span><span class="p">(</span><span class="nv">usecase</span><span class="p">:</span> <span class="o">.</span><span class="n">portrait</span><span class="p">)</span>
 
@@ -580,6 +608,17 @@ Min Android SDK: 19 >=
   <span class="k">guard</span> <span class="n">error</span> <span class="o">==</span> <span class="kc">nil</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span> <span class="c1">// Something went wrong, like you have reached your plan limit for example.</span>
   <span class="n">streamer</span><span class="o">.</span><span class="nf">startStreaming</span><span class="p">(</span><span class="nv">on</span><span class="p">:</span> <span class="n">stream</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span>
 <span class="p">}</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="c1">// 1. Initializes the streamer
+</span><span class="n">_streamer</span> <span class="o">=</span> <span class="p">[[</span><span class="n">FKStreamer</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithUsecase</span><span class="p">:</span><span class="n">FKStreamerOrientationPortrait</span><span class="p">];</span>
+
+<span class="c1">// 2. Open camera inside a view
+</span><span class="n">_camera</span> <span class="o">=</span> <span class="p">[</span><span class="n">_streamer</span> <span class="nf">showCamera</span><span class="p">:</span><span class="n">Front</span> <span class="nf">in</span><span class="p">:</span><span class="n">_aView</span><span class="p">];</span>
+
+<span class="c1">// 3. Create a stream and start streaming when ready
+</span><span class="p">[</span><span class="n">_streamer</span> <span class="nf">createStreamWithOutputs</span><span class="p">:</span><span class="nb">nil</span> <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">FKStream</span> <span class="o">*</span> <span class="n">stream</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">error</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span><span class="p">;</span> <span class="p">}</span> <span class="c1">// Something went wrong, like you have reached your plan limit for example.
+</span>    <span class="p">[</span><span class="n">self</span><span class="o">-&gt;</span><span class="n">_streamer</span> <span class="nf">startStreamingOn</span><span class="p">:</span><span class="n">stream</span> <span class="nf">delegate</span><span class="p">:</span><span class="n">self</span><span class="p">];</span>
+<span class="p">}];</span>
 </code></pre><pre class="highlight java tab-java"><code><span class="c1">// 1. Load FKCameraFragment in your FrameLayout with id `camera_fragment`</span>
 
 <span class="nd">@Override</span>
@@ -631,6 +670,16 @@ Min Android SDK: 19 >=
   <span class="k">guard</span> <span class="n">error</span> <span class="o">==</span> <span class="kc">nil</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span> <span class="c1">// Something went wrong, like you have reached your plan limit for example.</span>
   <span class="n">streamer</span><span class="o">.</span><span class="nf">startStreaming</span><span class="p">(</span><span class="nv">on</span><span class="p">:</span> <span class="n">stream</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span>
 <span class="p">}</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="c1">// 1. Checkout desired platforms API to create a RTMP link ready to receive a live stream.
+</span><span class="n">NSString</span><span class="o">*</span> <span class="n">facebookRtmpLink</span> <span class="o">=</span> <span class="s">@"rtmp://live-api-a.facebook.com:80/rtmp/143521800?ds=1&amp;a=PEtMa1Ul0W3Rpa"</span><span class="p">;</span>
+<span class="n">NSString</span><span class="o">*</span> <span class="n">youtubeRtmpLink</span> <span class="o">=</span> <span class="s">@"rtmp://a.rtmp.youtube.com/live/hello_webcast"</span><span class="p">;</span>
+<span class="n">NSArray</span><span class="o">*</span> <span class="n">outputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="nf">arrayWithObjects</span><span class="p">:</span> <span class="n">facebookRtmpLink</span><span class="p">,</span> <span class="n">youtubeRtmpLink</span><span class="p">,</span> <span class="nb">nil</span><span class="p">];</span>
+
+<span class="c1">// 2. Create a stream specifying restream outputs and start streaming when ready
+</span><span class="p">[</span><span class="n">_streamer</span> <span class="nf">createStreamWithOutputs</span><span class="p">:</span><span class="n">restream</span> <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">FKStream</span> <span class="o">*</span> <span class="n">stream</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">error</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span><span class="p">;</span> <span class="p">}</span> <span class="c1">// Something went wrong, like you have reached your plan limit for example.
+</span>    <span class="p">[</span><span class="n">self</span><span class="o">-&gt;</span><span class="n">_streamer</span> <span class="nf">startStreamingOn</span><span class="p">:</span><span class="n">stream</span> <span class="nf">delegate</span><span class="p">:</span><span class="n">self</span><span class="p">];</span>
+<span class="p">}];</span>
 </code></pre><pre class="highlight java tab-java"><code><span class="c1">// 1. Checkout desired platforms API to create a RTMP link ready to receive a live stream.</span>
 <span class="n">String</span> <span class="n">facebookRtmpLink</span> <span class="o">=</span> <span class="s">"rtmp://live-api-a.facebook.com:80/rtmp/143521800?ds=1&amp;a=PEtMa1Ul0W3Rpa"</span><span class="o">;</span>
 <span class="n">String</span> <span class="n">youtubeRtmpLink</span> <span class="o">=</span> <span class="s">"rtmp://a.rtmp.youtube.com/live/hello_webcast"</span><span class="o">;</span>
@@ -653,14 +702,24 @@ For the moment, Firekast allows <strong>3 restreams max</strong> per stream. Ple
 <h2 id='camera-features'>Camera Features</h2><pre class="highlight swift tab-swift"><code><span class="n">camera</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="o">.</span><span class="n">back</span> <span class="c1">// opens back camera</span>
 
 <span class="n">camera</span><span class="o">.</span><span class="n">isAudioCaptureEnabled</span> <span class="o">=</span> <span class="kc">false</span> <span class="c1">// mutes the microphone</span>
-<span class="n">camera</span><span class="o">.</span><span class="n">isVideoCaptureEnabled</span> <span class="o">=</span> <span class="kc">false</span> <span class="c1">// turns camera off and streams a black screen</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">isImageCaptureEnabled</span> <span class="o">=</span> <span class="kc">false</span> <span class="c1">// turns camera off and streams a black screen</span>
 
 <span class="k">if</span> <span class="n">camera</span><span class="o">.</span><span class="n">isFlashAvailable</span> <span class="p">{</span>
     <span class="n">camera</span><span class="o">.</span><span class="n">isFlashEnabled</span> <span class="o">=</span> <span class="kc">true</span> <span class="c1">// turns flash on</span>
 <span class="p">}</span>
 
 <span class="n">camera</span><span class="o">.</span><span class="nf">capture</span><span class="p">()</span> <span class="c1">// cheeeese!</span>
-</code></pre><pre class="highlight java tab-java"><code><span class="n">mCamera</span><span class="o">.</span><span class="na">switchToPosition</span><span class="o">(</span><span class="n">Position</span><span class="o">.</span><span class="na">BACK</span><span class="o">);</span> <span class="c1">// opens back camera</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">_camera</span> <span class="nf">setPosition</span><span class="p">:</span><span class="n">Back</span><span class="p">];</span> <span class="c1">// opens back camera
+</span>
+<span class="p">[</span><span class="n">_camera</span> <span class="nf">setIsAudioCaptureEnabled</span><span class="p">:</span><span class="nb">NO</span><span class="p">];</span> <span class="c1">// mutes the microphone
+</span><span class="p">[</span><span class="n">_camera</span> <span class="nf">setIsImageCaptureEnabled</span><span class="p">:</span><span class="nb">NO</span><span class="p">];</span> <span class="c1">// turns camera off and streams a black screen
+</span>
+<span class="k">if</span> <span class="p">([</span><span class="n">_camera</span> <span class="nf">isFlashAvailable</span><span class="p">])</span> <span class="p">{</span>
+  <span class="p">[</span><span class="n">_camera</span> <span class="nf">setIsFlashEnabled</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span> <span class="c1">// turns flash on
+</span><span class="p">}</span>
+
+<span class="p">[</span><span class="n">_camera</span> <span class="nf">capture</span><span class="p">];</span> <span class="c1">// cheeeese!
+</span></code></pre><pre class="highlight java tab-java"><code><span class="n">mCamera</span><span class="o">.</span><span class="na">switchToPosition</span><span class="o">(</span><span class="n">Position</span><span class="o">.</span><span class="na">BACK</span><span class="o">);</span> <span class="c1">// opens back camera</span>
 
 <span class="n">mCamera</span><span class="o">.</span><span class="na">setAudioCaptureEnabled</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span> <span class="c1">// mutes microphone</span>
 <span class="n">mCamera</span><span class="o">.</span><span class="na">setVideoCaptureEnabled</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span> <span class="c1">// turns camera off and streams a black screen</span>
@@ -680,7 +739,15 @@ For the moment, Firekast allows <strong>3 restreams max</strong> per stream. Ple
 
 <span class="k">let</span> <span class="nv">stream</span> <span class="o">=</span> <span class="kt">FKStream</span><span class="p">(</span><span class="nv">withoutDataExceptStreamId</span><span class="p">:</span> <span class="s">"STREAM_ID"</span><span class="p">)</span>
 <span class="n">player</span><span class="o">.</span><span class="nf">play</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span> <span class="c1">// 3. play the video starting - in that example - from the beginning.</span>
-</code></pre><pre class="highlight java tab-java"><code><span class="c1">// 1. add the player view in your layout</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="cp">#import "CoreMedia/CoreMedia.h"
+</span>
+<span class="n">_player</span> <span class="o">=</span> <span class="p">[[</span><span class="n">FKPlayer</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span> <span class="c1">// 1. initialize player
+</span><span class="p">[</span><span class="n">_player</span> <span class="nf">showIn</span><span class="p">:</span><span class="n">_aView</span><span class="p">];</span> <span class="c1">// 2. display player in myView
+</span><span class="p">[</span><span class="n">_player</span> <span class="nf">setDelegate</span><span class="p">:</span><span class="n">self</span><span class="p">];</span>
+
+<span class="n">FKStream</span><span class="o">*</span> <span class="n">stream</span> <span class="o">=</span> <span class="p">[[</span><span class="n">FKStream</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithWithoutDataExceptStreamId</span><span class="p">:</span><span class="s">@"STREAM_ID"</span><span class="p">];</span>
+<span class="p">[</span><span class="n">_player</span> <span class="nf">play</span><span class="p">:</span><span class="n">stream</span> <span class="nf">at</span><span class="p">:</span><span class="n">kCMTimeZero</span><span class="p">];</span> <span class="c1">// 3. play the video starting - in that example - from the beginning.
+</span></code></pre><pre class="highlight java tab-java"><code><span class="c1">// 1. add the player view in your layout</span>
 <span class="o">&lt;</span><span class="n">io</span><span class="o">.</span><span class="na">firekast</span><span class="o">.</span><span class="na">FKPlayerView</span>
     <span class="nl">android:</span><span class="n">id</span><span class="o">=</span><span class="s">"@+id/playerView"</span>
     <span class="nl">android:</span><span class="n">layout_width</span><span class="o">=</span><span class="s">"200dp"</span>
@@ -718,7 +785,7 @@ Once a live is completed, the stream becomes instantly available for VOD playbac
 <pre class="highlight shell tab-shell"><code>curl https://api.firekast.io/v2/apps/myapp/streams <span class="se">\</span>
     -H <span class="s1">'Authorization: SDK %YOUR-APP-PRIVATE-KEY%'</span>
 </code></pre>
-<blockquote class="lang-specific swift java javascript"><p>switch language tab to 'cURL' to view sample HTTP requests</p></blockquote>
+<blockquote class="lang-specific swift objective_c java javascript"><p>switch language tab to 'cURL' to view sample HTTP requests</p></blockquote>
 
 <p>You can use your private key to make authorized http requests to out API.</p>
 
@@ -754,7 +821,8 @@ It is available though mobile SDKs, visible in the dashboard, and looks like <co
 
 <p>If a stream is <code>live</code> and stops receiving video data, it transitions to <code>vod</code>.</p>
 <h2 id='timeout'>timeout</h2><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">timeout</span><span class="p">:</span> <span class="kt">Date</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">ingestTimeout</span> <span class="c1">// available only when stream's state is .waiting.</span>
-</code></pre><pre class="highlight java tab-java"><code><span class="n">Date</span> <span class="n">timeout</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="na">getIngestTimeout</span><span class="o">()</span> <span class="c1">// available only when stream's state is WAITING.</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="n">NSDate</span><span class="o">*</span> <span class="n">timeout</span> <span class="o">=</span> <span class="p">[</span><span class="n">stream</span> <span class="nf">ingestTimeout</span><span class="p">];</span> <span class="c1">// available only when stream's state is .waiting.
+</span></code></pre><pre class="highlight java tab-java"><code><span class="n">Date</span> <span class="n">timeout</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="na">getIngestTimeout</span><span class="o">()</span> <span class="c1">// available only when stream's state is WAITING.</span>
 </code></pre>
 <p>The stream timeout deadline (<code>ingestTimeout</code>) is a date available while a stream state is <code>waiting</code>. After that date, if a streamer hasn&#39;t started streaming, the stream&#39;s state transitions to <code>timeout</code>. It can no longer serve a live broadcast, and doesn&#39;t yield any content for playback.</p>
 
@@ -762,9 +830,18 @@ It is available though mobile SDKs, visible in the dashboard, and looks like <co
 <h2 id='metadata'>metadata</h2>
 <blockquote class="lang-specific shell"><p>Update stream's metadata:</p></blockquote>
 <pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">metadata</span> <span class="o">=</span> <span class="p">[</span><span class="s">"title"</span><span class="p">:</span><span class="s">"Awesome title"</span><span class="p">,</span> <span class="s">"description"</span><span class="p">:</span> <span class="s">"An awesome video with awesome people."</span><span class="p">]</span>
-<span class="k">guard</span> <span class="n">metadata</span><span class="o">.</span><span class="nf">isValidFirekastMetadata</span><span class="p">()</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+<span class="k">guard</span> <span class="kt">FKStream</span><span class="o">.</span><span class="nf">isMetadataValid</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
 <span class="n">stream</span><span class="o">.</span><span class="nf">updateMetadata</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="n">metadata</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="k">in</span>
   <span class="c1">//...</span>
+<span class="p">}</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">metadata</span> <span class="o">=</span> <span class="p">@{</span>
+                  <span class="s">@"title"</span> <span class="o">:</span> <span class="s">@"Awesome title"</span><span class="p">,</span>
+                  <span class="s">@"description"</span> <span class="o">:</span> <span class="s">@"An awesome video with awesome people."</span>
+                <span class="p">};</span>
+<span class="k">if</span> <span class="p">([</span><span class="n">FKStream</span> <span class="nf">isMetadataValid</span><span class="p">:</span><span class="n">metadata</span><span class="p">])</span> <span class="p">{</span>
+  <span class="p">[</span><span class="n">stream</span> <span class="nf">updateMetadataWith</span><span class="p">:</span><span class="n">metadata</span> <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span> <span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//...
+</span>  <span class="p">}];</span>
 <span class="p">}</span>
 </code></pre><pre class="highlight java tab-java"><code><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">metadata</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
 <span class="n">metadata</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"title"</span><span class="o">,</span> <span class="s">"Awesome title"</span><span class="o">);</span>
@@ -784,7 +861,7 @@ curl -X PUT <span class="se">\</span>
 
 <aside class="notice">Note that, metadata lenght must be <= 512. Please <a href="https://firekast.zendesk.com/hc/en-gb/requests/new">contact us</a> if you need more.</aside>
 <h2 id='query'>Query</h2>
-<blockquote class="lang-specific swift java shell"><p>Fetch your app's streams, starting with the most recent.</p></blockquote>
+<blockquote class="lang-specific objective_c swift java shell"><p>Fetch your app's streams, starting with the most recent.</p></blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c"># with states: all, live, timeout, waiting, vod, processing </span>
 curl https://api.firekast.io/v2/apps/myapp/streams <span class="se">\</span>
     -H <span class="s1">'Authorization: SDK %YOUR-APP-PRIVATE-KEY%'</span> <span class="se">\</span>
@@ -792,14 +869,20 @@ curl https://api.firekast.io/v2/apps/myapp/streams <span class="se">\</span>
     -F <span class="nv">pageNumber</span><span class="o">=</span>1 <span class="se">\</span>
     -F <span class="nv">pageSize</span><span class="o">=</span>20
 </code></pre><pre class="highlight swift tab-swift"><code><span class="kt">FKStream</span><span class="o">.</span><span class="nf">findAll</span><span class="p">()</span> <span class="p">{</span> <span class="p">(</span><span class="nv">numOfPages</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">pageNumber</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">pageSize</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">streams</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
-  <span class="c1">// ...</span>
+  <span class="c1">//...</span>
 <span class="p">}</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">FKStream</span> <span class="nf">findAllWithWhere</span><span class="p">:</span><span class="n">FKStreamStateUnknown</span> <span class="nf">pageNumber</span><span class="p">:</span> <span class="mi">0</span> <span class="n">pageSize</span><span class="o">:</span> <span class="mi">100</span> <span class="n">completion</span><span class="o">:^</span><span class="p">(</span><span class="n">NSInteger</span> <span class="n">numOfPages</span><span class="p">,</span> <span class="n">NSInteger</span> <span class="n">pageNumber</span><span class="p">,</span> <span class="n">NSInteger</span> <span class="n">pageSize</span><span class="p">,</span> <span class="n">NSInteger</span> <span class="n">count</span><span class="p">,</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n">FKStream</span> <span class="o">*&gt;</span> <span class="o">*</span><span class="n">streams</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span> <span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">//...
+</span><span class="p">}];</span>
 </code></pre><pre class="highlight java tab-java"><code><span class="n">FKStream</span><span class="o">.</span><span class="na">findAll</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="k">new</span> <span class="n">AppFindAllCallback</span><span class="o">());</span>
 </code></pre>
-<blockquote class="lang-specific swift java"><p>Add a where clause to filter by state.</p></blockquote>
+<blockquote class="lang-specific objective_c swift java"><p>Add a where clause to filter by state.</p></blockquote>
 <pre class="highlight swift tab-swift"><code><span class="kt">FKStream</span><span class="o">.</span><span class="nf">findAll</span><span class="p">(</span><span class="nv">where</span><span class="p">:</span> <span class="o">.</span><span class="n">vod</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="nv">numOfPages</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">pageNumber</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">pageSize</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">streams</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
-  <span class="c1">// ...</span>
+  <span class="c1">//...</span>
 <span class="p">}</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">FKStream</span> <span class="nf">findAllWithWhere</span><span class="p">:</span><span class="n">FKStreamStateVod</span> <span class="nf">pageNumber</span><span class="p">:</span> <span class="mi">0</span> <span class="n">pageSize</span><span class="o">:</span> <span class="mi">100</span> <span class="n">completion</span><span class="o">:^</span><span class="p">(</span><span class="n">NSInteger</span> <span class="n">numOfPages</span><span class="p">,</span> <span class="n">NSInteger</span> <span class="n">pageNumber</span><span class="p">,</span> <span class="n">NSInteger</span> <span class="n">pageSize</span><span class="p">,</span> <span class="n">NSInteger</span> <span class="n">count</span><span class="p">,</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n">FKStream</span> <span class="o">*&gt;</span> <span class="o">*</span><span class="n">streams</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span> <span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">//...
+</span><span class="p">}];</span>
 </code></pre><pre class="highlight java tab-java"><code><span class="n">FKStream</span><span class="o">.</span><span class="na">findAll</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="n">FKStream</span><span class="o">.</span><span class="na">State</span><span class="o">.</span><span class="na">VOD</span><span class="o">,</span> <span class="k">new</span> <span class="n">AppFindAllCallback</span><span class="o">());</span>
 </code></pre>
 <p>We provide an easy way to fetch your app&#39;s streams.</p>
@@ -808,6 +891,9 @@ curl https://api.firekast.io/v2/apps/myapp/streams <span class="se">\</span>
 <h2 id='force-close'>Force Close</h2><pre class="highlight swift tab-swift"><code><span class="n">stream</span><span class="o">.</span><span class="n">forceClose</span> <span class="p">{</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="k">in</span>
   <span class="c1">//...</span>
 <span class="p">}</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">stream</span> <span class="nf">forceCloseWithCompletion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span> <span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">//...
+</span><span class="p">}];</span>
 </code></pre><pre class="highlight java tab-java"><code><span class="n">mStream</span><span class="o">.</span><span class="na">forceClose</span><span class="o">(</span><span class="k">new</span> <span class="n">AppStreamCallback</span><span class="o">());</span>
 </code></pre>
 <p>Call this function when your user has created a stream but abandoned the idea of going live. That way, the stream moves from state <code>waiting</code> to <code>timeout</code> instantaneously and your plan&#39;s <strong>simultaneous streamer</strong> counter decreases by 1.</p>
@@ -822,7 +908,12 @@ curl https://api.firekast.io/v2/apps/myapp/streams <span class="se">\</span>
 </blockquote>
 
 <p>The streamer is responsible for creating streams and actually sends frames and audio for live streaming.</p>
-<h2 id='create-streams'>Create Streams</h2><pre class="highlight swift tab-swift"><code><span class="n">streamer</span><span class="o">.</span><span class="nf">createStream</span><span class="p">()</span>
+<h2 id='create-streams'>Create Streams</h2><pre class="highlight swift tab-swift"><code><span class="n">streamer</span><span class="o">.</span><span class="n">createStream</span> <span class="p">{</span> <span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">//...</span>
+<span class="p">}</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">_streamer</span> <span class="nf">createStreamWithOutputs</span><span class="p">:</span><span class="nb">nil</span> <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">FKStream</span> <span class="o">*</span> <span class="n">stream</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span> <span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">//...     
+</span><span class="p">}];</span>
 </code></pre><pre class="highlight java tab-java"><code><span class="n">mStreamer</span><span class="o">.</span><span class="na">createStream</span><span class="o">(</span><span class="k">new</span> <span class="n">AppCreateStreamCallback</span><span class="o">());</span>
 </code></pre>
 <p>First step to do live broadcasting is to create a stream.</p>
@@ -831,32 +922,38 @@ curl https://api.firekast.io/v2/apps/myapp/streams <span class="se">\</span>
 
 <p>This newly created stream is immediatly visible in your dashboard.</p>
 <h2 id='go-live'>Go Live</h2>
-<blockquote class="lang-specific swift java">
+<blockquote class="lang-specific swift objective_c java">
 <p>Start streaming:</p>
 </blockquote>
 <pre class="highlight swift tab-swift"><code><span class="n">streamer</span><span class="o">.</span><span class="nf">startStreaming</span><span class="p">(</span><span class="nv">on</span><span class="p">:</span> <span class="n">stream</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">_streamer</span> <span class="nf">startStreamingOn</span><span class="p">:</span><span class="n">stream</span> <span class="nf">delegate</span><span class="p">:</span><span class="n">self</span><span class="p">];</span>
 </code></pre><pre class="highlight java tab-java"><code><span class="n">mStreamer</span><span class="o">.</span><span class="na">startStreaming</span><span class="o">(</span><span class="n">stream</span><span class="o">,</span> <span class="k">new</span> <span class="n">AppStreamingCallback</span><span class="o">());</span>
 </code></pre><h3 id='start-streaming'>Start streaming</h3>
 <p>Once you have created a stream, you can start streaming whenever your User is ready.
 <aside class="notice">You must start streaming before <a href="#timeout">timeout</a>.</aside></p>
 
 <blockquote class=
-"lang-specific swift java shell">
+"lang-specific swift objective_c java shell">
 <p>Stop streaming:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
     https://api.firekast.io/v2/streams/%STREAM-ID%/stop <span class="se">\</span>
     -H <span class="s1">'Authorization: SDK %YOUR-APP-PRIVATE-KEY%'</span> 
 </code></pre><pre class="highlight swift tab-swift"><code><span class="n">streamer</span><span class="o">.</span><span class="nf">stopStreaming</span><span class="p">()</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">_streamer</span> <span class="nf">stopStreaming</span><span class="p">];</span>
 </code></pre><pre class="highlight java tab-java"><code><span class="n">mStreamer</span><span class="o">.</span><span class="na">stopStreaming</span><span class="o">()</span>
 </code></pre><h3 id='stop-streaming'>Stop streaming</h3>
 <p>Then, stop streaming whenever your User is done.</p>
 
 <aside class="notice">You should call <code>stopStreaming()</code> when User leaves the dedicated streaming screen.</aside>
-<h2 id='events'>Events</h2><pre class="highlight swift tab-swift"><code><span class="kd">func</span> <span class="nf">streamer</span><span class="p">(</span><span class="n">_</span> <span class="nv">streamer</span><span class="p">:</span> <span class="kt">FKStreamer</span><span class="p">,</span> <span class="n">willStart</span> <span class="nv">stream</span><span class="p">:</span> <span class="kt">FKStream</span><span class="p">,</span> <span class="n">unless</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="p">{}</span>
+<h2 id='streamer-events'>Streamer Events</h2><pre class="highlight swift tab-swift"><code><span class="kd">func</span> <span class="nf">streamer</span><span class="p">(</span><span class="n">_</span> <span class="nv">streamer</span><span class="p">:</span> <span class="kt">FKStreamer</span><span class="p">,</span> <span class="n">willStart</span> <span class="nv">stream</span><span class="p">:</span> <span class="kt">FKStream</span><span class="p">,</span> <span class="n">unless</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="p">{}</span>
 <span class="kd">func</span> <span class="nf">streamer</span><span class="p">(</span><span class="n">_</span> <span class="nv">streamer</span><span class="p">:</span> <span class="kt">FKStreamer</span><span class="p">,</span> <span class="n">didBecomeLive</span> <span class="nv">stream</span><span class="p">:</span> <span class="kt">FKStream</span><span class="p">)</span> <span class="p">{}</span>
 <span class="kd">func</span> <span class="nf">streamer</span><span class="p">(</span><span class="n">_</span> <span class="nv">streamer</span><span class="p">:</span> <span class="kt">FKStreamer</span><span class="p">,</span> <span class="n">didStop</span> <span class="nv">stream</span><span class="p">:</span> <span class="kt">FKStream</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="p">{}</span>
 <span class="kd">func</span> <span class="nf">streamer</span><span class="p">(</span><span class="n">_</span> <span class="nv">streamer</span><span class="p">:</span> <span class="kt">FKStreamer</span><span class="p">,</span> <span class="n">didUpdateStreamHealth</span> <span class="nv">health</span><span class="p">:</span> <span class="kt">Float</span><span class="p">)</span> <span class="p">{}</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">streamer</span><span class="p">:(</span><span class="n">FKStreamer</span> <span class="o">*</span><span class="p">)</span><span class="nv">streamer</span> <span class="nf">willStart</span><span class="p">:(</span><span class="n">FKStream</span> <span class="o">*</span><span class="p">)</span><span class="nv">stream</span> <span class="nf">unless</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">*</span><span class="p">)</span><span class="nv">error</span> <span class="p">{}</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">streamer</span><span class="p">:(</span><span class="n">FKStreamer</span> <span class="o">*</span><span class="p">)</span><span class="nv">streamer</span> <span class="nf">didBecomeLive</span><span class="p">:(</span><span class="n">FKStream</span> <span class="o">*</span><span class="p">)</span><span class="nv">stream</span> <span class="p">{}</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">streamer</span><span class="p">:(</span><span class="n">FKStreamer</span> <span class="o">*</span><span class="p">)</span><span class="nv">streamer</span> <span class="nf">didStop</span><span class="p">:(</span><span class="n">FKStream</span> <span class="o">*</span><span class="p">)</span><span class="nv">stream</span> <span class="nf">error</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">*</span><span class="p">)</span><span class="nv">error</span> <span class="p">{}</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">streamer</span><span class="p">:(</span><span class="n">FKStreamer</span> <span class="o">*</span><span class="p">)</span><span class="nv">streamer</span> <span class="nf">didUpdateStreamHealth</span><span class="p">:(</span><span class="kt">float</span><span class="p">)</span><span class="nv">health</span> <span class="p">{}</span>
 </code></pre><pre class="highlight java tab-java"><code><span class="kd">private</span> <span class="kd">class</span> <span class="nc">AppStreamingCallback</span> <span class="kd">implements</span> <span class="n">FKStreamer</span><span class="o">.</span><span class="na">StreamingCallback</span> <span class="o">{</span>
   <span class="nd">@Override</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSteamWillStartUnless</span><span class="o">(</span><span class="nd">@NonNullable</span> <span class="n">FKStream</span> <span class="n">stream</span><span class="o">,</span> <span class="nd">@Nullable</span> <span class="n">FKError</span> <span class="n">error</span><span class="o">)</span> <span class="o">{}</span>
@@ -881,6 +978,9 @@ Since a stream can be stopped in many ways (SDK, dashboard, server), it is impor
 <h2 id='restream'>Restream</h2><pre class="highlight swift tab-swift"><code><span class="n">streamer</span><span class="o">.</span><span class="nf">createStream</span><span class="p">(</span><span class="nv">outputs</span><span class="p">:</span> <span class="n">listOfRtmpLink</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span> 
   <span class="c1">// ...</span>
 <span class="p">}</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">_streamer</span> <span class="nf">createStreamWithOutputs</span><span class="p">:</span><span class="n">listOfRtmpLink</span> <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">FKStream</span> <span class="o">*</span> <span class="n">stream</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span> <span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// 
+</span><span class="p">}];</span>
 </code></pre><pre class="highlight java tab-java"><code><span class="n">mStreamer</span><span class="o">.</span><span class="na">createStream</span><span class="o">(</span><span class="n">mListOfRtmpLink</span><span class="o">,</span> <span class="k">new</span> <span class="n">AppCreateStreamCallback</span><span class="o">());</span>
 </code></pre>
 <p>Firekast allows to push your live stream simultaneously to other live streaming platforms and social medias, such as Facebook, Youtube, Twitch, Periscope etc...</p>
@@ -895,7 +995,7 @@ Note that the stream remains pushed to Firekast so it's still accessible on your
 For the moment, Firekast allows <strong>3 restreams max</strong> per stream. Please <a href="https://firekast.zendesk.com/hc/en-gb/requests/new">contact us</a> if you need more.
 </aside>
 <h2 id='test-bandwidth'>Test Bandwidth</h2>
-<blockquote class="lang-specific swift java">
+<blockquote class="lang-specific swift objective_c java">
 <p>Testing bandwidth for 15 seconds</p>
 </blockquote>
 <pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">testDuration</span><span class="p">:</span> <span class="kt">TimeInterval</span> <span class="o">=</span> <span class="mi">15</span>
@@ -904,16 +1004,25 @@ For the moment, Firekast allows <strong>3 restreams max</strong> per stream. Ple
   <span class="k">guard</span> <span class="k">let</span> <span class="nv">this</span> <span class="o">=</span> <span class="k">self</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
   <span class="n">this</span><span class="o">.</span><span class="n">streamer</span><span class="o">.</span><span class="nf">stopStreaming</span><span class="p">()</span>
 <span class="p">}</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="kt">double</span> <span class="n">testDuration</span> <span class="o">=</span> <span class="mi">15</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+<span class="p">[</span><span class="n">_streamer</span> <span class="nf">startStreamingOn</span><span class="p">:[</span><span class="n">FKStream</span> <span class="nf">bandwidthTest</span><span class="p">]</span> <span class="nf">delegate</span><span class="p">:</span><span class="n">self</span><span class="p">];</span>
+<span class="n">dispatch_time_t</span> <span class="n">popTime</span> <span class="o">=</span> <span class="n">dispatch_time</span><span class="p">(</span><span class="n">DISPATCH_TIME_NOW</span><span class="p">,</span> <span class="p">(</span><span class="kt">int64_t</span><span class="p">)(</span><span class="n">testDuration</span> <span class="o">*</span> <span class="n">NSEC_PER_SEC</span><span class="p">));</span>
+<span class="n">dispatch_after</span><span class="p">(</span><span class="n">popTime</span><span class="p">,</span> <span class="n">dispatch_get_main_queue</span><span class="p">(),</span> <span class="o">^</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+  <span class="p">[</span><span class="n">self</span><span class="o">-&gt;</span><span class="n">_streamer</span> <span class="nf">stopStreaming</span><span class="p">];</span>
+<span class="p">});</span>
 </code></pre><pre class="highlight java tab-java"><code><span class="kt">long</span> <span class="n">durationMs</span> <span class="o">=</span> <span class="mi">15000</span><span class="o">;</span>
 <span class="n">mStreamer</span><span class="o">.</span><span class="na">startStreaming</span><span class="o">(</span><span class="n">FKStream</span><span class="o">.</span><span class="na">bandwidthTest</span><span class="o">,</span> <span class="k">new</span> <span class="n">AppStreamingCallback</span><span class="o">());</span>
 <span class="n">mHandler</span><span class="o">.</span><span class="na">sendEmptyMessageDelayed</span><span class="o">(</span><span class="n">MSG_TEST_BANDWIDTH_STOP_STREAMING</span><span class="o">,</span> <span class="n">durationMs</span><span class="o">)</span>
 </code></pre>
-<blockquote class="lang-specific swift java">
+<blockquote class="lang-specific objective_c swift java">
 <p>Observe stream health</p>
 </blockquote>
 <pre class="highlight swift tab-swift"><code><span class="kd">func</span> <span class="nf">streamer</span><span class="p">(</span><span class="n">_</span> <span class="nv">streamer</span><span class="p">:</span> <span class="kt">FKStreamer</span><span class="p">,</span> <span class="n">didUpdateStreamHealth</span> <span class="nv">health</span><span class="p">:</span> <span class="kt">Float</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// stream health between 70-100% is good.</span>
 <span class="p">}</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">streamer</span><span class="p">:(</span><span class="n">FKStreamer</span> <span class="o">*</span><span class="p">)</span><span class="nv">streamer</span> <span class="nf">didUpdateStreamHealth</span><span class="p">:(</span><span class="kt">float</span><span class="p">)</span><span class="nv">health</span> <span class="p">{</span>
+  <span class="c1">// stream health between 70-100% is good.
+</span><span class="p">}</span>
 </code></pre><pre class="highlight java tab-java"><code><span class="nd">@Override</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onStreamHealthDidUpdate</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">congestion</span><span class="o">,</span> <span class="kt">float</span> <span class="n">health</span><span class="o">)</span> <span class="o">{</span>
     <span class="c1">// congestion means frames and audio is waiting for network to be sent. Note that, while congested, the camera preview stucks on the frame and will resume as soon as data is sent.</span>
@@ -932,6 +1041,7 @@ For the moment, Firekast allows <strong>3 restreams max</strong> per stream. Ple
 We recommand test duration to be between 5 and 30 seconds. The longer the more accurate.
 </aside>
 <h2 id='quality'>Quality</h2><pre class="highlight swift tab-swift"><code><span class="n">streamer</span><span class="o">.</span><span class="n">quality</span> <span class="o">=</span> <span class="o">.</span><span class="n">standard</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">_streamer</span> <span class="nf">setQuality</span><span class="p">:</span><span class="n">FKQualityStandard</span><span class="p">];</span>
 </code></pre><pre class="highlight java tab-java"><code><span class="n">mStreamer</span><span class="o">.</span><span class="na">setQuality</span><span class="o">(</span><span class="n">FKQuality</span><span class="o">.</span><span class="na">STANDARD</span><span class="o">);</span>
 </code></pre>
 <p>Mobile SDKs stream at the highest possible resolution allowed by your plan.</p>
@@ -946,7 +1056,7 @@ We recommand test duration to be between 5 and 30 seconds. The longer the more a
 <h1 id='sdk-player'>SDK - Player</h1>
 <p>The player lets you play any stream of your current application. Whether the stream is live or VOD, the player will figure it out and adapt its UI.</p>
 <h2 id='initialization'>Initialization</h2>
-<blockquote class="lang-specific swift">
+<blockquote class="lang-specific objective_c swift">
 <p>The player is based on <code><a href="https://developer.apple.com/documentation/avkit/avplayerviewcontroller">AVPlayerViewController</a></code>.</p>
 </blockquote>
 <pre class="highlight swift tab-swift"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
@@ -955,6 +1065,13 @@ We recommand test duration to be between 5 and 30 seconds. The longer the more a
   <span class="n">player</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
   <span class="n">player</span><span class="o">.</span><span class="nf">show</span><span class="p">(</span><span class="nv">in</span><span class="p">:</span> <span class="n">playerContainerView</span><span class="p">)</span>
 <span class="p">}</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">viewDidLoad</span> <span class="p">{</span>
+  <span class="p">[</span><span class="n">super</span> <span class="nf">viewDidLoad</span><span class="p">];</span>
+  <span class="n">_player</span> <span class="o">=</span> <span class="p">[[</span><span class="n">FKPlayer</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span>
+  <span class="p">[</span><span class="n">_player</span> <span class="nf">setDelegate</span><span class="p">:</span><span class="n">self</span><span class="p">];</span>
+  <span class="p">[</span><span class="n">_player</span> <span class="nf">showIn</span><span class="p">:</span><span class="n">_ibPlayerView</span><span class="p">];</span>
+<span class="p">}</span>
+
 </code></pre>
 <blockquote class="lang-specific java">
 <p>The player is based on <code><a href="https://github.com/google/ExoPlayer">ExoPlayer</a></code> and is wrapped into a simple view.</p>
@@ -994,8 +1111,16 @@ Video ratio is 16:9. If your view does not fit this ratio, the player automatica
 <span class="n">player</span><span class="o">.</span><span class="nf">play</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
 </code></pre><pre class="highlight swift tab-swift"><code><span class="n">player</span><span class="o">.</span><span class="nf">pause</span><span class="p">()</span>
 <span class="n">player</span><span class="o">.</span><span class="nf">resume</span><span class="p">()</span>
-</code></pre><pre class="highlight swift tab-swift"><code><span class="c1">// import CoreMedia</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kd">import</span> <span class="kt">CoreMedia</span>
+
 <span class="n">player</span><span class="o">.</span><span class="nf">seek</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="kt">CMTime</span><span class="p">(</span><span class="nv">seconds</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="nv">preferredTimescale</span><span class="p">:</span> <span class="mi">1</span><span class="p">))</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="n">FKStream</span><span class="o">*</span> <span class="n">stream</span> <span class="o">=</span> <span class="p">[[</span><span class="n">FKStream</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithWithoutDataExceptStreamId</span><span class="p">:</span><span class="s">"STREAM_ID"</span><span class="p">];</span>
+<span class="p">[</span><span class="n">_player</span> <span class="nf">play</span><span class="p">:</span><span class="n">stream</span> <span class="nf">at</span><span class="p">:</span><span class="n">kCMTimeZero</span><span class="p">];</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">_player</span> <span class="nf">resume</span><span class="p">];</span>
+<span class="p">[</span><span class="n">_player</span> <span class="nf">pause</span><span class="p">];</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="cp">#import "CoreMedia/CoreMedia.h"
+</span>
+<span class="p">[</span><span class="n">_player</span> <span class="nf">play</span><span class="p">:</span><span class="n">stream</span> <span class="nf">at</span><span class="p">:</span><span class="n">CMTimeMake</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">1</span><span class="p">)];</span>
 </code></pre><pre class="highlight java tab-java"><code><span class="n">FKStream</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">FKStream</span><span class="o">.</span><span class="na">newEmptyInstance</span><span class="o">(</span><span class="s">"STREAM_ID"</span><span class="o">)</span>
 <span class="n">mPlayer</span><span class="o">.</span><span class="na">play</span><span class="o">(</span><span class="n">stream</span><span class="o">);</span>
 </code></pre><pre class="highlight java tab-java"><code><span class="n">mPlayer</span><span class="o">.</span><span class="na">pause</span><span class="o">();</span>
@@ -1033,9 +1158,10 @@ Video ratio is 16:9. If your view does not fit this ratio, the player automatica
 <aside class="notice">
 Replace <code>STREAM_ID</code> with the streamId of the stream you want to watch.
 </aside>
-<h2 id='events'>Events</h2><pre class="highlight swift tab-swift"><code><span class="kd">func</span> <span class="nf">player</span><span class="p">(</span><span class="n">_</span> <span class="nv">player</span><span class="p">:</span> <span class="kt">FKPlayer</span><span class="p">,</span> <span class="n">stateDidChanged</span> <span class="nv">state</span><span class="p">:</span> <span class="kt">FKPlayer</span><span class="o">.</span><span class="kt">State</span><span class="p">)</span> <span class="p">{}</span>
-<span class="kd">func</span> <span class="nf">player</span><span class="p">(</span><span class="n">_</span> <span class="nv">player</span><span class="p">:</span> <span class="kt">FKPlayer</span><span class="p">,</span> <span class="n">videoDurationIsAvailable</span> <span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">)</span> <span class="p">{}</span>
-<span class="kd">func</span> <span class="nf">player</span><span class="p">(</span><span class="n">_</span> <span class="nv">player</span><span class="p">:</span> <span class="kt">FKPlayer</span><span class="p">,</span> <span class="n">willPlay</span> <span class="nv">stream</span><span class="p">:</span> <span class="kt">FKStream</span><span class="p">,</span> <span class="n">unless</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">NSError</span><span class="p">?)</span> <span class="p">{}</span>
+<h2 id='player-events'>Player Events</h2><pre class="highlight swift tab-swift"><code><span class="kd">func</span> <span class="nf">player</span><span class="p">(</span><span class="n">_</span> <span class="nv">player</span><span class="p">:</span> <span class="kt">FKPlayer</span><span class="p">,</span> <span class="n">willPlay</span> <span class="nv">stream</span><span class="p">:</span> <span class="kt">FKStream</span><span class="p">,</span> <span class="n">unless</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span> <span class="p">{}</span>    
+<span class="kd">func</span> <span class="nf">player</span><span class="p">(</span><span class="n">_</span> <span class="nv">player</span><span class="p">:</span> <span class="kt">FKPlayer</span><span class="p">,</span> <span class="n">stateDidChanged</span> <span class="nv">state</span><span class="p">:</span> <span class="kt">FKPlayer</span><span class="o">.</span><span class="kt">State</span><span class="p">)</span> <span class="p">{}</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">player</span><span class="p">:(</span><span class="n">FKPlayer</span> <span class="o">*</span><span class="p">)</span><span class="nv">player</span> <span class="nf">willPlay</span><span class="p">:(</span><span class="n">FKStream</span> <span class="o">*</span><span class="p">)</span><span class="nv">stream</span> <span class="nf">unless</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">*</span><span class="p">)</span><span class="nv">error</span> <span class="p">{}</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">player</span><span class="p">:(</span><span class="n">FKPlayer</span> <span class="o">*</span><span class="p">)</span><span class="nv">player</span> <span class="nf">stateDidChanged</span><span class="p">:(</span><span class="k">enum</span> <span class="n">FKPlayerState</span><span class="p">)</span><span class="nv">state</span> <span class="p">{}</span>
 </code></pre><pre class="highlight java tab-java"><code><span class="n">mPlayer</span><span class="o">.</span><span class="na">setCallback</span><span class="o">(</span><span class="k">new</span> <span class="n">FKPlayer</span><span class="o">.</span><span class="na">Callback</span><span class="o">()</span> <span class="o">{</span>
   <span class="nd">@Override</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onPlayerWillPlay</span><span class="o">(</span><span class="nd">@NonNull</span> <span class="n">FKStream</span> <span class="n">stream</span><span class="o">,</span> <span class="nd">@Nullable</span> <span class="n">FKError</span> <span class="n">error</span><span class="o">)</span> <span class="o">{}</span>
@@ -1066,6 +1192,8 @@ Replace <code>STREAM_ID</code> with the streamId of the stream you want to watch
 <p>Note that the stream may need to be fetched (automatically by the SDK) first before it can be played. For some reason it is possible that the request fails. You should definitely notify your User about that failure so User can retry eventually.</p>
 <h2 id='ui-customization'>UI Customization</h2><pre class="highlight swift tab-swift"><code><span class="n">player</span><span class="o">.</span><span class="n">videoGravity</span> <span class="o">=</span> <span class="o">.</span><span class="n">resizeAspectFill</span>
 <span class="n">player</span><span class="o">.</span><span class="n">showPlaybackControls</span> <span class="o">=</span> <span class="kc">false</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">_player</span> <span class="nf">setVideoGravity</span><span class="p">:</span><span class="n">FKPlayerVideoGravityResizeAspectFill</span><span class="p">];</span>
+<span class="p">[</span><span class="n">_player</span> <span class="nf">setShowPlaybackControls</span><span class="p">:</span><span class="nb">NO</span><span class="p">];</span>
 </code></pre><pre class="highlight java tab-java"><code><span class="n">mPlayer</span><span class="o">.</span><span class="na">setShowPlaybackControls</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span> <span class="c1">// default is true</span>
 <span class="n">mPlayer</span><span class="o">.</span><span class="na">setPlaybackControlsMargins</span><span class="o">(...);</span> <span class="c1">// default is 8dp</span>
 <span class="n">mPlayer</span><span class="o">.</span><span class="na">setPlaybackControlsBackground</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">my_player_controls_background</span><span class="o">);</span> <span class="c1">// default is a 8dp rounded semi-transparent black rectangle</span>
@@ -1078,16 +1206,16 @@ Replace <code>STREAM_ID</code> with the streamId of the stream you want to watch
 </code></pre>
 <p>We provide basic customization of the playback controls UI.</p>
 
-<p class="lang-specific swift">Note that <code><a href="https://developer.apple.com/documentation/avkit/avplayerviewcontroller">AVPlayerViewController</a></code> provides very little control over the UI. We only wrapped what we found useful.</p>
+<p class="lang-specific objective_c swift">Note that <code><a href="https://developer.apple.com/documentation/avkit/avplayerviewcontroller">AVPlayerViewController</a></code> provides very little control over the UI. We only wrapped what we found useful.</p>
 
 <p>Please <a href="mailto:contact@firekast.io">let us know</a> if you need more control over the player UI.</p>
 
-<aside class="notice lang-specific swift java">
+<aside class="notice lang-specific objective_c swift java">
 <code>FKPlayer</code> provides all the tools (<code>resume</code>, <code>pause</code>, <code>seek</code>, playback position) to let you eventually build your custom playback controls.
 </aside>
 <h1 id='release-notes'>Release Notes</h1>
 <p>Follow what&#39;s new in Firekast SDK releases.</p>
-<blockquote class="lang-specific swift">
+<blockquote class="lang-specific swift objective_c">
 <p>v1.6.0<span>2019-03-20</span></p>
 <pre>
 Built with Swift 4.2.1 (Xcode 10.1).
@@ -1110,7 +1238,7 @@ Built with Swift 4.2.1 (Xcode 10.1).
 </pre>
 </blockquote>
 
-<blockquote class="lang-specific swift">
+<blockquote class="lang-specific swift objective_c">
 <p>v1.5.0<span>2019-01-25</span></p>
 <pre>
 Built with Swift 4.2.1 (Xcode 10.1).
@@ -1119,7 +1247,7 @@ Built with Swift 4.2.1 (Xcode 10.1).
 </pre>
 </blockquote>
 
-<blockquote class="lang-specific swift">
+<blockquote class="lang-specific swift objective_c">
 <p>v1.4.0<span>2019-01-16</span></p>
 <pre>
 Built with Swift 4.2.1 (Xcode 10.1).
@@ -1133,7 +1261,7 @@ New:
 </pre>
 </blockquote>
 
-<blockquote class="lang-specific swift">
+<blockquote class="lang-specific swift objective_c">
 <p>v1.3.3<span>2018-11-29</span></p>
 <pre>
 Build with Swift 4.2 (Xcode 10).
@@ -1143,7 +1271,7 @@ New:
 </pre>
 </blockquote>
 
-<blockquote class="lang-specific swift">
+<blockquote class="lang-specific swift objective_c">
 <p>v1.3.1<span>2018-11-20</span></p>
 <pre>
 Build with Swift 4.2 (Xcode 10).
@@ -1152,7 +1280,7 @@ New:
 </pre>
 </blockquote>
 
-<blockquote class="lang-specific swift">
+<blockquote class="lang-specific swift objective_c">
 <p>v1.3.0<span>2018-10-11</span></p>
 <pre>
 Build with Swift 4.2 (Xcode 10).
@@ -1162,7 +1290,7 @@ New:
 </pre>
 </blockquote>
 
-<blockquote class="lang-specific swift">
+<blockquote class="lang-specific swift objective_c">
 <p>v1.2.2<span>2018-09-27</span></p>
 <pre>
 Build with Swift 4.1.2 (Xcode 9.4.1).
@@ -1171,7 +1299,7 @@ New:
 </pre>
 </blockquote>
 
-<blockquote class="lang-specific swift">
+<blockquote class="lang-specific swift objective_c">
 <p>v1.2.1<span>2018-09-20</span></p>
 <pre>
 Build with Swift 4.1.2 (Xcode 9.4.1).
@@ -1180,7 +1308,7 @@ Fixes:
 </pre>
 </blockquote>
 
-<blockquote class="lang-specific swift">
+<blockquote class="lang-specific swift objective_c">
 <p>v1.2.0<span>2018-09-20</span></p>
 <pre>
 Build with Swift 4.1.2 (Xcode 9.4.1).
@@ -1360,7 +1488,8 @@ Play Firekast.io live and VOD videos on your website.
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="swift">iOS</a>
+                <a href="#" data-language-name="swift">swift</a>
+                <a href="#" data-language-name="objective_c">objective-c</a>
                 <a href="#" data-language-name="java">android</a>
                 <a href="#" data-language-name="javascript">javascript</a>
                 <a href="#" data-language-name="shell">cURL</a>
