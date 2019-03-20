@@ -65,7 +65,7 @@ Then, stop streaming whenever your User is done.
 
 <aside class="notice">You should call <code>stopStreaming()</code> when User leaves the dedicated streaming screen.</aside>
 
-## Events
+## Streamer Events
 
 ```swift
 func streamer(_ streamer: FKStreamer, willStart stream: FKStream, unless error: NSError?) {}

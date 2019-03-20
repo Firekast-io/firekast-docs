@@ -130,7 +130,7 @@ When playing a live that finally reaches its ends, the playback stops at the end
 Replace <code>STREAM_ID</code> with the streamId of the stream you want to watch.
 </aside>
 
-## Events
+## Player Events
 
 ```swift
 func player(_ player: FKPlayer, stateDidChanged state: FKPlayer.State) {}
