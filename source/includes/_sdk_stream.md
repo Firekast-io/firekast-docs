@@ -138,10 +138,6 @@ stream.forceClose { (error) in
 mStream.forceClose(new AppStreamCallback());
 ```
 
-```shell
-// TODO
-```
-
 Call this function when your user has created a stream but abandoned the idea of going live. That way, the stream moves from state `waiting` to `timeout` instantaneously and your plan's **simultaneous streamer** counter decreases by 1.
 
 <aside class="warning">Calling this function <b>does not</b> call <a href=stop-and-stop-streaming>stopStreaming</a>.</aside>
