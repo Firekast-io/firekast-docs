@@ -1,12 +1,12 @@
 # Sample Apps
 
 <blockquote class="lang-specific swift">
-<p>We provide sample app in both Swift and Objective-C.</p>
+<p>We provide sample apps in both Swift and Objective-C.</p>
 <p>Visit <a href="https://github.com/Firekast-io/firekast-demo-ios">firekast-demo-ios</a>.</p>
 </blockquote>
 
 <blockquote class="lang-specific java">
-<p>We provide sample app in both Kotlin and Java.</p>
+<p>We provide sample apps in both Kotlin and Java.</p>
 <p>Visit <a href="https://github.com/Firekast-io/firekast-demo-android">firekast-demo-android</a>.</p>
 </blockquote>
 

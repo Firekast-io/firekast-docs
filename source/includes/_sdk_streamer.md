@@ -10,7 +10,9 @@ The streamer is responsible for creating streams and actually sends frames and a
 ## Create Streams
 
 ```swift
-streamer.createStream()
+streamer.createStream { (stream, error) in
+  //...
+}
 ```
 
 ```java

@@ -71,7 +71,8 @@ player.resume()
 ```
 
 ```swift
-// import CoreMedia
+import CoreMedia
+
 player.seek(to: CMTime(seconds: 30, preferredTimescale: 1))
 ```
 
@@ -133,9 +134,8 @@ Replace <code>STREAM_ID</code> with the streamId of the stream you want to watch
 ## Player Events
 
 ```swift
+func player(_ player: FKPlayer, willPlay stream: FKStream, unless error: Error?) {}    
 func player(_ player: FKPlayer, stateDidChanged state: FKPlayer.State) {}
-func player(_ player: FKPlayer, videoDurationIsAvailable duration: TimeInterval) {}
-func player(_ player: FKPlayer, willPlay stream: FKStream, unless error: NSError?) {}
 ```
 
 ```java

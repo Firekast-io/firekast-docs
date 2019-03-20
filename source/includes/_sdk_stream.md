@@ -58,7 +58,7 @@ If your application no longer uses a stream, you should [stop it](#stop-streamin
 
 ```swift
 let metadata = ["title":"Awesome title", "description": "An awesome video with awesome people."]
-guard metadata.isValidFirekastMetadata() else { return }
+guard FKStream.isMetadataValid(metadata) else { return }
 stream.updateMetadata(with: metadata) { (error) in
   //...
 }
@@ -102,7 +102,7 @@ curl https://api.firekast.io/v2/apps/myapp/streams \
 
 ```swift
 FKStream.findAll() { (numOfPages: Int, pageNumber: Int, pageSize: Int, count: Int, streams, error) in
-  // ...
+  //...
 }
 ```
 
@@ -114,7 +114,7 @@ FKStream.findAll(0, 100, null, new AppFindAllCallback());
 
 ```swift
 FKStream.findAll(where: .vod) { (numOfPages: Int, pageNumber: Int, pageSize: Int, count: Int, streams, error) in
-  // ...
+  //...
 }
 ```
 

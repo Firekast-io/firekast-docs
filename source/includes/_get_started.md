@@ -23,7 +23,7 @@ pod 'VideoCore', :git => 'https://github.com/Firekast-io/VideoCore.git', :tag =>
 </blockquote>
 
 ```swift
-pod install
+> pod install
 ```
 
 <blockquote class="lang-specific swift">
@@ -43,6 +43,17 @@ pod install
 
 ```swift
 import Firekast
+
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    Firekast.initialize(privateKey: "YOUR_APP_PRIVATE_KEY")
+    return true
+  }
+  
+  //...
+}
 ```
 
 ```swift
@@ -271,7 +282,7 @@ For the moment, Firekast allows <strong>3 restreams max</strong> per stream. Ple
 camera.position = .back // opens back camera
 
 camera.isAudioCaptureEnabled = false // mutes the microphone
-camera.isVideoCaptureEnabled = false // turns camera off and streams a black screen
+camera.isImageCaptureEnabled = false // turns camera off and streams a black screen
 
 if camera.isFlashAvailable {
     camera.isFlashEnabled = true // turns flash on
