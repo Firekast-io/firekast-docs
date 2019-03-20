@@ -4,7 +4,7 @@ The player lets you play any stream of your current application. Whether the str
 
 ## Initialization
 
-<blockquote class="lang-specific swift">
+<blockquote class="lang-specific objective_c swift">
 <p>The player is based on <code><a href="https://developer.apple.com/documentation/avkit/avplayerviewcontroller">AVPlayerViewController</a></code>.</p>
 </blockquote>
 
@@ -15,6 +15,16 @@ override func viewDidLoad() {
   player.delegate = self
   player.show(in: playerContainerView)
 }
+```
+
+```objective_c
+- (void)viewDidLoad {
+  [super viewDidLoad];
+  _player = [[FKPlayer alloc] init];
+  [_player setDelegate:self];
+  [_player showIn:_ibPlayerView];
+}
+
 ```
 
 <blockquote class="lang-specific java">
@@ -74,6 +84,22 @@ player.resume()
 import CoreMedia
 
 player.seek(to: CMTime(seconds: 30, preferredTimescale: 1))
+```
+
+```objective_c
+FKStream* stream = [[FKStream alloc] initWithWithoutDataExceptStreamId:"STREAM_ID"];
+[_player play:stream at:kCMTimeZero];
+```
+
+```objective_c
+[_player resume];
+[_player pause];
+```
+
+```objective_c
+#import "CoreMedia/CoreMedia.h"
+
+[_player play:stream at:CMTimeMake(30, 1)];
 ```
 
 ```java
@@ -138,6 +164,11 @@ func player(_ player: FKPlayer, willPlay stream: FKStream, unless error: Error?)
 func player(_ player: FKPlayer, stateDidChanged state: FKPlayer.State) {}
 ```
 
+```objective_c
+- (void)player:(FKPlayer *)player willPlay:(FKStream *)stream unless:(NSError *)error {}
+- (void)player:(FKPlayer *)player stateDidChanged:(enum FKPlayerState)state {}
+```
+
 ```java
 mPlayer.setCallback(new FKPlayer.Callback() {
   @Override
@@ -179,6 +210,11 @@ player.videoGravity = .resizeAspectFill
 player.showPlaybackControls = false
 ```
 
+```objective_c
+[_player setVideoGravity:FKPlayerVideoGravityResizeAspectFill];
+[_player setShowPlaybackControls:NO];
+```
+
 ```java
 mPlayer.setShowPlaybackControls(true); // default is true
 mPlayer.setPlaybackControlsMargins(...); // default is 8dp
@@ -196,10 +232,10 @@ const player = new Firekast.Player({
 
 We provide basic customization of the playback controls UI.
 
-<p class="lang-specific swift">Note that <code><a href="https://developer.apple.com/documentation/avkit/avplayerviewcontroller">AVPlayerViewController</a></code> provides very little control over the UI. We only wrapped what we found useful.</p>
+<p class="lang-specific objective_c swift">Note that <code><a href="https://developer.apple.com/documentation/avkit/avplayerviewcontroller">AVPlayerViewController</a></code> provides very little control over the UI. We only wrapped what we found useful.</p>
 
 <p>Please <a href="mailto:contact@firekast.io">let us know</a> if you need more control over the player UI.</p>
 
-<aside class="notice lang-specific swift java">
+<aside class="notice lang-specific objective_c swift java">
 <code>FKPlayer</code> provides all the tools (<code>resume</code>, <code>pause</code>, <code>seek</code>, playback position) to let you eventually build your custom playback controls.
 </aside>

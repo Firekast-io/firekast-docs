@@ -43,6 +43,10 @@ If a stream is `live` and stops receiving video data, it transitions to `vod`.
 let timeout: Date = stream.ingestTimeout // available only when stream's state is .waiting.
 ```
 
+```objective_c
+NSDate* timeout = [stream ingestTimeout]; // available only when stream's state is .waiting.
+```
+
 ```java
 Date timeout = stream.getIngestTimeout() // available only when stream's state is WAITING.
 ```
@@ -61,6 +65,18 @@ let metadata = ["title":"Awesome title", "description": "An awesome video with a
 guard FKStream.isMetadataValid(metadata) else { return }
 stream.updateMetadata(with: metadata) { (error) in
   //...
+}
+```
+
+```objective_c
+NSDictionary *metadata = @{
+                  @"title" : @"Awesome title",
+                  @"description" : @"An awesome video with awesome people."
+                };
+if ([FKStream isMetadataValid:metadata]) {
+  [stream updateMetadataWith:metadata completion:^(NSError * error) {
+    //...
+  }];
 }
 ```
 
@@ -89,7 +105,7 @@ It can be updated as soon as the stream is created and can be retrieved by fetch
 
 ## Query
 
-<blockquote class="lang-specific swift java shell"><p>Fetch your app's streams, starting with the most recent.</p></blockquote>
+<blockquote class="lang-specific objective_c swift java shell"><p>Fetch your app's streams, starting with the most recent.</p></blockquote>
 
 ```shell
 # with states: all, live, timeout, waiting, vod, processing 
@@ -106,16 +122,28 @@ FKStream.findAll() { (numOfPages: Int, pageNumber: Int, pageSize: Int, count: In
 }
 ```
 
+```objective_c
+[FKStream findAllWithWhere:FKStreamStateUnknown pageNumber: 0 pageSize: 100 completion:^(NSInteger numOfPages, NSInteger pageNumber, NSInteger pageSize, NSInteger count, NSArray<FKStream *> *streams, NSError * error) {
+  //...
+}];
+```
+
 ```java
 FKStream.findAll(0, 100, null, new AppFindAllCallback());
 ```
 
-<blockquote class="lang-specific swift java"><p>Add a where clause to filter by state.</p></blockquote>
+<blockquote class="lang-specific objective_c swift java"><p>Add a where clause to filter by state.</p></blockquote>
 
 ```swift
 FKStream.findAll(where: .vod) { (numOfPages: Int, pageNumber: Int, pageSize: Int, count: Int, streams, error) in
   //...
 }
+```
+
+```objective_c
+[FKStream findAllWithWhere:FKStreamStateVod pageNumber: 0 pageSize: 100 completion:^(NSInteger numOfPages, NSInteger pageNumber, NSInteger pageSize, NSInteger count, NSArray<FKStream *> *streams, NSError * error) {
+  //...
+}];
 ```
 
 ```java
@@ -132,6 +160,12 @@ However, we recommend that you manage the streamIDs in your own backend.
 stream.forceClose { (error) in
   //...
 }
+```
+
+```objective_c
+[stream forceCloseWithCompletion:^(NSError * error) {
+  //...
+}];
 ```
 
 ```java

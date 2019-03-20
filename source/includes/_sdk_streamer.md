@@ -15,6 +15,12 @@ streamer.createStream { (stream, error) in
 }
 ```
 
+```objective_c
+[_streamer createStreamWithOutputs:nil completion:^(FKStream * stream, NSError * error) {
+  //...     
+}];
+```
+
 ```java
 mStreamer.createStream(new AppCreateStreamCallback());
 ```
@@ -27,12 +33,16 @@ This newly created stream is immediatly visible in your dashboard.
 
 ## Go Live
 
-<blockquote class="lang-specific swift java">
+<blockquote class="lang-specific swift objective_c java">
 <p>Start streaming:</p>
 </blockquote>
 
 ```swift
 streamer.startStreaming(on: stream, delegate: self)
+```
+
+```objective_c
+[_streamer startStreamingOn:stream delegate:self];
 ```
 
 ```java
@@ -44,7 +54,7 @@ Once you have created a stream, you can start streaming whenever your User is re
 <aside class="notice">You must start streaming before <a href="#timeout">timeout</a>.</aside>
 
 <blockquote class=
-"lang-specific swift java shell">
+"lang-specific swift objective_c java shell">
 <p>Stop streaming:</p>
 </blockquote>
 
@@ -56,6 +66,10 @@ curl -X POST \
 
 ```swift
 streamer.stopStreaming()
+```
+
+```objective_c
+[_streamer stopStreaming];
 ```
 
 ```java
@@ -74,6 +88,13 @@ func streamer(_ streamer: FKStreamer, willStart stream: FKStream, unless error: 
 func streamer(_ streamer: FKStreamer, didBecomeLive stream: FKStream) {}
 func streamer(_ streamer: FKStreamer, didStop stream: FKStream, error: NSError?) {}
 func streamer(_ streamer: FKStreamer, didUpdateStreamHealth health: Float) {}
+```
+
+```objective_c
+- (void)streamer:(FKStreamer *)streamer willStart:(FKStream *)stream unless:(NSError *)error {}
+- (void)streamer:(FKStreamer *)streamer didBecomeLive:(FKStream *)stream {}
+- (void)streamer:(FKStreamer *)streamer didStop:(FKStream *)stream error:(NSError *)error {}
+- (void)streamer:(FKStreamer *)streamer didUpdateStreamHealth:(float)health {}
 ```
 
 ```java
@@ -108,6 +129,12 @@ streamer.createStream(outputs: listOfRtmpLink) { (stream, error) in
 }
 ```
 
+```objective_c
+[_streamer createStreamWithOutputs:listOfRtmpLink completion:^(FKStream * stream, NSError * error) {
+  // 
+}];
+```
+
 ```java
 mStreamer.createStream(mListOfRtmpLink, new AppCreateStreamCallback());
 ```
@@ -126,7 +153,7 @@ For the moment, Firekast allows <strong>3 restreams max</strong> per stream. Ple
 
 ## Test Bandwidth
 
-<blockquote class="lang-specific swift java">
+<blockquote class="lang-specific swift objective_c java">
 <p>Testing bandwidth for 15 seconds</p>
 </blockquote>
 
@@ -139,18 +166,33 @@ DispatchQueue.main.asyncAfter(deadline: .now() + testDuration) { [weak self] in
 }
 ```
 
+```objective_c
+double testDuration = 15.0;
+[_streamer startStreamingOn:[FKStream bandwidthTest] delegate:self];
+dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(testDuration * NSEC_PER_SEC));
+dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+  [self->_streamer stopStreaming];
+});
+```
+
 ```java
 long durationMs = 15000;
 mStreamer.startStreaming(FKStream.bandwidthTest, new AppStreamingCallback());
 mHandler.sendEmptyMessageDelayed(MSG_TEST_BANDWIDTH_STOP_STREAMING, durationMs)
 ```
 
-<blockquote class="lang-specific swift java">
+<blockquote class="lang-specific objective_c swift java">
 <p>Observe stream health</p>
 </blockquote>
 
 ```swift
 func streamer(_ streamer: FKStreamer, didUpdateStreamHealth health: Float) {
+  // stream health between 70-100% is good.
+}
+```
+
+```objective_c
+- (void)streamer:(FKStreamer *)streamer didUpdateStreamHealth:(float)health {
   // stream health between 70-100% is good.
 }
 ```
@@ -179,6 +221,10 @@ We recommand test duration to be between 5 and 30 seconds. The longer the more a
 
 ```swift
 streamer.quality = .standard
+```
+
+```objective_c
+[_streamer setQuality:FKQualityStandard];
 ```
 
 ```java

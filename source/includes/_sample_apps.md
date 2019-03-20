@@ -1,6 +1,6 @@
 # Sample Apps
 
-<blockquote class="lang-specific swift">
+<blockquote class="lang-specific swift objective_c">
 <p>We provide sample apps in both Swift and Objective-C.</p>
 <p>Visit <a href="https://github.com/Firekast-io/firekast-demo-ios">firekast-demo-ios</a>.</p>
 </blockquote>

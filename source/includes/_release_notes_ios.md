@@ -1,4 +1,4 @@
-<blockquote class="lang-specific swift">
+<blockquote class="lang-specific swift objective_c">
 <p>v1.6.0<span>2019-03-20</span></p>
 <pre>
 Built with Swift 4.2.1 (Xcode 10.1).
@@ -21,7 +21,7 @@ Built with Swift 4.2.1 (Xcode 10.1).
 </pre>
 </blockquote>
 
-<blockquote class="lang-specific swift">
+<blockquote class="lang-specific swift objective_c">
 <p>v1.5.0<span>2019-01-25</span></p>
 <pre>
 Built with Swift 4.2.1 (Xcode 10.1).
@@ -30,7 +30,7 @@ Built with Swift 4.2.1 (Xcode 10.1).
 </pre>
 </blockquote>
 
-<blockquote class="lang-specific swift">
+<blockquote class="lang-specific swift objective_c">
 <p>v1.4.0<span>2019-01-16</span></p>
 <pre>
 Built with Swift 4.2.1 (Xcode 10.1).
@@ -44,7 +44,7 @@ New:
 </pre>
 </blockquote>
 
-<blockquote class="lang-specific swift">
+<blockquote class="lang-specific swift objective_c">
 <p>v1.3.3<span>2018-11-29</span></p>
 <pre>
 Build with Swift 4.2 (Xcode 10).
@@ -54,7 +54,7 @@ New:
 </pre>
 </blockquote>
 
-<blockquote class="lang-specific swift">
+<blockquote class="lang-specific swift objective_c">
 <p>v1.3.1<span>2018-11-20</span></p>
 <pre>
 Build with Swift 4.2 (Xcode 10).
@@ -63,7 +63,7 @@ New:
 </pre>
 </blockquote>
 
-<blockquote class="lang-specific swift">
+<blockquote class="lang-specific swift objective_c">
 <p>v1.3.0<span>2018-10-11</span></p>
 <pre>
 Build with Swift 4.2 (Xcode 10).
@@ -73,7 +73,7 @@ New:
 </pre>
 </blockquote>
 
-<blockquote class="lang-specific swift">
+<blockquote class="lang-specific swift objective_c">
 <p>v1.2.2<span>2018-09-27</span></p>
 <pre>
 Build with Swift 4.1.2 (Xcode 9.4.1).
@@ -82,7 +82,7 @@ New:
 </pre>
 </blockquote>
 
-<blockquote class="lang-specific swift">
+<blockquote class="lang-specific swift objective_c">
 <p>v1.2.1<span>2018-09-20</span></p>
 <pre>
 Build with Swift 4.1.2 (Xcode 9.4.1).
@@ -91,7 +91,7 @@ Fixes:
 </pre>
 </blockquote>
 
-<blockquote class="lang-specific swift">
+<blockquote class="lang-specific swift objective_c">
 <p>v1.2.0<span>2018-09-20</span></p>
 <pre>
 Build with Swift 4.1.2 (Xcode 9.4.1).

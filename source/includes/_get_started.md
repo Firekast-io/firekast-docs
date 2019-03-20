@@ -2,15 +2,13 @@
 
 ## Installation
 
-<blockquote class="lang-specific swift">
+<blockquote class="lang-specific swift objective_c">
 <p>1. Edit your podfile</p>
 </blockquote>
 
 ```swift
 use_frameworks!
-```
 
-```swift
 # Set the same version name X.Y.Z. for both Firekast and VideoCore pod.
 pod 'Firekast', :podspec => 'https://firekast.io/sdk/ios/vX.Y.Z/Firekast.podspec'
 pod 'VideoCore', :git => 'https://github.com/Firekast-io/VideoCore.git', :tag => 'fk-X.Y.Z'
@@ -18,15 +16,29 @@ pod 'VideoCore', :git => 'https://github.com/Firekast-io/VideoCore.git', :tag =>
 # Please note, first `pod install` may be long, please be patient :)
 ```
 
-<blockquote class="lang-specific swift">
-<p>2. Run in terminal</p>
+```objective_c
+use_frameworks!
+
+# Set the same version name X.Y.Z. for both Firekast and VideoCore pod.
+pod 'Firekast', :podspec => 'https://firekast.io/sdk/ios/vX.Y.Z/Firekast.podspec'
+pod 'VideoCore', :git => 'https://github.com/Firekast-io/VideoCore.git', :tag => 'fk-X.Y.Z'
+
+# Please note, first `pod install` may be long, please be patient :)
+```
+
+<blockquote class="lang-specific swift objective_c">
+<p>2. Run</p>
 </blockquote>
 
 ```swift
 > pod install
 ```
 
-<blockquote class="lang-specific swift">
+```objective_c
+> pod install
+```
+
+<blockquote class="lang-specific swift objective_c">
 <p>3. Specify camera and microphone usage description in your <code>info.pList</code></p>
 </blockquote>
 
@@ -37,7 +49,14 @@ pod 'VideoCore', :git => 'https://github.com/Firekast-io/VideoCore.git', :tag =>
 <string>Microphone usage description</string>
 ```
 
-<blockquote class="lang-specific swift">
+```objective_c
+<key>NSCameraUsageDescription</key>
+<string>Camera usage description</string>
+<key>NSMicrophoneUsageDescription</key>
+<string>Microphone usage description</string>
+```
+
+<blockquote class="lang-specific swift objective_c">
 <p>4. Initialize the SDK</p>
 </blockquote>
 
@@ -56,11 +75,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
-```swift
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-  Firekast.initialize(privateKey: "YOUR_APP_PRIVATE_KEY")
+```objective_c
+#import "Firekast/Firekast-Swift.h"
+
+@implementation AppDelegate
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [Firekast initializeWithPrivateKey:@"YOUR_APP_PRIVATE_KEY"];
+    return YES;
 }
+
+//...
+
+@end
 ```
+
+<blockquote class="lang-specific objective_c">
+<p>5. Edit your project Build Settings</p>
+<p>Set <code>Always Embed Swift Standard Libraries</code> to <code>Yes</code> in your project Build Settings. Otherwise you will encounter a <code>dyld: Library not loaded error</code>.</p>
+</blockquote>
 
 <blockquote class="lang-specific java">
 <p>1. Edit your project root build.gradle</p>
@@ -142,41 +175,30 @@ Firekast.init({
 });
 ```
 
-<p class="lang-specific swift">Firekast iOS SDK is distributed via <a href="https://guides.cocoapods.org/using/getting-started.html">Cocoapods</a>.</p>
+<p class="lang-specific swift objective_c">Firekast iOS SDK is distributed via <a href="https://guides.cocoapods.org/using/getting-started.html">Cocoapods</a>.</p>
 
 <p class="lang-specific java">Firekast Android SDK is distributed via <a href="https://developer.android.com/studio/build/dependencies.html">Gradle</a>.</p>
 
 <p class="lang-specific javascript">Several options are available to import Firekast Javascript SDK in your project.<br/><br/>Note that the JS SDK is not yet available on the public npm registry. Please, <a href="https://firekast.zendesk.com/hc/en-gb/requests/new">let us know</a> if you would love so.</p> 
 
-<p class="lang-specific swift">
-For <strong>Objective-C</strong> projects:
-</p>
-<ul class="lang-specific swift"><li>Set <code>Always Embed Swift Standard Libraries</code> to <code>Yes</code> in your project Build Settings. Otherwise you will encounter a <code>dyld: Library not loaded</code> error.</li>
-<li>Use <code>#import "Firekast/Firekast-Swift.h"</code> to import Firekast SDK in your code.</li></ul>
-
 <aside class="notice lang-specific javascript">
 You must replace <code>YOUR_APP_PUBLIC_KEY</code> with your <a href="#api-keys">public key</a>, available in app's settings in your dashboard.</a>.
 </aside>
 
-<aside class="notice lang-specific java swift">
+<aside class="notice lang-specific java swift objective_c">
 You must replace <code>YOUR_APP_PRIVATE_KEY</code> with your app <a href="#api-keys">private key</a>, available in app's settings in your dashboard.</aside>
 
-<aside class="notice lang-specific java swift">
+<aside class="notice lang-specific java swift objective_c">
 <strong>X.Y.Z</strong>: visit <a href="#release-notes">Release Notes</a> section to find out the latest version of the SDK.
 </aside>
 
-<aside class="notice lang-specific swift">
+<aside class="notice lang-specific swift objective_c">
 Min Deployment Target: iOS 8.0 >=
 </aside>
 
 <aside class="notice lang-specific java">
 Min Android SDK: 19 >=
 </aside>
-
-
-<blockquote class="lang-specific swift">
-<p>3. Specify camera and microphone usage description in your <code>info.pList</code></p>
-</blockquote>
 
 ## Live stream
 
@@ -192,6 +214,20 @@ streamer.createStream { (stream, error) in
   guard error == nil else { return } // Something went wrong, like you have reached your plan limit for example.
   streamer.startStreaming(on: stream, delegate: self)
 }
+```
+
+```objective_c
+// 1. Initializes the streamer
+_streamer = [[FKStreamer alloc] initWithUsecase:FKStreamerOrientationPortrait];
+
+// 2. Open camera inside a view
+_camera = [_streamer showCamera:Front in:_aView];
+
+// 3. Create a stream and start streaming when ready
+[_streamer createStreamWithOutputs:nil completion:^(FKStream * stream, NSError *error) {
+    if (error != nil) { return; } // Something went wrong, like you have reached your plan limit for example.
+    [self->_streamer startStreamingOn:stream delegate:self];
+}];
 ```
 
 ```java
@@ -254,6 +290,19 @@ streamer.createStream(outputs: [facebookRtmpLink, youtubeRtmpLink]) { (stream, e
 }
 ```
 
+```objective_c
+// 1. Checkout desired platforms API to create a RTMP link ready to receive a live stream.
+NSString* facebookRtmpLink = @"rtmp://live-api-a.facebook.com:80/rtmp/143521800?ds=1&a=PEtMa1Ul0W3Rpa";
+NSString* youtubeRtmpLink = @"rtmp://a.rtmp.youtube.com/live/hello_webcast";
+NSArray* outputs = [NSArray arrayWithObjects: facebookRtmpLink, youtubeRtmpLink, nil];
+
+// 2. Create a stream specifying restream outputs and start streaming when ready
+[_streamer createStreamWithOutputs:restream completion:^(FKStream * stream, NSError *error) {
+    if (error != nil) { return; } // Something went wrong, like you have reached your plan limit for example.
+    [self->_streamer startStreamingOn:stream delegate:self];
+}];
+```
+
 ```java
 // 1. Checkout desired platforms API to create a RTMP link ready to receive a live stream.
 String facebookRtmpLink = "rtmp://live-api-a.facebook.com:80/rtmp/143521800?ds=1&a=PEtMa1Ul0W3Rpa";
@@ -291,6 +340,19 @@ if camera.isFlashAvailable {
 camera.capture() // cheeeese!
 ```
 
+```objective_c
+[_camera setPosition:Back]; // opens back camera
+    
+[_camera setIsAudioCaptureEnabled:NO]; // mutes the microphone
+[_camera setIsImageCaptureEnabled:NO]; // turns camera off and streams a black screen
+
+if ([_camera isFlashAvailable]) {
+  [_camera setIsFlashEnabled:YES]; // turns flash on
+}
+
+[_camera capture]; // cheeeese!
+```
+
 ```java
 mCamera.switchToPosition(Position.BACK); // opens back camera
 
@@ -317,6 +379,17 @@ player.delegate = self
 
 let stream = FKStream(withoutDataExceptStreamId: "STREAM_ID")
 player.play(stream) // 3. play the video starting - in that example - from the beginning.
+```
+
+```objective_c
+#import "CoreMedia/CoreMedia.h"
+
+_player = [[FKPlayer alloc] init]; // 1. initialize player
+[_player showIn:_aView]; // 2. display player in myView
+[_player setDelegate:self];
+
+FKStream* stream = [[FKStream alloc] initWithWithoutDataExceptStreamId:@"STREAM_ID"];
+[_player play:stream at:kCMTimeZero]; // 3. play the video starting - in that example - from the beginning.
 ```
 
 ```java
@@ -365,7 +438,7 @@ curl https://api.firekast.io/v2/apps/myapp/streams \
     -H 'Authorization: SDK %YOUR-APP-PRIVATE-KEY%'
  ```
 
-<blockquote class="lang-specific swift java javascript"><p>switch language tab to 'cURL' to view sample HTTP requests</p></blockquote>
+<blockquote class="lang-specific swift objective_c java javascript"><p>switch language tab to 'cURL' to view sample HTTP requests</p></blockquote>
 
 You can use your private key to make authorized http requests to out API.
 
