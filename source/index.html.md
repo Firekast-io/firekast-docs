@@ -13,7 +13,7 @@ toc_headers:
   - <a href='https://dashboard.firekast.io/'>🖥️  Access your dashboard</a>
   
 toc_footers:
-  - <ul>API Reference<li><a href="https://firekast.io/sdk/ios/docs">iOS</a></li><li><a href="https://firekast.io/sdk/android/docs">Android</a></li></ul>
+  - <ul>API Reference<li><a href="https://firekast.io/sdk/ios/docs">iOS</a></li><li><a href="https://firekast.io/sdk/android/docs">Android</a></li><li><a href="https://firekast-doc.herokuapp.com/v2/">rest API doc</li></ul>
   - <ul>Demos<li><a href="https://github.com/Firekast-io/firekast-demo-ios">iOS</a></li><li><a href="https://github.com/Firekast-io/firekast-demo-android">Android</a></li></ul>
   - <p>Made with 🍕 in Paris, <a href="http://www.agoranov.com/#startup">Agoranov</a></p>
 

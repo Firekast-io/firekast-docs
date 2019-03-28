@@ -74,6 +74,6 @@ Free trial comes with the following limitations:
 * Up to 5 [simultaneous streamers](#simultaneous-streamers).
 * Up to 100 [monthly active users](#active-users).
 
-<aside class="warning">
+<aside class="notice">
 If you reach the <strong>free plan</strong> limits, <a href="#create-streams">creating</a> a stream, or <a href="#play-and-stop">watching</a> a stream will temporarily result in a 402 error.
 </aside>
