@@ -322,7 +322,7 @@ body {
 }
 
 .lang-selector {
-  background-color: #fff;
+  background-color: #000;
   width: 100%;
   font-weight: bold;
   height: 50px;
@@ -338,8 +338,8 @@ body {
     text-decoration: none;
     padding: 0 20px;
     outline: 0;
-    background: #fff;
-    color: #232323;
+    background: #232323;
+    color: #fff;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.06);
 
     & + a {
@@ -348,13 +348,13 @@ body {
 
     &:active,
     &:focus {
-      background-color: #232323;
-      color: #fff;
+      background-color: #fff;
+      color: #232323;
     }
 
     &.active {
-      background-color: #232323;
-      color: #fff;
+      background-color: #fff;
+      color: #232323;
     }
   }
 
