@@ -171,7 +171,7 @@ define(["firekast"], function(Firekast) {
 
 ```javascript
 Firekast.init({
-  api_key: 'YOUR_APP_PUBLIC_KEY'
+  public_key: 'YOUR_APP_PUBLIC_KEY'
 });
 ```
 
