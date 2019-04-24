@@ -1,4 +1,14 @@
 <blockquote class="lang-specific swift objective_c">
+<p>v1.7.0<span>2019-04-24</span></p>
+<pre>
+Built with Swift 5.0 (Xcode 10.2).
+* Player can be <code>muted</code>.
+* By default, player starts to play immediately, otherwise call <code>play(self.stream, playImmediately: false)</code> to override this behavior.
+* Fix player crash: 'Cannot remove an observer for the key path because it is not registered as an observer.'.
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific swift objective_c">
 <p>v1.6.1<span>2019-04-09</span></p>
 <pre>
 Built with Swift 5.0 (Xcode 10.2).

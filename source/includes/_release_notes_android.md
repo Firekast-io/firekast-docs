@@ -1,4 +1,13 @@
 <blockquote class="lang-specific java">
+<p>v1.7.0<span>2019-04-24</span></p>
+<pre>
+* Player can be muted.
+* By default, player starts to play immediately, otherwise call <code>play(FKStream stream, long atTimeInMillis, boolean playImmediately)</code> to override this behavior.
+* Add <code>FKPlayer</code> reference in <code>FKPlayer.Callback</code>'s methods.
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific java">
 <p>v1.6.0<span>2019-03-20</span></p>
 <pre>
 * Min SDK version is now 19 (was 16).
