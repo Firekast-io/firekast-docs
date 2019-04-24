@@ -570,7 +570,7 @@ If you reach the <strong>free plan</strong> limits, <a href="#create-streams">cr
 <p>2. Initialize the SDK</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="nx">Firekast</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
-  <span class="na">api_key</span><span class="p">:</span> <span class="s1">'YOUR_APP_PUBLIC_KEY'</span>
+  <span class="na">public_key</span><span class="p">:</span> <span class="s1">'YOUR_APP_PUBLIC_KEY'</span>
 <span class="p">});</span>
 </code></pre>
 <p class="lang-specific swift objective_c">Firekast iOS SDK is distributed via <a href="https://guides.cocoapods.org/using/getting-started.html">Cocoapods</a>.</p>
@@ -1216,6 +1216,16 @@ Replace <code>STREAM_ID</code> with the streamId of the stream you want to watch
 <h1 id='release-notes'>Release Notes</h1>
 <p>Follow what&#39;s new in Firekast SDK releases.</p>
 <blockquote class="lang-specific swift objective_c">
+<p>v1.7.0<span>2019-04-24</span></p>
+<pre>
+Built with Swift 5.0 (Xcode 10.2).
+* Player can be <code>muted</code>.
+* By default, player starts to play immediately, otherwise call <code>play(self.stream, playImmediately: false)</code> to override this behavior.
+* Fix player crash: 'Cannot remove an observer for the key path because it is not registered as an observer.'.
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific swift objective_c">
 <p>v1.6.1<span>2019-04-09</span></p>
 <pre>
 Built with Swift 5.0 (Xcode 10.2).
@@ -1354,6 +1364,15 @@ Built with Swift 3.1
 First release of FirekastStreamer and FirekastPlayer to stream and play video with its streamId.
 </pre>
 </blockquote>
+<blockquote class="lang-specific java">
+<p>v1.7.0<span>2019-04-24</span></p>
+<pre>
+* Player can be muted.
+* By default, player starts to play immediately, otherwise call <code>play(FKStream stream, long atTimeInMillis, boolean playImmediately)</code> to override this behavior.
+* Add <code>FKPlayer</code> reference in <code>FKPlayer.Callback</code>'s methods.
+</pre>
+</blockquote>
+
 <blockquote class="lang-specific java">
 <p>v1.6.0<span>2019-03-20</span></p>
 <pre>
