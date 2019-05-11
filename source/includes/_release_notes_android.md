@@ -1,4 +1,11 @@
 <blockquote class="lang-specific java">
+<p>v1.7.1<span>2019-05-11</span></p>
+<pre>
+* Streamer internal optimizations.
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific java">
 <p>v1.7.0<span>2019-04-24</span></p>
 <pre>
 * Player can be muted.
