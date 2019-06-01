@@ -1,4 +1,13 @@
 <blockquote class="lang-specific swift objective_c">
+<p>v1.7.1<span>2019-06-01</span></p>
+<pre>
+Built with Swift 5.0.1 (Xcode 10.2.1).
+* Streaming stopped before stream becomes <code>LIVE</code> causes the stream to be force closed. This helps us to release server's resources and free up spaces on your plan as soon as possible.
+* Fixes the Firekast framework so it compiles and runs on simulators.
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific swift objective_c">
 <p>v1.7.0<span>2019-04-24</span></p>
 <pre>
 Built with Swift 5.0 (Xcode 10.2).
