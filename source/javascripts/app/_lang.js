@@ -130,6 +130,7 @@ under the License.
 
     // save language as next default
     localStorage.setItem("language", language);
+    fkio_updateParentWindow();
   }
 
   function setupLanguages(l) {

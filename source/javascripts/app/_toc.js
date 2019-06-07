@@ -86,6 +86,9 @@
         } else {
           document.title = originalTitle;
         }
+        if (fkio_updateParentWindow){
+          fkio_updateParentWindow()
+        }
       }
     };
 
