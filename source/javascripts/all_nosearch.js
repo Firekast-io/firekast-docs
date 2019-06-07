@@ -32,9 +32,12 @@ window.onmessage = function(e){
   var re = /^docAnchorRequested::/
   if(re.test(e.data)){
     lastEventAnchor = e.data.replace(re,'');
-    window.location.assign(e.detail);  
+    if(!lastEventAnchor){
+      return
+    }
+    window.location.assign(lastEventAnchor);
   }
-}
+};
 
 window.onpopstate = function() {
   activateLanguage(getLanguageFromQueryString());
