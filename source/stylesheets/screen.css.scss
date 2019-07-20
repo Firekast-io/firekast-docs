@@ -49,7 +49,7 @@ body {
 }
 
 .toc-h1 {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
 
   &.active,
@@ -74,7 +74,7 @@ body {
   background-color: $nav-bg;
   font-size: 13px;
   font-weight: bold;
-  padding: 50px;
+  padding: 20px;
   box-sizing: border-box;
 
   // language selector for mobile devices
@@ -229,7 +229,7 @@ body {
     }
 
     li {
-      font-size: 0.8em;
+      font-size: 0.87em;
       line-height: 1.7;
       text-decoration: none;
     }
@@ -317,12 +317,12 @@ body {
   .lang-selector {
     position: fixed;
     z-index: 50;
-    border-bottom: 5px solid $lang-select-active-bg;
+    border-bottom: 5px solid $lang-select-bg;
   }
 }
 
 .lang-selector {
-  background-color: #000;
+  background-color: $lang-select-bg;
   width: 100%;
   font-weight: bold;
   height: 50px;
@@ -340,7 +340,7 @@ body {
     outline: 0;
     background: #232323;
     color: #fff;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.06);
+    box-shadow: 0px 5px 15px 0px rgba(25, 29, 31, 0.5);
 
     & + a {
       margin-left: 10px;
@@ -376,7 +376,7 @@ body {
   // to place content above the dark box
   position: relative;
   z-index: 30;
-  font-size: 18px;
+  font-size: 14px;
   font-family: "Roboto", sans-serif;
   padding-top: 50px;
 
@@ -420,11 +420,11 @@ body {
 
   h1 {
     @extend %header-font;
-    font-size: 38px;
+    font-size: 25px;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
-    margin-top: 2em;
+    margin-top: 3em;
   }
 
   h1:first-child,
@@ -436,7 +436,7 @@ body {
   h2 {
     @extend %header-font;
     font-size: 19px;
-    margin-top: 4em;
+    margin-top: 0em;
     margin-bottom: 0;
     // border-top: 1px solid #ccc;
     padding-top: 3em;
