@@ -3,9 +3,9 @@ title: Documentations
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - swift
-  - objective_c: objective-c
+  - objective_c: obj-c
   - java: android
-  - javascript
+  - javascript: JS
   - shell: cURL
 
 toc_headers:
