@@ -260,7 +260,7 @@ public void handleClick(View view) {
     @Override
     public void done(@Nullable FKStream stream, @Nullable FKError error) {
       if (error != null) return; // Something went wrong, like you have reached your plan limit for example.
-      mStreamer.startStreaming(stream, new AppStreamingCallback());
+      mStreamer.startStreaming(stream, new FKStreamer.StreamingCallback() { ... });
     }
   });
 }
@@ -312,7 +312,7 @@ String youtubeRtmpLink = "rtmp://a.rtmp.youtube.com/live/hello_webcast";
 List outputs = new ArrayList<>();
 outputs.add(facebookRtmpLink);
 outputs.add(youtubeRtmpLink);
-mStreamer.createStream(outputs, new AppCreateStreamCallback());
+mStreamer.createStream(outputs, new FKStreamer.CreateStreamCallback() { ... });
 ```
 
 Firekast allows to push your live stream simultaneously to other live streaming platforms and social medias, such as Facebook, Youtube, Twitch, Periscope etc...
@@ -401,7 +401,7 @@ FKStream* stream = [[FKStream alloc] initWithWithoutDataExceptStreamId:@"STREAM_
 
 // 2. get the player from the view
 mPlayer = mPlayerView.getPlayer();
-mPlayer.setCallback(new AppPlayerCallback());
+mPlayer.setCallback(new FKPlayer.Callback() { ... });
 
 // 3. play the stream starting - in that example - from the beginning.
 FKStream stream = FKStream.newEmptyInstance("STREAM_ID")

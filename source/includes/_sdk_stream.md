@@ -85,7 +85,7 @@ Map<String, String> metadata = new HashMap<>();
 metadata.put("title", "Awesome title");
 metadata.put("description", "An awesome video with awesome people.");
 if (FKStream.isMetadataValid(metadata)) {
-    mStream.updateMetadata(metadata, new AppStreamCallback());
+    mStream.updateMetadata(metadata, new FKStream.Callback() { ... });
 }
 ```
 
@@ -129,7 +129,7 @@ FKStream.findAll() { (numOfPages: Int, pageNumber: Int, pageSize: Int, count: In
 ```
 
 ```java
-FKStream.findAll(0, 100, null, new AppFindAllCallback());
+FKStream.findAll(0, 100, null, new FKStream.FindAllCallback() { ... });
 ```
 
 <blockquote class="lang-specific objective_c swift java"><p>Add a where clause to filter by state.</p></blockquote>
@@ -147,7 +147,7 @@ FKStream.findAll(where: .vod) { (numOfPages: Int, pageNumber: Int, pageSize: Int
 ```
 
 ```java
-FKStream.findAll(0, 100, FKStream.State.VOD, new AppFindAllCallback());
+FKStream.findAll(0, 100, FKStream.State.VOD, new FKStream.FindAllCallback() { ... });
 ```
 
 We provide an easy way to fetch your app's streams.
@@ -169,7 +169,7 @@ stream.forceClose { (error) in
 ```
 
 ```java
-mStream.forceClose(new AppStreamCallback());
+mStream.forceClose(new FKStream.Callback() { ... });
 ```
 
 Call this function when your user has created a stream but abandoned the idea of going live. That way, the stream moves from state `waiting` to `timeout` instantaneously and your plan's **simultaneous streamer** counter decreases by 1.

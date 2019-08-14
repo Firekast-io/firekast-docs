@@ -22,7 +22,7 @@ streamer.createStream { (stream, error) in
 ```
 
 ```java
-mStreamer.createStream(new AppCreateStreamCallback());
+mStreamer.createStream(new FKStreamer.CreateStreamCallback() { ... });
 ```
 
 First step to do live broadcasting is to create a stream.
@@ -46,7 +46,7 @@ streamer.startStreaming(on: stream, delegate: self)
 ```
 
 ```java
-mStreamer.startStreaming(stream, new AppStreamingCallback());
+mStreamer.startStreaming(stream, new FKStreamer.StreamingCallback() { ... });
 ```
 ### Start streaming
 
@@ -136,7 +136,7 @@ streamer.createStream(outputs: listOfRtmpLink) { (stream, error) in
 ```
 
 ```java
-mStreamer.createStream(mListOfRtmpLink, new AppCreateStreamCallback());
+mStreamer.createStream(mListOfRtmpLink, new FKStreamer.CreateStreamCallback() { ... });
 ```
 
 Firekast allows to push your live stream simultaneously to other live streaming platforms and social medias, such as Facebook, Youtube, Twitch, Periscope etc...
@@ -177,7 +177,7 @@ dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
 
 ```java
 long durationMs = 15000;
-mStreamer.startStreaming(FKStream.bandwidthTest, new AppStreamingCallback());
+mStreamer.startStreaming(FKStream.bandwidthTest, new FKStreamer.StreamingCallback() { ... });
 mHandler.sendEmptyMessageDelayed(MSG_TEST_BANDWIDTH_STOP_STREAMING, durationMs)
 ```
 
