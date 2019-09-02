@@ -1,4 +1,11 @@
 <blockquote class="lang-specific java">
+<p>v1.7.3<span>2019-09-02</span></p>
+<pre>
+* Set the camera view scale type: <code>CENTER_CROP</code> or <code>CENTER_INSIDE</code> (cf. <code>FKCameraFragment.Builder</code>).
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific java">
 <p>v1.7.2<span>2019-06-01</span></p>
 <pre>
 * Streaming stopped before stream becomes <code>LIVE</code> causes the stream to be force closed. This helps us to release server's resources and free up spaces on your plan as soon as possible.
