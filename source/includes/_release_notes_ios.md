@@ -1,4 +1,12 @@
 <blockquote class="lang-specific swift objective_c">
+<p>v1.7.2<span>2019-10-24</span></p>
+<pre>
+Built with Swift 5.1 (Xcode 11.1).
+Brings compability with Swift 5.1.
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific swift objective_c">
 <p>v1.7.1<span>2019-06-01</span></p>
 <pre>
 Built with Swift 5.0.1 (Xcode 10.2.1).
