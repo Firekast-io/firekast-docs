@@ -1213,6 +1213,14 @@ Replace <code>STREAM_ID</code> with the streamId of the stream you want to watch
 <h1 id='release-notes'>Release Notes</h1>
 <p>Follow what&#39;s new in Firekast SDK releases.</p>
 <blockquote class="lang-specific swift objective_c">
+<p>v1.7.2<span>2019-10-24</span></p>
+<pre>
+Built with Swift 5.1 (Xcode 11.1).
+Brings compability with Swift 5.1.
+</pre>
+</blockquote>
+
+<blockquote class="lang-specific swift objective_c">
 <p>v1.7.1<span>2019-06-01</span></p>
 <pre>
 Built with Swift 5.0.1 (Xcode 10.2.1).
@@ -1419,13 +1427,12 @@ First release of FirekastStreamer and FirekastPlayer to stream and play video wi
   * <code>forceClose()</code> allows to force close a stream in case your User created a stream and you know for sure that User will finally not go live.
 
 Bug fix:
-
-- <code>isStreaming()</code> is now <i>false</i> in <code>onStreamDidStop</code>.
-- <code>getCameraAsync()</code> indeed was not returning the camera in very rare corner case.
-- <code>switchCamera()</code> is now synchoneous so your app can update its UI right after the call.
-- Camera flash availability and turn on/off was not reliable.
-  </pre>
-  </blockquote>
+* <code>isStreaming()</code> is now <i>false</i> in <code>onStreamDidStop</code>.
+* <code>getCameraAsync()</code> indeed was not returning the camera in very rare corner case.
+* <code>switchCamera()</code> is now synchoneous so your app can update its UI right after the call.
+* Camera flash availability and turn on/off was not reliable.
+</pre>
+</blockquote>
 
 <blockquote class="lang-specific java">
 <p>v1.5.0<span>2019-01-28</span></p>
